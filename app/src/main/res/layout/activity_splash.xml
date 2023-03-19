@@ -17,21 +17,16 @@ android:orientation="vertical"
         android:layout_gravity="center"
         android:background="@color/white"
 
-      android:src="@drawable/logoclick"/>
+        android:src="@drawable/logoclick" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click Pick , Go"
-        android:textSize="35dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
+        android:text="Click Pick Go"
         android:textColor="@color/black"
-        />
-
-
-
-
-
+        android:textSize="35dp" />
 
 
 </LinearLayout>
