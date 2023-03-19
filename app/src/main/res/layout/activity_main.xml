@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
- android:background="#0000Ff">
+android:background="#3457D5">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WELCOME"
-
+        android:text="WELCOME To Pick By Click"
+        android:fontFamily="cursive"
+        android:layout_margin="40dp"
         android:layout_gravity="center"
-        android:paddingLeft="100dp"
+        android:gravity="center"
+
         android:textStyle="italic"
         android:textColorHighlight="@color/black"
-
-
         android:textColor="@color/white"
         android:textSize="50dp"/>
 </LinearLayout>
