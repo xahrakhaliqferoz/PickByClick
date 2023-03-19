@@ -7,15 +7,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 ImageView imageView;
+TextView tvSolgon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         imageView=findViewById(R.id.imageview);
+        tvSolgon=findViewById(R.id.tvSolgon);
 
 
         Intent intent=new Intent(SplashActivity.this, MainActivity.class);
