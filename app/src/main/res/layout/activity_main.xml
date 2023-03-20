@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-android:background="#3457D5">
+    android:background="@color/white">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +17,6 @@ android:background="#3457D5">
 
         android:textStyle="italic"
         android:textColorHighlight="@color/black"
-        android:textColor="@color/white"
+        android:textColor="#1DA1F2"
         android:textSize="50dp"/>
 </LinearLayout>
