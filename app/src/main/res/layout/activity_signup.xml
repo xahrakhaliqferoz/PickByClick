@@ -6,28 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:backgroundTint="#F5F8FA"
-    tools:context=".SignupActivity">
+    tools:context=".SignupActivity"
+    android:layout_margin="50dp">
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_marginTop="35dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:src="@drawable/logonew" />
+
 
     <TextView
-        android:id="@+id/tvlogoname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pick By Click"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="#14171A"
-        android:layout_marginTop="80dp"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/tvsignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Sign Up"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="#14171A"
+        android:gravity="center"
         android:layout_marginTop="30dp"
         android:paddingLeft="5dp"/>
 
@@ -40,6 +40,7 @@
         android:textSize="15sp"
         android:paddingLeft="5dp"
         android:layout_marginTop="3dp"
+        android:layout_gravity="center"
         android:textColor="#AAB8C2" />
 
 
