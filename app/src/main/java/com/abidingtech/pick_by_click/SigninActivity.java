@@ -71,7 +71,8 @@ public static final String SHARED_PREFS="sharedPrefs";
                     SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString("Name","true");
                     editor.apply();
-                    Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                 //   Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent=new Intent(SigninActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
 
