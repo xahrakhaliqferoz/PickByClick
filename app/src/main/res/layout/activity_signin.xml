@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:backgroundTint="#F5F8FA"
+    tools:context=".SigninActivity">
+
+    <TextView
+        android:id="@+id/tvlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick By Click"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#14171A"
+        android:layout_marginTop="80dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvsignin"
+        android:text="Sign In"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#14171A"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:text="Sign in to your account"
+        android:id="@+id/tvtext"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:textColor="#AAB8C2" />
+
+
+    <EditText
+        android:layout_width="380dp"
+        android:id="@+id/edtemail"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:layout_marginStart="10sp"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:textColor="#657786"
+        android:layout_marginTop="15dp" />
+
+
+    <EditText
+        android:layout_width="380dp"
+        android:id="@+id/edtpassword"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="numberDecimal"
+        android:drawableLeft="@drawable/ic_baseline_password_24"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:layout_marginStart="10sp"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:textColor="#657786"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/btnSignin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textStyle="bold"
+        android:backgroundTint="#657786"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvstatement"
+        android:textStyle="normal"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:text="By signing up I agree to the privacy policy and terms and conditions."
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        android:textColor="#AAB8C2" />
+
+</LinearLayout>
