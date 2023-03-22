@@ -9,28 +9,36 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SplashActivity extends AppCompatActivity {
-ImageView imageView;
-TextView tvSolgon;
+    ImageView imageView;
+    TextView tvSolgon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        imageView=findViewById(R.id.imageview);
-        tvSolgon=findViewById(R.id.tvSolgon);
+        imageView = findViewById(R.id.imageview);
+        tvSolgon = findViewById(R.id.tvSolgon);
 
 
-        Intent intent=new Intent(SplashActivity.this, SigninActivity.class);
 
-new Handler().postDelayed(new Runnable() {
-    @Override
-    public void run() {
-        startActivity(intent);
-        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(FirebaseAuth.getInstance().getCurrentUser() == null){
+                    Intent intent = new Intent(SplashActivity.this, SigninActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                finish();
 
-    }
-},2000);
+            }
+        }, 2000);
 
     }
 }

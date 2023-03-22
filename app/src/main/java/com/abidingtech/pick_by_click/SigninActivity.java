@@ -19,27 +19,28 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SigninActivity extends AppCompatActivity {
-EditText etEmail;
-EditText etPassword;
-Button btnSignIn;
-Button btnSignUpNow;
-public static final String SHARED_PREFS="sharedPrefs";
+    EditText etEmail;
+    EditText etPassword;
+    Button btnSignIn;
+    Button btnSignUpNow;
+    public String SHARED_PREFS = "sharedPrefs";
 
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         checkBox();
-        mAuth=FirebaseAuth.getInstance();
-        mLoadingBar=new ProgressDialog(SigninActivity.this);
+        mAuth = FirebaseAuth.getInstance();
+        mLoadingBar = new ProgressDialog(SigninActivity.this);
 
         setContentView(R.layout.activity_signin);
-        etEmail=findViewById(R.id.etEmail);
-        etPassword=findViewById(R.id.etPassword);
-        btnSignIn=findViewById(R.id.btnSignIn);
-        btnSignUpNow=findViewById(R.id.btnSignUpnow);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        btnSignIn = findViewById(R.id.btnSignIn);
+        btnSignUpNow = findViewById(R.id.btnSignUpnow);
 
         btnSignUpNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,7 @@ public static final String SHARED_PREFS="sharedPrefs";
                 Log.e("MainActivity", email);
                 String password = etPassword.getText().toString();
                 Log.e("MainActivity", password);
+
                 if (email.length() < 1 || password.length() < 8) {
                     if (email.length() < 1) {
 
@@ -65,16 +67,11 @@ public static final String SHARED_PREFS="sharedPrefs";
                     } else if (password.length() < 8) {
                         Toast.makeText(SigninActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else {
-                    SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                    SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("Name","true");
-                    editor.apply();
-                    Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
+                } else {
+//                    SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//                    SharedPreferences.Editor editor=sharedPreferences.edit();
+//                    editor.putString("email",email);
+//                    editor.apply();
 
 
 //                    SharedPreferences pref = getSharedPreferences("Setting", MODE_PRIVATE);
@@ -88,20 +85,16 @@ public static final String SHARED_PREFS="sharedPrefs";
                     mLoadingBar.setMessage("Please wait");
                     mLoadingBar.setCanceledOnTouchOutside(false);
                     mLoadingBar.show();
-                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 Toast.makeText(SigninActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(SigninActivity.this,MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);}
-                            else{
+                                Intent intent = new Intent(SigninActivity.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
                                 Toast.makeText(SigninActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-
-
-
-
                             }
                         }
                     });
@@ -116,13 +109,16 @@ public static final String SHARED_PREFS="sharedPrefs";
     }
 
     private void checkBox() {
-        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        String check=sharedPreferences.getString("Name","true");
-        if (check.equals("false")){
-            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String check = sharedPreferences.getString("Name", "true");
+        if (check.equals("false")) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
         }
 
     }
+
+
 }
+
