@@ -67,20 +67,9 @@ public class SigninActivity extends AppCompatActivity {
                     } else if (password.length() < 8) {
                         Toast.makeText(SigninActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-//                    SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-//                    SharedPreferences.Editor editor=sharedPreferences.edit();
-//                    editor.putString("email",email);
-//                    editor.apply();
+                }
+                else {
 
-
-//                    SharedPreferences pref = getSharedPreferences("Setting", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = pref.edit();
-//                    editor.putBoolean("isLogin", true);
-//                    editor.apply();
-//                    Intent intent1 = new Intent(SigninActivity.this, MainActivity.class);
-//                    startActivity(intent1);
-//                    finish();
                     mLoadingBar.setTitle("Registration");
                     mLoadingBar.setMessage("Please wait");
                     mLoadingBar.setCanceledOnTouchOutside(false);
