@@ -51,8 +51,10 @@ private ProgressDialog mLoadingBar;
                     if (email.length() < 1) {
 
                         Toast.makeText(SignupActivity.this, "Email should be entered", Toast.LENGTH_SHORT).show();
-                    } else if (password.length() < 8) {
+                    } if (password.length() < 8) {
                         Toast.makeText(SignupActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
+                        edtpassword.setError("8 characters required");
+                        return;
                     }
                 }
               else {

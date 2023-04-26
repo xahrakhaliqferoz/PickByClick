@@ -31,12 +31,12 @@ public class SigninActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_signin);
 
         checkBox();
         mAuth = FirebaseAuth.getInstance();
         mLoadingBar = new ProgressDialog(SigninActivity.this);
 
-        setContentView(R.layout.activity_signin);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnSignIn = findViewById(R.id.btnSignIn);

@@ -14,24 +14,26 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SplashActivity extends AppCompatActivity {
     ImageView imageView;
     TextView tvSolgon;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         imageView = findViewById(R.id.imageview);
         tvSolgon = findViewById(R.id.tvSolgon);
-
+        mAuth = FirebaseAuth.getInstance();
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(FirebaseAuth.getInstance().getCurrentUser() == null){
+
+                if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                     Intent intent = new Intent(SplashActivity.this, SigninActivity.class);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
