@@ -20,37 +20,28 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         bnView=findViewById(R.id.bnView);
+
         bnView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.bnvHome) {
-                    loadFragment(new HomeFragment());
+                switch (item.getItemId()) {
+                    case R.id.bnvHome:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.navContainer, new HomeFragment()).commit();
+                        break;
 
-                }
-                else if (id == R.id.bnvNotification) {
-                    loadFragment(new NotificationFragment());
+                    case R.id.bnvNotification:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.navContainer, new NotificationFragment()).commit();
+                        break;
+
+                    case R.id.bnvUser:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.navContainer, new UserFragment()).commit();
+                        break;
                 }
 
-                else {
-                    loadFragment(new UserFragment());
-                }
                 return true;
             }
-
         });
-        bnView.setSelectedItemId(R.id.bnvUser);
-
 
     }
-    public void loadFragment(Fragment fragment){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
 
-            ft.add(R.id.container,fragment);
-
-
-        ft.commit();
-
-    }
 }
