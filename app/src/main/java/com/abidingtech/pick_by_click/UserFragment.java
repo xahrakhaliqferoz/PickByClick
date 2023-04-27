@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class UserFragment extends Fragment {
-   
+
     public UserFragment() {
         // Required empty public constructor
 
