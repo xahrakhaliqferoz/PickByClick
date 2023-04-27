@@ -6,7 +6,9 @@ plugins {
 android {
     namespace 'com.abidingtech.pick_by_click'
     compileSdk 33
-
+buildFeatures{
+    viewBinding true
+}
     defaultConfig {
         applicationId "com.abidingtech.pick_by_click"
         minSdk 21

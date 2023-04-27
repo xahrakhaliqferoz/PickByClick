@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class UserFragment extends Fragment {
-
-Button btnLogOut;
-
+   
     public UserFragment() {
         // Required empty public constructor
 
