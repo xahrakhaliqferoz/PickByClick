@@ -25,15 +25,15 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.bnvHome) {
-                    loadFragment(new HomeFragment(),false);
+                    loadFragment(new HomeFragment());
 
                 }
                 else if (id == R.id.bnvNotification) {
-                    loadFragment(new NotificationFragment(),false);
+                    loadFragment(new NotificationFragment());
                 }
 
                 else {
-                    loadFragment(new UserFragment(),true);
+                    loadFragment(new UserFragment());
                 }
                 return true;
             }
@@ -43,13 +43,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-    public void loadFragment(Fragment fragment, boolean flag){
+    public void loadFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        if (flag)
+
             ft.add(R.id.container,fragment);
-        else
-            ft.replace(R.id.container,fragment);
+
 
         ft.commit();
 
