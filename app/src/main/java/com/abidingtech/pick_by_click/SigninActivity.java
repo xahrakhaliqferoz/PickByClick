@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class SigninActivity extends AppCompatActivity {
     EditText etEmail;
@@ -31,12 +34,12 @@ public class SigninActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_signin);
 
         checkBox();
         mAuth = FirebaseAuth.getInstance();
         mLoadingBar = new ProgressDialog(SigninActivity.this);
 
-        setContentView(R.layout.activity_signin);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
@@ -67,32 +70,57 @@ public class SigninActivity extends AppCompatActivity {
                     } else if (password.length() < 8) {
                         Toast.makeText(SigninActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
                     }
+
+
                 }
+                else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    Toast.makeText(SigninActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+
+                }
+
                 else {
+                    if (email.isEmpty() || password.isEmpty()) {
+                        Toast.makeText(SigninActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    } else {
+                        mAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(SigninActivity.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+                                            finish();
+                                        } else {
+                                            Toast.makeText(SigninActivity.this, "Sign up failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
-                    mLoadingBar.setTitle("Registration");
-                    mLoadingBar.setMessage("Please wait");
-                    mLoadingBar.setCanceledOnTouchOutside(false);
-                    mLoadingBar.show();
-                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(SigninActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(SigninActivity.this, MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(SigninActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+
+                        mLoadingBar.setTitle("Registration");
+                        mLoadingBar.setMessage("Please wait");
+                        mLoadingBar.setCanceledOnTouchOutside(false);
+                        mLoadingBar.show();
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(SigninActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(SigninActivity.this, HomeActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(SigninActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
 
+
+                    }
 
                 }
 
             }
-
         });
 
     }
@@ -101,13 +129,13 @@ public class SigninActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String check = sharedPreferences.getString("Name", "true");
         if (check.equals("false")) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
         }
 
+
     }
-
-
 }
+
 

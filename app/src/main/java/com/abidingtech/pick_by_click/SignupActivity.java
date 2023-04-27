@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,18 +49,14 @@ private ProgressDialog mLoadingBar;
                     if (email.length() < 1) {
 
                         Toast.makeText(SignupActivity.this, "Email should be entered", Toast.LENGTH_SHORT).show();
-                    } else if (password.length() < 8) {
+                    } if (password.length() < 8) {
                         Toast.makeText(SignupActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
+                        edtpassword.setError("8 characters required");
+                        return;
                     }
                 }
               else {
-//                   SharedPreferences pref = getSharedPreferences("Setting", MODE_PRIVATE);
-//                   SharedPreferences.Editor editor = pref.edit();
-//                   editor.putBoolean("isLogin", true);
-//                   editor.apply();
-//                    Intent intent1 = new Intent(SignupActivity.this, MainActivity.class);
-//                    startActivity(intent1);
-//                  finish();
+
                   mLoadingBar.setTitle("Registration");
                   mLoadingBar.setMessage("Please");
                   mLoadingBar.setCanceledOnTouchOutside(false);
@@ -72,7 +66,7 @@ private ProgressDialog mLoadingBar;
                       public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()){
                              Toast.makeText(SignupActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                         Intent intent=new Intent(SignupActivity.this,MainActivity.class);
+                         Intent intent=new Intent(SignupActivity.this, HomeActivity.class);
                          intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                          startActivity(intent);}
                          else{
