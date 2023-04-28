@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.abidingtech.pick_by_click.databinding.ActivityHomectivityBinding;
+import com.abidingtech.pick_by_click.databinding.FragmentUserBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class UserFragment extends Fragment {
-
+ FragmentUserBinding binding;
     public UserFragment() {
         // Required empty public constructor
 
@@ -35,6 +37,9 @@ public class UserFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+       binding=FragmentUserBinding.inflate(getLayoutInflater());
+
+        return  view;
     }
 }
