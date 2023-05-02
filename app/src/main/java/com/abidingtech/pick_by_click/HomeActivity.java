@@ -21,6 +21,8 @@ ActivityHomectivityBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        replaceFragment(new NotificationFragment());
+
         binding=ActivityHomectivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.bnView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,6 +51,12 @@ ActivityHomectivityBinding binding;
 
 
 
+    }
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.framalayout,fragment);
+        fragmentTransaction.commit();
     }
 
 }
