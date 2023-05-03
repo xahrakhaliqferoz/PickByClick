@@ -48,9 +48,6 @@ ActivityHomectivityBinding binding;
                 return true;
             }
         });
-
-
-
     }
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager=getSupportFragmentManager();
