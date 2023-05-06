@@ -1,5 +1,6 @@
 package com.abidingtech.pick_by_click;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,13 +18,26 @@ import java.util.List;
 
 
 public class NotificationFragment extends Fragment {
+    RecyclerView recyclerView;
+
+    public NotificationFragment() {
+        // Required empty public constructor
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_notification);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        RecyclerView recyclerView=findViewById(R.id.recyclerview);
+
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_notification, container, false);
+        recyclerView=view.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Item> items=new ArrayList<Item>();
         items.add(new Item("Order Request","Order is requested",R.drawable.a,"9:19pm"));
         items.add(new Item("Order Created","Order is Created",R.drawable.b,"10:28pm"));
@@ -33,33 +47,14 @@ public class NotificationFragment extends Fragment {
         items.add(new Item("Order Scheduled Successfully","Order is Successfully scheduled",R.drawable.e,"12:59am"));
         items.add(new Item("Order Approved","Order is Approved",R.drawable.e,"1:09am"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(),items));
-    }
+        return view;
 
+
+    }
 }
 
-
-
-//    public NotificationFragment() {
-//        // Required empty public constructor
-//    }
-//
-//
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_notification, container, false);
-//    }
-//
 //<<<<<<< Updated upstream
 //=======
 //<<<<<<< HEAD
