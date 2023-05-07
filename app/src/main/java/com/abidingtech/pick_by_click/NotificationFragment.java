@@ -19,7 +19,7 @@ import java.util.List;
 
 public class NotificationFragment extends Fragment {
     RecyclerView recyclerView;
-
+    ArrayList<Item> items;
     public NotificationFragment() {
         // Required empty public constructor
     }
@@ -38,7 +38,8 @@ public class NotificationFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_notification, container, false);
         recyclerView=view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<Item> items=new ArrayList<Item>();
+//        List<Item> items=new ArrayList<Item>();
+        items=new ArrayList<>();
         items.add(new Item("Order Request","Order is requested",R.drawable.a,"9:19pm"));
         items.add(new Item("Order Created","Order is Created",R.drawable.b,"10:28pm"));
         items.add(new Item("Order Stock Loaded","Order Stock is Loaded",R.drawable.e,"12:23pm"));
@@ -48,7 +49,8 @@ public class NotificationFragment extends Fragment {
         items.add(new Item("Order Approved","Order is Approved",R.drawable.e,"1:09am"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MyAdapter(getApplicationContext(),items));
+        recyclerView.setAdapter(new MyAdapter(getActivity(),items));
+       // recyclerView.setAdapter(new MyAdapter(,items));
         return view;
 
 
