@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@id/imageview"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="#B4B8B8"
         />
 </RelativeLayout>

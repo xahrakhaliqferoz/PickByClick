@@ -15,44 +15,43 @@ import com.abidingtech.pick_by_click.databinding.ActivityHomectivityBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-ActivityHomectivityBinding binding;
+    ActivityHomectivityBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        replaceFragment(new NotificationFragment());
 
-        binding=ActivityHomectivityBinding.inflate(getLayoutInflater());
+        binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        
+        replaceFragment(new HomeFragment());
         binding.bnView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()) {
                     case R.id.bnvHome:
-                        transaction.replace(R.id.navContainer,new HomeFragment());
-                   break;
+                        replaceFragment(new HomeFragment());
+                        return true;
 
                     case R.id.bnvNotification:
-                        transaction.replace(R.id.navContainer,new NotificationFragment());
-                        break;
+                        replaceFragment(new NotificationFragment());
+                        return true;
 
                     case R.id.bnvUser:
-                        transaction.replace(R.id.navContainer,new UserFragment());
-                        break;
+                        replaceFragment(new UserFragment());
+                        return true;
                 }
-                transaction.commit();
-
-
-                return true;
+                return false;
             }
         });
     }
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.framalayout,fragment);
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.navContainer, fragment);
         fragmentTransaction.commit();
     }
 
