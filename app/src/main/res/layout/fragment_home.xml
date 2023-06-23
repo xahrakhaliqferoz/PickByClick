@@ -5,23 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images"
     tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/constraintLayout"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         >
 
         <TextView
             android:id="@+id/UserName"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="10dp"
             android:text="Hi UserName"
-            android:textColor="@color/lavender"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
             android:text="Click Pick Go"
             android:textSize="15sp"
             android:layout_marginStart="10dp"
-            android:textColor="@color/lavender"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UserName"
             app:layout_constraintEnd_toStartOf="@+id/Image"/>
@@ -44,7 +45,7 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="120dp"
             android:id="@+id/Image"
             android:src="@drawable/logoclick"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +56,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="160dp"
             android:id="@+id/row1"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
@@ -72,7 +73,7 @@
                 android:id="@+id/UserCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -88,17 +89,16 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="User"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/UserImage"
                         android:src="@drawable/icon"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
-
 
 
                 </RelativeLayout>
@@ -111,7 +111,7 @@
                 android:id="@+id/childCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -123,7 +123,7 @@
                         android:id="@+id/childIcon"
                         android:text="No.of child "
                         android:textSize="15sp"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semibold"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
@@ -131,8 +131,8 @@
                         />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/childImage"
                         android:src="@drawable/noofchild"
                         android:layout_marginTop="15dp"
@@ -149,7 +149,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="160dp"
             android:id="@+id/row2"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
@@ -166,7 +166,7 @@
                 android:id="@+id/NotificationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -178,7 +178,7 @@
                         android:id="@+id/NotificationIcon"
                         android:text="Notifications"
                         android:textSize="15sp"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semibold"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
@@ -186,8 +186,8 @@
                         />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/NotificationImage"
                         android:src="@drawable/notification"
                         android:layout_marginTop="15dp"
@@ -205,7 +205,7 @@
                 android:id="@+id/SNotificationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -217,7 +217,7 @@
                         android:id="@+id/SNotification"
                         android:text="Send Notification "
                         android:textSize="15sp"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semibold"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
@@ -225,8 +225,8 @@
                         />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/SNotificationIcon"
                         android:src="@drawable/sendnotification"
                         android:layout_marginTop="15dp"
@@ -243,7 +243,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="160dp"
             android:id="@+id/row3"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
@@ -260,7 +260,7 @@
                 android:id="@+id/RegisterationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -272,7 +272,7 @@
                         android:id="@+id/RegisterationIcon"
                         android:text="Register Device"
                         android:textSize="15sp"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semibold"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
@@ -280,8 +280,8 @@
                         />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/RegisterationImage"
                         android:src="@drawable/adddevice"
                         android:layout_marginTop="15dp"
@@ -299,7 +299,7 @@
                 android:id="@+id/settingCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="20dp"
+                app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -311,7 +311,7 @@
                         android:id="@+id/settingIcon"
                         android:text="Setting"
                         android:textSize="15sp"
-                        android:textColor="@color/lavender"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/poppins_semibold"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
@@ -319,8 +319,8 @@
                         />
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/SettingImage"
                         android:src="@drawable/setting"
                         android:layout_marginTop="15dp"
@@ -329,7 +329,6 @@
 
 
                 </RelativeLayout>
-                
             </androidx.cardview.widget.CardView>
 
 
