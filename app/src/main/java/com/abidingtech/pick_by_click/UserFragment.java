@@ -3,6 +3,7 @@ package com.abidingtech.pick_by_click;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -34,6 +35,7 @@ import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.databinding.ActivityHomectivityBinding;
 import com.abidingtech.pick_by_click.databinding.FragmentUserBinding;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,62 +44,77 @@ import java.io.File;
 
 
 public class UserFragment extends Fragment {
-    EditText etEmail;
-    EditText etPassword;
+    EditText editText;
+    TextView textView;
+    ImageView imageView;
+    FloatingActionButton button;
+
     Button btnSignout;
 //    SigninActivity signinActivity;
     FirebaseAuth auth;
     FirebaseUser user;
-
-
     public UserFragment() {
         // Required empty public constructor
-
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-
-
-
-
-        btnSignout = view.findViewById(R.id.btnSignout);
-
-
-        btnSignout.setOnClickListener(new View.OnClickListener() {
+        imageView=view.findViewById(R.id.imageView);
+        button=view.findViewById(R.id.floatingActionButton);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Logout")
-                        .setMessage("Are u sure")
-                        .setPositiveButton("Yes", (dialogInterface, i) ->
-                        {
-                            auth = FirebaseAuth.getInstance();
-                            auth.signOut();
-                            Intent intent = new Intent(getActivity(), SigninActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();})
-                        .setNegativeButton("No", (dialogInterface, i) -> {
-                        })
-                        .show();     }
-});
-
+                ImagePicker.with(UserFragment.this)
+                        .galleryOnly()
+                        .cropSquare()
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+            }
+        });
 
         return view;
-
-
     }
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri=data.getData();
+        imageView.setImageURI(uri);
+    }
 }
+
+//            btnSignout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new AlertDialog.Builder(getActivity())
+//                        .setTitle("Logout")
+//                        .setMessage("Are u sure")
+//                        .setPositiveButton("Yes", (dialogInterface, i) ->
+//                        {
+//                            auth = FirebaseAuth.getInstance();
+//                            auth.signOut();
+//                            Intent intent = new Intent(getActivity(), SigninActivity.class);
+//                            startActivity(intent);
+//                           getActivity().finish();})
+//                      .setNegativeButton("No", (dialogInterface, i) -> {
+//                        })
+//                        .show();     }
+//});
+//return view;
+//   }
+////   @Override
+//    public void onActivityResult(int requestCode, int resultCode), @NonNull Intent data){
+//
+//        super.onActivityResult(requestCode,resultCode,data);
+//
+//}
