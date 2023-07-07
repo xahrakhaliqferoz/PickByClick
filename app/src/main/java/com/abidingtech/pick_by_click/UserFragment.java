@@ -48,6 +48,7 @@ public class UserFragment extends Fragment {
     TextView textView;
     ImageView imageView;
     FloatingActionButton button;
+    Button btnSigout;
 
     Button btnSignout;
 //    SigninActivity signinActivity;
@@ -70,6 +71,7 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         imageView=view.findViewById(R.id.imageView);
         button=view.findViewById(R.id.floatingActionButton);
+        btnSignout=view.findViewById(R.id.btnSigout);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +85,29 @@ public class UserFragment extends Fragment {
             }
         });
 
+        //code
+        btnSignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Logout")
+                        .setMessage("Are u sure")
+                        .setPositiveButton("Yes", (dialogInterface, i) ->
+                        {
+                            auth = FirebaseAuth.getInstance();
+                            auth.signOut();
+                            Intent intent = new Intent(getActivity(), SigninActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();})
+                        .setNegativeButton("No", (dialogInterface, i) -> {
+                        })
+                        .show();     }
+        });
         return view;
     }
+
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -93,28 +116,4 @@ public class UserFragment extends Fragment {
     }
 }
 
-//            btnSignout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new AlertDialog.Builder(getActivity())
-//                        .setTitle("Logout")
-//                        .setMessage("Are u sure")
-//                        .setPositiveButton("Yes", (dialogInterface, i) ->
-//                        {
-//                            auth = FirebaseAuth.getInstance();
-//                            auth.signOut();
-//                            Intent intent = new Intent(getActivity(), SigninActivity.class);
-//                            startActivity(intent);
-//                           getActivity().finish();})
-//                      .setNegativeButton("No", (dialogInterface, i) -> {
-//                        })
-//                        .show();     }
-//});
-//return view;
-//   }
-////   @Override
-//    public void onActivityResult(int requestCode, int resultCode), @NonNull Intent data){
-//
-//        super.onActivityResult(requestCode,resultCode,data);
-//
-//}
+
