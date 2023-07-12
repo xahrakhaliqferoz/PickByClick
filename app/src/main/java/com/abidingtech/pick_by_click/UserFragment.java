@@ -58,7 +58,7 @@ public class UserFragment extends Fragment {
 
     TextView tvEmail;
     TextView tvName;
-    Button selectImageButton;
+    FloatingActionButton selectImageButton;
     Button btnSignout;
 
 //    SigninActivity signinActivity;
