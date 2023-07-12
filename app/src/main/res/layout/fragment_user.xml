@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:gravity="center">
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/profile_image_view"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="50dp"
@@ -25,18 +25,18 @@
                     app:srcCompat="@drawable/ic_baseline_person_24" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
+                    android:id="@+id/select_image_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@id/imageView"
-                    android:layout_alignBottom="@id/imageView"
+                    android:layout_alignEnd="@id/profile_image_view"
+                    android:layout_alignBottom="@id/profile_image_view"
                     android:layout_marginEnd="-21dp"
                     android:layout_marginBottom="9dp"
                     android:backgroundTint="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:tint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_image_view"
                     app:srcCompat="@drawable/ic_baseline_photo_camera_24"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="225dp" />
@@ -51,8 +51,8 @@
             tools:layout_editor_absoluteY="201dp"
             tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:id="@+id/textView"
+                <TextView
+                    android:id="@+id/tvName"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -65,7 +65,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/edtemail"
+                    android:id="@+id/tvEmail"
                     android:layout_width="380dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
