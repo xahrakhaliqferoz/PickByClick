@@ -57,7 +57,7 @@ public class UserFragment extends Fragment {
     private String email;
 
     TextView tvEmail;
-    TextView tvName;
+    EditText etName;
     FloatingActionButton selectImageButton;
     Button btnSignout;
 
@@ -81,7 +81,7 @@ public class UserFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-        tvName = view.findViewById(R.id.tvName);
+        etName = view.findViewById(R.id.etName);
         tvEmail = view.findViewById(R.id.tvEmail);
         btnSignout = view.findViewById(R.id.btnSigout);
 
