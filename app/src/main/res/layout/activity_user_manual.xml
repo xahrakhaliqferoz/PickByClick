@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Manual"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:paddingLeft="100dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduction"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingLeft="120dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="The Child Pick-Up App is designed to facilitate the safe and efficient pick-up of children from various locations, such as schools, daycare centers, or extracurricular activities.This manual will guide you through the app's features and help you make the most of its functionalities."
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"/>
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="180dp"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.Getting Started"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingLeft="100dp"
+        android:layout_marginRight="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text=" a.Download and Install \n b.Creat an account\n c.Login/signup\n d.Register"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"/>
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+        android:paddingLeft="180dp"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="2.Adding Children"
+        android:textSize="20dp"
+        android:paddingLeft="100dp"
+        android:layout_marginRight="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="a.Profile SetUp\nb.Register Device"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"/>
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="180dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.Schedule Pick ups"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingLeft="100dp"
+        android:layout_marginRight="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="a.Pick Up Request\nb.Notification sent "
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"/>
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+        android:paddingLeft="180dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.Hardware Notification"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingLeft="100dp"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="a.Child Arrival\nb.Delay Notification "
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
