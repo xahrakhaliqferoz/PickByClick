@@ -16,13 +16,9 @@ public class HomeFragment extends Fragment {
     CardView cardSettings;
 
 
-
-
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -36,17 +32,19 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_home, container, false);
-        View view=inflater.inflate(R.layout.fragment_home,container,false);
-        cardSettings= cardSettings.findViewById(R.id.settingCard);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        cardSettings = view.findViewById(R.id.settingCard);
         cardSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UserManualActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-             }
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent = new Intent(getActivity(), UserManualActivity.class);
+                                                startActivity(intent);
+                                                getActivity().finish();
+                                            }
+                                        }
         );
-return view;
-    };
+        return view;
     }
+
+    ;
+}

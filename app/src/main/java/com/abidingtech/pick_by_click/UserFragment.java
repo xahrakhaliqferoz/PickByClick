@@ -46,7 +46,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class UserFragment extends Fragment {
@@ -57,89 +56,93 @@ public class UserFragment extends Fragment {
     private String name;
     private String email;
 
-        TextView tvEmail;
-        TextView tvName;
-        Button selectImageButton ;
-        Button btnSignout;
+    TextView tvEmail;
+    TextView tvName;
+    Button selectImageButton;
+    Button btnSignout;
 
 //    SigninActivity signinActivity;
 
-        FirebaseAuth auth;
-        public UserFragment() {
-            // Required empty public constructor
-        }
+    FirebaseAuth auth;
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-        }
-        @SuppressLint("MissingInflatedId")
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+    public UserFragment() {
+        // Required empty public constructor
+    }
 
-            // Inflate the layout for this fragment
-            View view = inflater.inflate(R.layout.fragment_user, container, false);
-            tvName = view.findViewById(R.id.tvName);
-            tvEmail = view.findViewById(R.id.tvEmail);
-            btnSignout=view.findViewById(R.id.btnSigout);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-           profileImageView = view.findViewById(R.id.profile_image_view);
-             selectImageButton = view.findViewById(R.id.select_image_button);
-            selectImageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, REQUEST_IMAGE_PICK);
-                }
-            });
-            usersRef = FirebaseDatabase.getInstance().getReference().child("users");
-            currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    @SuppressLint("MissingInflatedId")
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-// Method to save/update the user's profile
-            private void saveUserProfile (String name, String email) {
-                if (currentUser != null) {
-                    String userId = currentUser.getUid();
-                    String profileImageUrl = "";
-                    // TODO: Get the URL of the selected image or use a placeholder
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        tvName = view.findViewById(R.id.tvName);
+        tvEmail = view.findViewById(R.id.tvEmail);
+        btnSignout = view.findViewById(R.id.btnSigout);
 
-                    User user = new User(userId, name, email, profileImageUrl);
-                    usersRef.child(userId).setValue(user)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        // Profile saved/updated successfully
-                                    } else {
-                                        // Failed to save/update profile
-                                    }
-                                }
-                            });
-                }
+        profileImageView = view.findViewById(R.id.profile_image_view);
+        selectImageButton = view.findViewById(R.id.select_image_button);
+        selectImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, REQUEST_IMAGE_PICK);
             }
+        });
+        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        //code
+        btnSignout.setOnClickListener(new View.OnClickListener() {
 
-            //code
-            btnSignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Logout")
+                        .setMessage("Are u sure")
+                        .setPositiveButton("Yes", (dialogInterface, i) ->
+                        {
+                            auth = FirebaseAuth.getInstance();
+                            auth.signOut();
+                            Intent intent = new Intent(getActivity(), SigninActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        })
+                        .setNegativeButton("No", (dialogInterface, i) -> {
+                        })
+                        .show();
+            }
+        });
+        return view;
+    }
 
-                 @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(getActivity())
-                            .setTitle("Logout")
-                            .setMessage("Are u sure")
-                            .setPositiveButton("Yes", (dialogInterface, i) ->
-                            {
-                                auth = FirebaseAuth.getInstance();
-                                auth.signOut();
-                                Intent intent = new Intent(getActivity(), SigninActivity.class);
-                                startActivity(intent);
-                                getActivity().finish();})
-                            .setNegativeButton("No", (dialogInterface, i) -> {
-                            })
-                            .show();     }
-            });
-            return view;
+    // Method to save/update the user's profile
+    private void saveUserProfile (String name, String email){
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            String profileImageUrl = "";
+            // TODO: Get the URL of the selected image or use a placeholder
+
+            User user = new User(userId, name, email, profileImageUrl);
+            usersRef.child(userId).setValue(user)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                // Profile saved/updated successfully
+                            } else {
+                                // Failed to save/update profile
+                            }
+                        }
+                    });
         }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -160,7 +163,7 @@ public class UserFragment extends Fragment {
 //            Uri uri=data.getData();
 //            imageView.setImageURI(uri);
 //        }
-    }
+}
 
 
 
