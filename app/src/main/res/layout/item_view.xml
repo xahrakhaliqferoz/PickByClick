@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:background="@color/black">
 
     <ImageView
         android:layout_width="60dp"
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/name"
        android:layout_toRightOf="@+id/imageview"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="Name"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -31,7 +32,7 @@
         android:layout_toRightOf="@+id/name"
         android:layout_below="@+id/name"
         android:text="9:09am"
-        android:textColor="#7683CA"
+        android:textColor="@color/white"
         android:textSize="13dp" />
 
     <TextView
@@ -40,7 +41,7 @@
         android:id="@+id/phone"
         android:layout_toRightOf="@+id/imageview"
         android:layout_below="@id/time"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10dp"
         android:text="phone"
 
@@ -51,6 +52,6 @@
         android:layout_height="2dp"
         android:layout_below="@id/imageview"
         android:layout_marginTop="15dp"
-        android:background="#B4B8B8"
+        android:background="#F8D210"
         />
 </RelativeLayout>
