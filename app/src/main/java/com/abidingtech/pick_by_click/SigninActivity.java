@@ -65,64 +65,39 @@ public class SigninActivity extends AppCompatActivity {
 
                 if (email.length() < 1 || password.length() < 8) {
                     if (email.length() < 1) {
-
                         Toast.makeText(SigninActivity.this, "Email should be entered", Toast.LENGTH_SHORT).show();
                     } else if (password.length() < 8) {
                         Toast.makeText(SigninActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
                     }
-
-
-                }
-                else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(SigninActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
-
+                } else {
+                    signInWithEmailAndPassword(email, password);
                 }
-
-                else {
-                    if (email.isEmpty() || password.isEmpty()) {
-                        Toast.makeText(SigninActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                    } else {
-                        mAuth.createUserWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(SigninActivity.this, "Sign-In successful", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
-                                            finish();
-                                        } else {
-                                            Toast.makeText(SigninActivity.this, "", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-
-                        mLoadingBar.setTitle("Registration");
-                        mLoadingBar.setMessage("Please wait");
-                        mLoadingBar.setCanceledOnTouchOutside(false);
-                        mLoadingBar.show();
-                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(SigninActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(SigninActivity.this, HomeActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(SigninActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
-
-                    }
-
-                }
-
             }
         });
+    }
 
+    private void signInWithEmailAndPassword(String email, String password) {
+        mLoadingBar.setTitle("Sign-In");
+        mLoadingBar.setMessage("Please wait");
+        mLoadingBar.setCanceledOnTouchOutside(false);
+        mLoadingBar.show();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        mLoadingBar.dismiss();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SigninActivity.this, "Sign-In successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(SigninActivity.this, "Authentication failed. Please check your email and password.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private void checkBox() {
@@ -133,9 +108,5 @@ public class SigninActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-
     }
 }
-
-
