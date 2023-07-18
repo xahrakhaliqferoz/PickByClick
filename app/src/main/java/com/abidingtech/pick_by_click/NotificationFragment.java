@@ -41,7 +41,7 @@ public class NotificationFragment extends Fragment {
 //        List<Item> items=new ArrayList<Item>();
         items=new ArrayList<>();
         items.add(new Item("Order Request","Order is requested",R.drawable.a,"9:19pm"));
-        items.add(new Item("Order Created","Order is Created",R.drawable.b,"10:28pm"));
+        items.add(new Item("Order Created","Order is Created",R.drawable.a,"10:28pm"));
         items.add(new Item("Order Stock Loaded","Order Stock is Loaded",R.drawable.a,"12:23pm"));
         items.add(new Item("Order Loading Start","Order Loading is Started",R.drawable.a,"1:12am"));
         items.add(new Item("Order Verified","Order is Verified",R.drawable.a,"2:28am"));
