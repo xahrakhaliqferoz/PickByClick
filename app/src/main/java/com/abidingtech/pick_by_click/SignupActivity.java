@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -18,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
     EditText edtname;
@@ -26,6 +27,7 @@ public class SignupActivity extends AppCompatActivity {
     Button btnSignUp;
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;
+    private DatabaseReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class SignupActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mLoadingBar = new ProgressDialog(SignupActivity.this);
+
+        // Initialize the Realtime Database reference
+        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
 
         edtname = findViewById(R.id.edtname);
         edtemail = findViewById(R.id.edtemail);
@@ -72,6 +77,13 @@ public class SignupActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         mLoadingBar.dismiss();
                         if (task.isSuccessful()) {
+                            // Get the current user ID from Firebase Authentication
+                            String userId = mAuth.getCurrentUser().getUid();
+
+                            // Save the user data under the user ID in the "users" node
+                            User user = new User(edtname.getText().toString().trim(), email);
+                            usersRef.child(userId).setValue(user);
+
                             Toast.makeText(SignupActivity.this, "Sign-up successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                             finish();
