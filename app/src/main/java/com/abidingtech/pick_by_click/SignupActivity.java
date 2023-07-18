@@ -42,69 +42,43 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edtemail.getText().toString();
+                String email = edtemail.getText().toString().trim();
                 Log.e("MainActivity", email);
                 String password = edtpassword.getText().toString();
                 Log.e("MainActivity", password);
 
-                if (email.length() < 1 || password.length() < 8) {
-                    if (email.length() < 1) {
-
-                        Toast.makeText(SignupActivity.this, "Email should be entered", Toast.LENGTH_SHORT).show();
-                    } else if (password.length() < 8) {
-                        Toast.makeText(SignupActivity.this, "Password should be greater than 8", Toast.LENGTH_SHORT).show();
-                    }
-
-
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(SignupActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
-
+                } else if (password.length() < 8) {
+                    Toast.makeText(SignupActivity.this, "Password should be at least 8 characters long", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (email.isEmpty() || password.isEmpty()) {
-                        Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                    } else {
-                        mAuth.createUserWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(SignupActivity.this, "Sig-up successful", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
-                                            finish();
-                                        } else {
-                                            Toast.makeText(SignupActivity.this, "Sign-up Successfull", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-
-                        mLoadingBar.setTitle("Registration");
-                        mLoadingBar.setMessage("Please wait");
-                        mLoadingBar.setCanceledOnTouchOutside(false);
-                        mLoadingBar.show();
-                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(SignupActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
-
-                    }
-
+                    signUpWithEmailAndPassword(email, password);
                 }
-
             }
         });
-
     }
 
+    private void signUpWithEmailAndPassword(String email, String password) {
+        mLoadingBar.setTitle("Registration");
+        mLoadingBar.setMessage("Please wait");
+        mLoadingBar.setCanceledOnTouchOutside(false);
+        mLoadingBar.show();
 
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        mLoadingBar.dismiss();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignupActivity.this, "Sign-up successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(SignupActivity.this, "Sign-up failed. Please try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 }
