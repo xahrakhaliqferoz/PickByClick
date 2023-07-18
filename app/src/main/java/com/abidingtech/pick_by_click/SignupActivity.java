@@ -38,7 +38,7 @@ public class SignupActivity extends AppCompatActivity {
         mLoadingBar = new ProgressDialog(SignupActivity.this);
 
         // Initialize the Realtime Database reference
-        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+        usersRef = FirebaseDatabase.getInstance().getReference();
 
         edtname = findViewById(R.id.edtname);
         edtemail = findViewById(R.id.edtemail);
@@ -80,9 +80,9 @@ public class SignupActivity extends AppCompatActivity {
                             // Get the current user ID from Firebase Authentication
                             String userId = mAuth.getCurrentUser().getUid();
 
-                            // Save the user data under the user ID in the "users" node
-                            User user = new User(edtname.getText().toString().trim(), email);
-                            usersRef.child(userId).setValue(user);
+                            // Save the user data under the "all_users" node with the user ID
+                            User user = new User(userId, edtname.getText().toString().trim(), email);
+                            usersRef.child("all_users").child(userId).setValue(user);
 
                             Toast.makeText(SignupActivity.this, "Sign-up successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignupActivity.this, HomeActivity.class));
