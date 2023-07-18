@@ -2,17 +2,32 @@ package com.abidingtech.pick_by_click;
 
 public class User {
 
-        private String name;
-        private String email;
+    private String name;
+    private String email;
 
-        public User() {
-            // Required empty constructor for Firebase
-        }
-
-        public User(String name, String email) {
-            this.name = name;
-            this.email = email;
-        }
-
-        // Getters and setters (optional, but helpful for future updates)
+    public User() {
+        // Required empty constructor for Firebase
     }
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}

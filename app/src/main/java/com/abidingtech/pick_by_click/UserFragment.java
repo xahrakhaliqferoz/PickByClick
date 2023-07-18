@@ -1,91 +1,10 @@
 package com.abidingtech.pick_by_click;
-import static android.app.Activity.RESULT_OK;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Bundle;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import static android.app.Activity.RESULT_OK;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Camera;
-import android.net.Uri;
-import android.os.Bundle;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.AsyncListUtil;
-
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,22 +13,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.abidingtech.pick_by_click.databinding.FragmentUserBinding;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.firebase.database.DatabaseReference;
 
 
 public class UserFragment extends Fragment {
@@ -119,11 +41,7 @@ public class UserFragment extends Fragment {
     private static final String DATABASE_PATH = "users/";
 
     private StorageReference storageReference;
-    private String userName;
-    private String userEmail;
     private ImageView imageView;
-    private Uri mImageUrl;
-
 
     TextView tvEmail;
     EditText etName;
@@ -150,14 +68,13 @@ public class UserFragment extends Fragment {
 
         // Get the currently logged-in user's name and email
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-        if (user != null) {
-            userName = user.getDisplayName();
-            userEmail = user.getEmail();
-        }
-
 
         btnSignout = view.findViewById(R.id.btnSigout);
+        imageView = view.findViewById(R.id.profile_image_view);
+        etName = view.findViewById(R.id.etName);
+        tvEmail = view.findViewById(R.id.tvEmail);
+        selectImageButton = view.findViewById(R.id.select_image_button);
+
         btnSignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,16 +95,15 @@ public class UserFragment extends Fragment {
         });
 
         // Get the currently logged-in user's name and email
-        FirebaseAuth mauth = FirebaseAuth.getInstance();
-        FirebaseUser muser = auth.getCurrentUser();
-        if (user != null) {
-            String userId = user.getUid();
+        {
+            String userId = FirebaseAuth.getInstance().getUid();
 
             // Get a reference to the Firebase Realtime Database
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH + userId);
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                    .getReference(DATABASE_PATH + userId);
 
             // Listen for changes in the user's data
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     // Retrieve the user's name and email
@@ -210,15 +126,6 @@ public class UserFragment extends Fragment {
             });
         }
 
-
-
-
-
-
-
-        imageView = view.findViewById(R.id.profile_image_view);
-        selectImageButton = view.findViewById(R.id.select_image_button);
-
         selectImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -226,7 +133,7 @@ public class UserFragment extends Fragment {
             }
         });
 
-        loadProfileImage();
+//        loadProfileImage();
 
 
 
@@ -268,8 +175,7 @@ public class UserFragment extends Fragment {
                 // Get the download URL of the uploaded image
                 imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
                     // Save the download URL to the database or use it as needed
-                    mImageUrl = Uri.parse(downloadUri.toString());
-                    Glide.with(this).load(mImageUrl).into(imageView);
+                    Glide.with(this).load(downloadUri.toString()).into(imageView);
                 }).addOnFailureListener(exception -> {
                     // Handle failure to get the download URL
                 });
@@ -279,7 +185,7 @@ public class UserFragment extends Fragment {
         }
     }
 
-    private void loadProfileImage() {
+/*    private void loadProfileImage() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -293,15 +199,6 @@ public class UserFragment extends Fragment {
 
             });
         }
-    }
-
-    private void setUserNameAndEmail() {
-        if (userName != null) {
-            etName.setText(userName);
-        }
-        if (userEmail != null) {
-            tvEmail.setText(userEmail);
-        }
-    }
+    }*/
 }
 
