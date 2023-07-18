@@ -14,5 +14,9 @@ public class User {
             this.email = email;
         }
 
-        // Getters and setters (optional, but helpful for future updates)
+    public User(String userId, String trim, String email) {
+
+    }
+
+    // Getters and setters (optional, but helpful for future updates)
     }
