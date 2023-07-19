@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SignupActivity extends AppCompatActivity {
     EditText edtname;
@@ -82,6 +83,8 @@ public class SignupActivity extends AppCompatActivity {
 
                             // Save the user data under the "all_users" node with the user ID
                             User user = new User(userId, edtname.getText().toString().trim(), email);
+                            FirebaseMessaging.getInstance().subscribeToTopic(userId);
+                            FirebaseMessaging.getInstance().subscribeToTopic("broadcast");
                             usersRef.child("all_users").child(userId).setValue(user);
 
                             Toast.makeText(SignupActivity.this, "Sign-up successful", Toast.LENGTH_SHORT).show();
