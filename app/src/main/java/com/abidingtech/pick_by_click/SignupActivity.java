@@ -1,99 +1,80 @@
 package com.abidingtech.pick_by_click;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
+import com.abidingtech.pick_by_click.databinding.ActivitySignupBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SignupActivity extends AppCompatActivity {
-    EditText edtname;
-    EditText edtemail;
-    EditText edtpassword;
-    Button btnSignUp;
-    private FirebaseAuth mAuth;
-    private ProgressDialog mLoadingBar;
-    private DatabaseReference usersRef;
-
+    ActivitySignupBinding binding;
+    String userName,email,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-
-        mAuth = FirebaseAuth.getInstance();
-        mLoadingBar = new ProgressDialog(SignupActivity.this);
-
-        // Initialize the Realtime Database reference
-        usersRef = FirebaseDatabase.getInstance().getReference();
-
-        edtname = findViewById(R.id.edtname);
-        edtemail = findViewById(R.id.edtemail);
-        edtpassword = findViewById(R.id.edtpassword);
-        btnSignUp = findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        binding = ActivitySignupBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        // for new account
+        binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String email = edtemail.getText().toString().trim();
-                Log.e("MainActivity", email);
-                String password = edtpassword.getText().toString();
-                Log.e("MainActivity", password);
+            public void onClick(View v) {
+                userName = binding.edtname.getText().toString();
+                email = binding.edtemail.getText().toString();
+                password = binding.edtpassword.getText().toString();
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(SignupActivity.this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
-                } else if (password.length() < 8) {
-                    Toast.makeText(SignupActivity.this, "Password should be at least 8 characters long", Toast.LENGTH_SHORT).show();
-                } else {
-                    signUpWithEmailAndPassword(email, password);
+                if (userName.length() < 1 || email.length() < 1 || !Patterns.EMAIL_ADDRESS.matcher(email).matches() || password.length() < 8) {
+                    if (userName.length() < 1) {
+                        Toast.makeText(SignupActivity.this, "Name required", Toast.LENGTH_SHORT).show();
+                    } else if (email.length() < 1) {
+                        Toast.makeText(SignupActivity.this, "email required", Toast.LENGTH_SHORT).show();
+                    } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        Toast.makeText(SignupActivity.this, "Enter valid email address", Toast.LENGTH_SHORT).show();
+                    } else if (password.length() < 8) {
+                        Toast.makeText(SignupActivity.this, "password should be grater than 8", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                // for register a user after validation user
+                else {
+                    FirebaseAuth auth=FirebaseAuth.getInstance();
+                    auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                                User userDetail=new User(userName,email);
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference reference = database.getReference();
+                                reference.child("Users").child(firebaseUser.getUid()).setValue(userDetail);
+                                Toast.makeText(SignupActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+                                finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(SignupActivity.this, "Please try again,something went wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }
             }
         });
     }
-
-    private void signUpWithEmailAndPassword(String email, String password) {
-        mLoadingBar.setTitle("Registration");
-        mLoadingBar.setMessage("Please wait");
-        mLoadingBar.setCanceledOnTouchOutside(false);
-        mLoadingBar.show();
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        mLoadingBar.dismiss();
-                        if (task.isSuccessful()) {
-                            // Get the current user ID from Firebase Authentication
-                            String userId = mAuth.getCurrentUser().getUid();
-
-                            // Save the user data under the "all_users" node with the user ID
-                            User user = new User(edtname.getText().toString().trim(), email);
-                            FirebaseMessaging.getInstance().subscribeToTopic(userId);
-                            FirebaseMessaging.getInstance().subscribeToTopic("broadcast");
-                            usersRef.child("all_users").child(userId).setValue(user);
-
-                            Toast.makeText(SignupActivity.this, "Sign-up successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
-                            finish();
-                        } else {
-                            Toast.makeText(SignupActivity.this, "Sign-up failed. Please try again.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
 }
+
+
+
+

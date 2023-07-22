@@ -46,7 +46,7 @@ public class UserFragment extends Fragment {
     TextView tvEmail;
     EditText etName;
     FloatingActionButton selectImageButton;
-    Button btnSignout;
+    Button btnLogout;
 
     public UserFragment() {
         // Required empty public constructor
@@ -69,13 +69,13 @@ public class UserFragment extends Fragment {
         // Get the currently logged-in user's name and email
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        btnSignout = view.findViewById(R.id.btnSigout);
+        btnLogout = view.findViewById(R.id.btnLogout);
         imageView = view.findViewById(R.id.profile_image_view);
         etName = view.findViewById(R.id.etName);
         tvEmail = view.findViewById(R.id.tvEmail);
         selectImageButton = view.findViewById(R.id.select_image_button);
 
-        btnSignout.setOnClickListener(new View.OnClickListener() {
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(getActivity())
@@ -185,7 +185,7 @@ public class UserFragment extends Fragment {
         }
     }
 
-/*    private void loadProfileImage() {
+    private void loadProfileImage() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -193,12 +193,12 @@ public class UserFragment extends Fragment {
             StorageReference imageRef = storageReference.child("Users/" + userId + "/profileImage");
             imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
 
-                mImageUrl = downloadUri;
+                Uri mImageUrl = downloadUri;
                 Glide.with(this).load(mImageUrl).into(imageView);
             }).addOnFailureListener(exception -> {
 
             });
         }
-    }*/
+    }
 }
 

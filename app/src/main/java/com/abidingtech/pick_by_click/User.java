@@ -4,6 +4,7 @@ public class User {
 
     private String name;
     private String email;
+    private String imageview;
 
     public User() {
         // Required empty constructor for Firebase
@@ -12,6 +13,7 @@ public class User {
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+        this.imageview=imageview;
     }
 
 
@@ -29,5 +31,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImageview() {
+        return imageview;
+    }
+
+    public void setImageview(String imageview) {
+        this.imageview = imageview;
     }
 }
