@@ -82,7 +82,7 @@ public class SignupActivity extends AppCompatActivity {
                             String userId = mAuth.getCurrentUser().getUid();
 
                             // Save the user data under the "all_users" node with the user ID
-                            User user = new User(userId, edtname.getText().toString().trim(), email);
+                            User user = new User(edtname.getText().toString().trim(), email);
                             FirebaseMessaging.getInstance().subscribeToTopic(userId);
                             FirebaseMessaging.getInstance().subscribeToTopic("broadcast");
                             usersRef.child("all_users").child(userId).setValue(user);
