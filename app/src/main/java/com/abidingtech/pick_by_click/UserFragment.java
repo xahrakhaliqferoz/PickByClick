@@ -38,15 +38,16 @@ public class UserFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_GALLERY = 2;
     private static final String STORAGE_PATH = "images/";
-    private static final String DATABASE_PATH = "users/";
+    private static final String DATABASE_PATH = "Users";
 
     private StorageReference storageReference;
     private ImageView imageView;
 
     TextView tvEmail;
-    EditText etName;
+    TextView tvName;
     FloatingActionButton selectImageButton;
     Button btnLogout;
+    DatabaseReference userRef;
 
     public UserFragment() {
         // Required empty public constructor
@@ -66,12 +67,9 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        // Get the currently logged-in user's name and email
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
         btnLogout = view.findViewById(R.id.btnLogout);
         imageView = view.findViewById(R.id.profile_image_view);
-        etName = view.findViewById(R.id.etName);
+        tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
         selectImageButton = view.findViewById(R.id.select_image_button);
 
@@ -99,19 +97,23 @@ public class UserFragment extends Fragment {
             String userId = FirebaseAuth.getInstance().getUid();
 
             // Get a reference to the Firebase Realtime Database
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                    .getReference(DATABASE_PATH + userId);
+             userRef = FirebaseDatabase.getInstance()
+                    .getReference(DATABASE_PATH).child(userId);
 
             // Listen for changes in the user's data
-            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     // Retrieve the user's name and email
                     String userName = dataSnapshot.child("name").getValue(String.class);
                     String userEmail = dataSnapshot.child("email").getValue(String.class);
+                    String imageUrl =  dataSnapshot.child("imageUrl").getValue(String.class);
+
+                    Glide.with(getActivity()).load(imageUrl).into(imageView);
+
 
                     if (userName != null) {
-                        etName.setText(userName);
+                        tvName.setText(userName);
                     }
 
                     if (userEmail != null) {
@@ -125,6 +127,7 @@ public class UserFragment extends Fragment {
                 }
             });
         }
+
 
         selectImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +165,7 @@ public class UserFragment extends Fragment {
         }
     }
 
+
     private void uploadImage(Uri uri) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -176,6 +180,7 @@ public class UserFragment extends Fragment {
                 imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
                     // Save the download URL to the database or use it as needed
                     Glide.with(this).load(downloadUri.toString()).into(imageView);
+                    userRef.child("imageUrl").setValue(downloadUri.toString());
                 }).addOnFailureListener(exception -> {
                     // Handle failure to get the download URL
                 });
@@ -185,7 +190,7 @@ public class UserFragment extends Fragment {
         }
     }
 
-    private void loadProfileImage() {
+/*    private void loadProfileImage() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -193,12 +198,20 @@ public class UserFragment extends Fragment {
             StorageReference imageRef = storageReference.child("Users/" + userId + "/profileImage");
             imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
 
-                Uri mImageUrl = downloadUri;
+                mImageUrl = downloadUri;
                 Glide.with(this).load(mImageUrl).into(imageView);
             }).addOnFailureListener(exception -> {
 
             });
         }
-    }
+    }*/
+//private void setUserNameAndEmail() {
+//    if (userName != null) {
+//        tvName.setText(userName);
+//    }
+//    if (userEmail != null) {
+//        tvEmail.setText(userEmail);
+//    }
+//}
 }
 

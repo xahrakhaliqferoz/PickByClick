@@ -5,6 +5,7 @@ public class User {
     private String name;
     private String email;
     private String imageview;
+    private String ImageUrl;
 
     public User() {
         // Required empty constructor for Firebase
@@ -39,5 +40,13 @@ public class User {
 
     public void setImageview(String imageview) {
         this.imageview = imageview;
+    }
+
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
     }
 }

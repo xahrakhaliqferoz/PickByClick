@@ -22,7 +22,7 @@ public class FCMService extends FirebaseMessagingService {
 
         if (notification != null) {
             Log.e("FCMService: ", notification.getTitle() + "  " + notification.getBody());
-            //call show noti
+            //call show notification
         } else
             Log.e("FCMService: ", remoteMessage.getData()+"");
 }
