@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -48,6 +49,7 @@ public class UserFragment extends Fragment {
     FloatingActionButton selectImageButton;
     Button btnLogout;
     DatabaseReference userRef;
+    Button EditProfileButton;
 
     public UserFragment() {
         // Required empty public constructor
@@ -72,6 +74,15 @@ public class UserFragment extends Fragment {
         tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
         selectImageButton = view.findViewById(R.id.select_image_button);
+        EditProfileButton=view.findViewById(R.id.EditProfileButton);
+
+        EditProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,9 +150,10 @@ public class UserFragment extends Fragment {
 //        loadProfileImage();
 
 
-
         return view;
     }
+
+
 
     private void openImagePicker() {
         ImagePicker.with(this)

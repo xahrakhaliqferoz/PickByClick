@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        
+
         replaceFragment(new HomeFragment());
         binding.bnView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
