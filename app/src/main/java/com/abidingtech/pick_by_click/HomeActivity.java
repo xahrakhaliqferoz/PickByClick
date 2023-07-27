@@ -66,6 +66,19 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        // Handle the back button press when the UserFragment is visible
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+
+        if (fragment instanceof UserFragment) {
+            // Move to the home screen before closing the app
+            moveTaskToBack(true);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -64,8 +64,8 @@
 
 
     <EditText
-        android:layout_width="380dp"
         android:id="@+id/edtemail"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:hint="Email"
         android:textColorHint="#D8D6D6"
