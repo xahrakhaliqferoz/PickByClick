@@ -2,6 +2,7 @@ package com.abidingtech.pick_by_click;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,18 +16,17 @@ RegisterDevice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        
         setContentView(R.layout.activity_register_device);
-        
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //work we want to perform on click of button is written here
-                Toast.makeText(RegisterDevice.this, "", Toast.LENGTH_SHORT).show();
-            }
-        });
-        
+floatingActionButton=findViewById(R.id.floatingButton);
+floatingActionButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        //startActivity(new Intent(RegisterDevice.this, DeviceRegistrationForm.class));
+        Intent intent=new Intent(RegisterDevice.this,DeviceRegistrationForm.class);
+        startActivity(intent);
+    }
+});
+
     }
     
 }
