@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -37,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 public class UserFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_GALLERY = 2;
+    private static final int EDIT_PROFILE_REQUEST_CODE = 1001;
     private static final String STORAGE_PATH = "images/";
     private static final String DATABASE_PATH = "Users";
 
@@ -48,6 +50,7 @@ public class UserFragment extends Fragment {
     FloatingActionButton selectImageButton;
     Button btnLogout;
     DatabaseReference userRef;
+    Button EditProfileButton;
 
     public UserFragment() {
         // Required empty public constructor
@@ -72,6 +75,15 @@ public class UserFragment extends Fragment {
         tvName = view.findViewById(R.id.tvName);
         tvEmail = view.findViewById(R.id.tvEmail);
         selectImageButton = view.findViewById(R.id.select_image_button);
+        EditProfileButton=view.findViewById(R.id.EditProfileButton);
+
+        EditProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE);
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,9 +151,10 @@ public class UserFragment extends Fragment {
 //        loadProfileImage();
 
 
-
         return view;
     }
+
+
 
     private void openImagePicker() {
         ImagePicker.with(this)
@@ -150,20 +163,59 @@ public class UserFragment extends Fragment {
                 .maxResultSize(512, 512)    //Final image resolution will be less than 1080 x 1080(Optional)
                 .start();
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            Uri uri = data.getData();
-            imageView.setImageURI(uri);
-            uploadImage(uri);
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            Toast.makeText(getActivity(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "Task Cancelled", Toast.LENGTH_SHORT).show();
+        if (requestCode == EDIT_PROFILE_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                // Refresh the user data after editing profile
+                refreshUserData();
+            }
         }
     }
+    private void refreshUserData() {
+        String userId = FirebaseAuth.getInstance().getUid();
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userName = dataSnapshot.child("name").getValue(String.class);
+                String userEmail = dataSnapshot.child("email").getValue(String.class);
+                String imageUrl =  dataSnapshot.child("imageUrl").getValue(String.class);
+
+                Glide.with(getActivity()).load(imageUrl).into(imageView);
+
+                if (userName != null) {
+                    tvName.setText(userName);
+                }
+
+                if (userEmail != null) {
+                    tvEmail.setText(userEmail);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle database error
+            }
+        });
+    }
+
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == Activity.RESULT_OK) {
+//            Uri uri = data.getData();
+//            imageView.setImageURI(uri);
+//            uploadImage(uri);
+//        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+//            Toast.makeText(getActivity(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(getActivity(), "Task Cancelled", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     private void uploadImage(Uri uri) {
@@ -188,6 +240,7 @@ public class UserFragment extends Fragment {
                 // Handle unsuccessful image upload
             });
         }
+
     }
 
 /*    private void loadProfileImage() {

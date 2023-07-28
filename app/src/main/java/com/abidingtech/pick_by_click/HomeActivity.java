@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        
+
         replaceFragment(new HomeFragment());
         binding.bnView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -66,6 +66,19 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // Handle the back button press when the UserFragment is visible
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+
+        if (fragment instanceof UserFragment) {
+            // Move to the home screen before closing the app
+            moveTaskToBack(true);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void replaceFragment(Fragment fragment) {
