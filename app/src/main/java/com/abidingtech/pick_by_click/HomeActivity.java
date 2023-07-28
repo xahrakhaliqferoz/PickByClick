@@ -3,12 +3,14 @@ package com.abidingtech.pick_by_click;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,6 +30,12 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
+        setContentView(R.layout.activity_homectivity);
+
+=======
+       
+>>>>>>> 64ac87c218fdaf62a8d4416e258e3b9783dbd656
         FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -65,20 +73,54 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+        // Example: Load your UserFragment
+        Fragment homeFragment = new HomeFragment();
+
+        getSupportFragmentManager().
+
+                beginTransaction()
+                        .
+
+                replace(R.id.fragment_container, homeFragment)
+                        .
+
+                commit();
+
     }
+
     @Override
     public void onBackPressed() {
-        // Handle the back button press when the UserFragment is visible
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        // Get the currently displayed fragment
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-        if (fragment instanceof UserFragment) {
-            // Move to the home screen before closing the app
-            moveTaskToBack(true);
+        if (currentFragment instanceof HomeFragment) {
+            // If the current fragment is UserFragment, show an AlertDialog to confirm exit
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit App")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Close the app
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // Do nothing and resume the app
+                        }
+                    })
+                    .show();
         } else {
+            // If the current fragment is not UserFragment, handle the back press normally
             super.onBackPressed();
         }
     }
+
+
+
+
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
