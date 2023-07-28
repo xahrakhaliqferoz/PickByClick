@@ -1,13 +1,17 @@
 package com.abidingtech.pick_by_click;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.UserManualActivity;
@@ -23,6 +27,11 @@ import com.google.firebase.database.ValueEventListener;
     public class HomeFragment extends Fragment {
         CardView cardSettings;
         TextView tvUserName;
+
+        private FirebaseUser User;
+        private DatabaseReference reference;
+
+        private String userID;
 
         public HomeFragment() {
             // Required empty public constructor
@@ -49,17 +58,18 @@ import com.google.firebase.database.ValueEventListener;
                 String userId = currentUser.getUid();
 
                 // Get a reference to the Firebase Realtime Database
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
                 // Listen for changes in the user's data
                 databaseReference.addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // Retrieve the user's name from the database
-                        String userName = dataSnapshot.child("name").getValue(String.class);
+                        String name = dataSnapshot.child("name").getValue(String.class);
 
                         // Update the TextView with the user's name
-                        tvUserName.setText("Hello, " + userName + "!");
+                        tvUserName.setText("Hello, " + name + "!");
                     }
 
                     @Override
@@ -70,6 +80,7 @@ import com.google.firebase.database.ValueEventListener;
             }
 
             return view;
+
         }
 
     }

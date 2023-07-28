@@ -2,7 +2,7 @@ package com.abidingtech.pick_by_click;
 
 public class User {
 
-    private String name;
+    protected String name;
     private String email;
     private String imageview;
     private String ImageUrl;
