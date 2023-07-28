@@ -30,12 +30,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.activity_homectivity);
 
-=======
-       
->>>>>>> 64ac87c218fdaf62a8d4416e258e3b9783dbd656
+
+
         FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
