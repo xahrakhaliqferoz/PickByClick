@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+       
         FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
