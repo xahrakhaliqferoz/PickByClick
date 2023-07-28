@@ -2,5 +2,7 @@
     <string name="app_name">Pick-By-Click</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_Notification_Fragment">Hello Notification fragment</string>
+    <string name="name1">Mandatory field 1<font color='#FF0000'>*</font></string>
+    <string name="name2">Mandatory field 2<font color='#FF0000'>*</font></string>
 
 </resources>

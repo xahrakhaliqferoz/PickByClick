@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
     public class HomeFragment extends Fragment {
         CardView cardSettings;
         TextView tvUserName;
+        CardView registerationCard;
 
         private FirebaseUser User;
         private DatabaseReference reference;
@@ -42,12 +43,20 @@ import com.google.firebase.database.ValueEventListener;
                                  Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_home, container, false);
             cardSettings = view.findViewById(R.id.settingCard);
+            registerationCard=view.findViewById(R.id.RegisterationCard);
             tvUserName = view.findViewById(R.id.tvUserName);
 
             cardSettings.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), UserManualActivity.class);
+                    startActivity(intent);
+                }
+            });
+            registerationCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), RegisterDevice.class);
                     startActivity(intent);
                 }
             });

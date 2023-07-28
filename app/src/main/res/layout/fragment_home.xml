@@ -61,7 +61,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:background="@color/white"
                 android:id="@+id/UserCard"
                 android:layout_margin="10dp"
@@ -101,7 +101,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/childCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -157,7 +157,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/NotificationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -197,7 +197,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/SNotificationCard"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardElevation="15dp"
@@ -252,7 +252,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/RegisterationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -292,7 +292,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/settingCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
