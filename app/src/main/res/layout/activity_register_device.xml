@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="50dp"
+        android:textSize="20dp"
         android:paddingLeft="20dp"
         android:layout_marginTop="100dp"/>
     <TextView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="ID"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="20dp"
         android:paddingLeft="20dp"
         android:layout_marginTop="10dp"/>
 
@@ -37,7 +37,6 @@
           android:src="@drawable/ic_baseline_add_24"
           android:backgroundTint="#F8D210"
           android:textColor="@color/white"
-
           android:layout_alignParentBottom="true"
           android:layout_alignParentEnd ="true"
           />

@@ -20,15 +20,30 @@
         <TextView
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
+<<<<<<< HEAD
             android:layout_height="100dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="395dp"
             android:fontFamily="@font/poppins_semibold"
+=======
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:text="Hi UserName"
+>>>>>>> bad3df55350d58ae7f8cb9b008bad4c1f24e9af7
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toTopOf="parent" />
+=======
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Image"
+
+            />
+
+>>>>>>> bad3df55350d58ae7f8cb9b008bad4c1f24e9af7
 
 
         <ImageView
@@ -36,9 +51,13 @@
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:layout_marginEnd="16dp"
+<<<<<<< HEAD
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+=======
+            app:layout_constraintStart_toEndOf="@+id/tvUserName"/>
+>>>>>>> bad3df55350d58ae7f8cb9b008bad4c1f24e9af7
 
         <LinearLayout
             android:layout_width="0dp"
@@ -56,7 +75,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:background="@color/white"
                 android:id="@+id/UserCard"
                 android:layout_margin="10dp"
@@ -96,7 +115,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/childCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -152,7 +171,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/NotificationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -192,7 +211,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/SNotificationCard"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardElevation="15dp"
@@ -247,7 +266,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/RegisterationCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -287,7 +306,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/black"
+                app:cardBackgroundColor="#121212"
                 android:id="@+id/settingCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
