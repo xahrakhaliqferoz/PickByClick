@@ -16,8 +16,8 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_device);
 
         // Initialize TextViews in the layout
-        tvDeviceName = findViewById(R.id.tvDeviceName);
-        tvDeviceId = findViewById(R.id.tvDeviceId);
+        tvDeviceName = findViewById(R.id.nameD);
+        tvDeviceId = findViewById(R.id.idD);
 
         findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
             @Override
