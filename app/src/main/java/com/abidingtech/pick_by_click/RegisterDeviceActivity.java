@@ -1,0 +1,43 @@
+package com.abidingtech.pick_by_click;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class RegisterDeviceActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_DEVICE_REGISTRATION = 1;
+    TextView tvDeviceName, tvDeviceId;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register_device);
+
+        // Initialize TextViews in the layout
+        tvDeviceName = findViewById(R.id.tvDeviceName);
+        tvDeviceId = findViewById(R.id.tvDeviceId);
+
+        findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start DeviceRegistrationForm activity to register a new device
+                Intent intent = new Intent(RegisterDeviceActivity.this, DeviceRegistrationForm.class);
+                startActivityForResult(intent, REQUEST_CODE_DEVICE_REGISTRATION);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_DEVICE_REGISTRATION && resultCode == RESULT_OK) {
+            // Receive data from DeviceRegistrationForm activity and display it
+            String deviceName = data.getStringExtra("deviceName");
+            String deviceId = data.getStringExtra("deviceId");
+            tvDeviceName.setText(deviceName);
+            tvDeviceId.setText(deviceId);
+        }
+    }
+}

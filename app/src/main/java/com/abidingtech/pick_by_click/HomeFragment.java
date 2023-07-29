@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         registerationCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RegisterDevice.class);
+                Intent intent = new Intent(getActivity(), RegisterDeviceActivity.class);
                 startActivity(intent);
             }
         });

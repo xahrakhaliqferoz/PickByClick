@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,38 +20,44 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DeviceRegistrationForm extends AppCompatActivity {
     ActivityDeviceRegistrationFormBinding binding;
-    String name,id;
+    String name, id;
     FirebaseDatabase db;
     DatabaseReference reference;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_registration_form);
-        binding=ActivityDeviceRegistrationFormBinding.inflate(getLayoutInflater());
+        binding = ActivityDeviceRegistrationFormBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name=binding.name.getText().toString();
-                id=binding.id.getText().toString();
-                if(!name.isEmpty()&&!id.isEmpty())
-                {
-                    Devices devices=new Devices(name,id);
-                    db=FirebaseDatabase.getInstance();
-                    reference=db.getReference("Devices");
+                name = binding.name.getText().toString();
+                id = binding.id.getText().toString();
+                if (!name.isEmpty() && !id.isEmpty()) {
+                    Devices devices = new Devices(name, id);
+                    db = FirebaseDatabase.getInstance();
+                    reference = db.getReference("Devices");
                     reference.child(name).setValue(devices).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             binding.name.setText("");
                             binding.id.setText("");
                             Toast.makeText(DeviceRegistrationForm.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                            sendDataToRegisterDeviceActivity(name, id); // Send data to RegisterDeviceActivity
                         }
                     });
                 }
             }
         });
+    }
 
-
+    private void sendDataToRegisterDeviceActivity(String name, String id) {
+        Intent intent = new Intent();
+        intent.putExtra("deviceName", name);
+        intent.putExtra("deviceId", id);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

@@ -12,19 +12,19 @@ public class Devices {
         this.id = id;
     }
 
-    public String getName() {
+    public String getDeviceName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setDeviceName(String name) {
         this.name = name;
     }
 
-    public String getId() {
+    public String getDeviceId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setDeviceId(String id) {
         this.id = id;
     }
 }
