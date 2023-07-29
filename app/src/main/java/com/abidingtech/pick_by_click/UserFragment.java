@@ -77,13 +77,14 @@ public class UserFragment extends Fragment {
         selectImageButton = view.findViewById(R.id.select_image_button);
         EditProfileButton=view.findViewById(R.id.EditProfileButton);
 
+
         EditProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE);
             }
-        });
+        });;
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +164,7 @@ public class UserFragment extends Fragment {
                 .maxResultSize(512, 512)    //Final image resolution will be less than 1080 x 1080(Optional)
                 .start();
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,6 +175,7 @@ public class UserFragment extends Fragment {
             }
         }
     }
+
     private void refreshUserData() {
         String userId = FirebaseAuth.getInstance().getUid();
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
@@ -202,20 +205,6 @@ public class UserFragment extends Fragment {
         });
     }
 
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == Activity.RESULT_OK) {
-//            Uri uri = data.getData();
-//            imageView.setImageURI(uri);
-//            uploadImage(uri);
-//        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-//            Toast.makeText(getActivity(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(getActivity(), "Task Cancelled", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
 
     private void uploadImage(Uri uri) {
@@ -243,28 +232,5 @@ public class UserFragment extends Fragment {
 
     }
 
-/*    private void loadProfileImage() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-        if (user != null) {
-            String userId = user.getUid();
-            StorageReference imageRef = storageReference.child("Users/" + userId + "/profileImage");
-            imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
-
-                mImageUrl = downloadUri;
-                Glide.with(this).load(mImageUrl).into(imageView);
-            }).addOnFailureListener(exception -> {
-
-            });
-        }
-    }*/
-//private void setUserNameAndEmail() {
-//    if (userName != null) {
-//        tvName.setText(userName);
-//    }
-//    if (userEmail != null) {
-//        tvEmail.setText(userEmail);
-//    }
-//}
 }
 

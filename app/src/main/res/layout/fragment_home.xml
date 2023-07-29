@@ -20,29 +20,25 @@
         <TextView
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="100dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:text="Hi UserName"
+            android:layout_marginEnd="395dp"
+            android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/Image"
-            />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="120dp"
             android:id="@+id/Image"
-            android:src="@drawable/logo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
             android:layout_marginEnd="16dp"
-/>
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="0dp"

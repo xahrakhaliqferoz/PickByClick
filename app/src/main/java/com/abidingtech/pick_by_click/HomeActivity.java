@@ -48,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
         binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
 

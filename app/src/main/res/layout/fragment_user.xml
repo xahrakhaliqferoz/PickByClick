@@ -73,7 +73,6 @@
                 <Button
                     android:id="@+id/EditProfileButton"
                     android:layout_width="wrap_content"
-
                     android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
                     android:drawableRight="@drawable/ic_baseline_mode_edit_24"
