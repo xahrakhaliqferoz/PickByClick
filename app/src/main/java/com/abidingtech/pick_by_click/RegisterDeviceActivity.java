@@ -24,12 +24,12 @@ public class RegisterDeviceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start DeviceRegistrationForm activity to register a new device
                 Intent intent = new Intent(RegisterDeviceActivity.this, DeviceRegistrationForm.class);
-                startActivityForResult(intent, REQUEST_CODE_DEVICE_REGISTRATION);
+                startActivity(intent);
             }
         });
     }
 
-    @Override
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_DEVICE_REGISTRATION && resultCode == RESULT_OK) {
@@ -39,5 +39,5 @@ public class RegisterDeviceActivity extends AppCompatActivity {
             tvDeviceName.setText(deviceName);
             tvDeviceId.setText(deviceId);
         }
-    }
+    }*/
 }
