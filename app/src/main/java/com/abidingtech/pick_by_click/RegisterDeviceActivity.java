@@ -16,18 +16,12 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_device);
-//     recycler view
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        Object dataList = new Object();
-        RecyclerView.Adapter adapter = new YourRecyclerViewAdapter(dataList);
-        // Replace YourRecyclerViewAdapter with your actual adapter class
+        Object dataList=new Object();
+        RecyclerView.Adapter adapter = new YourRecyclerViewAdapter(dataList); // Replace YourRecyclerViewAdapter with your actual adapter class
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Initialize TextViews in the layout
-        tvDeviceName = findViewById(R.id.nameD);
-        tvDeviceId = findViewById(R.id.idD);
-
         findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
