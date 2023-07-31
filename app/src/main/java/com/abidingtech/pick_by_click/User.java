@@ -49,4 +49,9 @@ public class User {
     public void setImageUrl(String imageUrl) {
         ImageUrl = imageUrl;
     }
+
+    public int getID() {
+
+        return 0;
+    }
 }

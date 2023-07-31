@@ -1,6 +1,8 @@
 package com.abidingtech.pick_by_click;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,13 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_device);
+//     recycler view
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        Object dataList = new Object();
+        RecyclerView.Adapter adapter = new YourRecyclerViewAdapter(dataList);
+        // Replace YourRecyclerViewAdapter with your actual adapter class
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize TextViews in the layout
         tvDeviceName = findViewById(R.id.nameD);

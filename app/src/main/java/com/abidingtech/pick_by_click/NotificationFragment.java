@@ -49,7 +49,7 @@ public class NotificationFragment extends Fragment {
         items.add(new Item("Order Approved","Order is Approved",R.drawable.a,"1:09am"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MyAdapter(getActivity(),items));
+        recyclerView.setAdapter(new MyAdapter(getActivity(),new ArrayList<>()));
         return view;
 
 
