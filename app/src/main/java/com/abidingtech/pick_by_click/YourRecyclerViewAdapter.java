@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class YourRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class YourRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolderNotifi> {
     Context context;
-    ArrayList<User>list;
-    public YourRecyclerViewAdapter(Context context, ArrayList<User> list) {
+    ArrayList<UserNotifi>list;
+    public YourRecyclerViewAdapter(Context context, ArrayList<UserNotifi> list) {
         this.context = context;
         this.list = list;
     }
@@ -21,12 +21,12 @@ public class YourRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> 
     }
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolderNotifi onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
-        return new MyViewHolder(v);
+        return new MyViewHolderNotifi(v);
     }
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolderNotifi holder, int position) {
     }
     @Override
     public int getItemCount() {

@@ -11,38 +11,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView .Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapterNotifi extends RecyclerView.Adapter<MyAdapterNotifi.MyViewHolder> {
     Context context;
-    ArrayList<Device> list;
-    public MyAdapter(Context context,ArrayList<Device> list) {
+    ArrayList<UserNotifi> list;
+
+    public MyAdapterNotifi(Context context, ArrayList<UserNotifi>list) {
         this.context = context;
-        this.list = list;
+        this.list=list;
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v=LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
+         View v=LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
         return new MyViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       Device user =list.get(position);
-       holder.name.setText(user.getName());
-       holder.id.setText(user.getId());
+        UserNotifi user = list.get(position);
+        holder.username.setText(user.getName());
+        holder.id.setText(user.getID());
     }
-
     @Override
     public int getItemCount() {
         return list.size();
     }
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,id;
+    public  static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView username,id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.textname);
-            id=itemView.findViewById(R.id.textid);
-
+           username=itemView.findViewById(R.id.textname);
+            id =itemView.findViewById(R.id.textid);
         }
     }
 }

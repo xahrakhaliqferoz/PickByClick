@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+public class MyViewHolderNotifi extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     TextView nameView,phoneView,timeView;
 
-    public MyViewHolder(View itemView) {
+    public MyViewHolderNotifi(View itemView) {
         super(itemView);
         imageView=itemView.findViewById(R.id.imageview);
         nameView=itemView.findViewById(R.id.name);

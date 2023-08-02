@@ -1,10 +1,7 @@
 package com.abidingtech.pick_by_click;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class NotificationFragment extends Fragment {
@@ -49,7 +45,7 @@ public class NotificationFragment extends Fragment {
         items.add(new Item("Order Approved","Order is Approved",R.drawable.a,"1:09am"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MyAdapter(getActivity(),new ArrayList<>()));
+        recyclerView.setAdapter(new MyAdapterNotifi(getActivity(),new ArrayList<>()));
         return view;
 
 

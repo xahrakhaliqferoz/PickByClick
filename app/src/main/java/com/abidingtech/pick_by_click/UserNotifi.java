@@ -1,17 +1,17 @@
 package com.abidingtech.pick_by_click;
 
-public class User {
+public class UserNotifi {
 
     protected String name;
     private String email;
     private String imageview;
     private String ImageUrl;
 
-    public User() {
+    public UserNotifi() {
         // Required empty constructor for Firebase
     }
 
-    public User(String name, String email) {
+    public UserNotifi(String name, String email) {
         this.name = name;
         this.email = email;
         this.imageview=imageview;
