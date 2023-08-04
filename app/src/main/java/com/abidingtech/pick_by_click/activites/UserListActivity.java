@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.abidingtech.pick_by_click.classes.Device;
+import com.abidingtech.pick_by_click.adapter.MyAdapter;
+import com.abidingtech.pick_by_click.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserList extends AppCompatActivity {
+public class UserListActivity extends AppCompatActivity {
      RecyclerView recyclerView;
      ArrayList<Device>list;
      DatabaseReference databaseReference;
@@ -24,7 +27,7 @@ public class UserList extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(UserList.this,RegisterDeviceActivity.class));
+        startActivity(new Intent(UserListActivity.this, RegisterDeviceActivity.class));
         finish();
     }
 
@@ -45,7 +48,7 @@ public class UserList extends AppCompatActivity {
                     Device user=dataSnapshot.getValue(Device.class);
                     list.add(user);
                 }
-                adapter=new MyAdapter(UserList.this, list);
+                adapter=new MyAdapter(UserListActivity.this, list);
                 recyclerView.setAdapter(adapter);
             }
 

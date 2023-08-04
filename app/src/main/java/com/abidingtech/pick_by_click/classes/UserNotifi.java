@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.classes;
 
 public class UserNotifi {
 

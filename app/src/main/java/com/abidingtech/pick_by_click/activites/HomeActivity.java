@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import static android.content.ContentValues.TAG;
 
@@ -9,13 +9,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.abidingtech.pick_by_click.fragments.HomeFragment;
+import com.abidingtech.pick_by_click.fragments.NotificationFragment;
+import com.abidingtech.pick_by_click.R;
+import com.abidingtech.pick_by_click.fragments.UserFragment;
 import com.abidingtech.pick_by_click.databinding.ActivityHomectivityBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

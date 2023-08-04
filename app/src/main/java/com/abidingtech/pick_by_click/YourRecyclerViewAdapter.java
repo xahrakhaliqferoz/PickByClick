@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abidingtech.pick_by_click.classes.UserNotifi;
+
 import java.util.ArrayList;
 
 public class YourRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolderNotifi> {

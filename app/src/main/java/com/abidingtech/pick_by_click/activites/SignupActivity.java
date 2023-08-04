@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.abidingtech.pick_by_click.classes.UserNotifi;
 import com.abidingtech.pick_by_click.databinding.ActivitySignupBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

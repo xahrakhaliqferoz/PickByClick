@@ -1,7 +1,9 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.abidingtech.pick_by_click.R;
 
 public class UserManualActivity extends AppCompatActivity {
 
