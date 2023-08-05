@@ -11,10 +11,11 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_margin="50dp"
-        android:layout_width="250dp"
-        android:layout_height="350dp"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
+        android:layout_margin="130dp"
+        android:layout_marginTop="30dp"
         android:background="@color/black"
         android:src="@drawable/logo" />
 
@@ -23,9 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:fontFamily="cursive"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:text="Click Pick Go."
-        android:fontFamily="cursive"
         android:textColor="#F8D210"
         android:textSize="25dp" />
 
