@@ -13,38 +13,45 @@ import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.classes.Device;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MyAdapter extends RecyclerView .Adapter<MyAdapter.MyViewHolder> {
+public class DeviceAdapater extends RecyclerView.Adapter<DeviceAdapater.MyViewHolder> {
     Context context;
-    ArrayList<Device> list;
-    public MyAdapter(Context context,ArrayList<Device> list) {
+    ArrayList<Device> deviceList;
+    public DeviceAdapater(Context context, ArrayList<Device> list) {
         this.context = context;
-        this.list = list;
+        this.deviceList = list;
     }
+
+    public DeviceAdapater(List<Device> deviceList) {
+
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v=LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
+        View v=LayoutInflater.from(context).inflate(R.layout.activity_user_list,parent,false);
         return new MyViewHolder(v);
     }
 
     @Override
+
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       Device user =list.get(position);
-       holder.name.setText(user.getName());
-       holder.id.setText(user.getId());
+       Device user =deviceList.get(position);
+       holder.name.setText(Device.getName());
+       holder.id.setText(Device.getId());
     }
 
-    @Override
     public int getItemCount() {
-        return list.size();
+        // Make sure deviceList is not null before accessing its size
+        return deviceList != null ? deviceList.size() : 0;
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView name,id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.textname);
-            id=itemView.findViewById(R.id.textid);
+            name=itemView.findViewById(R.id.DName);
+            id=itemView.findViewById(R.id.DID);
 
         }
     }

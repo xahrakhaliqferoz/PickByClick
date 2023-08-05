@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
+import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
 import com.abidingtech.pick_by_click.activites.UserManualActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,8 @@ public class HomeFragment extends Fragment {
     CardView cardSettings;
     TextView tvUserName;
     CardView registerationCard;
+    CardView SNotificationCard;
+
 
     private FirebaseUser User;
     private DatabaseReference reference;
@@ -44,6 +47,14 @@ public class HomeFragment extends Fragment {
         cardSettings = view.findViewById(R.id.settingCard);
         registerationCard=view.findViewById(R.id.RegisterationCard);
         tvUserName = view.findViewById(R.id.tvUserName);
+        SNotificationCard=view.findViewById(R.id.SNotificationCard);
+        SNotificationCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SendNotificationActivity.class);
+                startActivity(intent);
+            }
+        });
 
         cardSettings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,4 +11,15 @@
         android:id="@+id/recycleview"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/plusButton"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:backgroundTint="#F8D210"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="54dp" />
+
 </RelativeLayout>

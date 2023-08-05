@@ -35,18 +35,14 @@
             android:background="@color/black">
             >
             <TextView
+                android:id="@+id/DName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name:"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
-            <TextView
-                android:id="@+id/textname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="22dp"
-                android:textColor="@color/white"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -54,23 +50,22 @@
             android:orientation="horizontal"
             android:layout_gravity="center_vertical">
             <TextView
+                android:id="@+id/DID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ID:"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
-            <TextView
-                android:id="@+id/textid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="22dp"
-                android:textColor="@color/white"/>
+
+
         </LinearLayout>
 
 
 
     </LinearLayout>
 
+
 </androidx.cardview.widget.CardView>
+
 </ScrollView>

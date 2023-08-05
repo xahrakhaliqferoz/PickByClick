@@ -2,8 +2,8 @@ package com.abidingtech.pick_by_click.classes;
 
 
 public class Device {
-    private String name;
-    private String id;
+    private static String name;
+    private static String id;
 
     public Device() {
     }
@@ -11,7 +11,7 @@ public class Device {
         this.name = name;
         this.id = id;
     }
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
@@ -19,7 +19,7 @@ public class Device {
         this.name = name;
     }
 
-    public String getId() {
+    public static String getId() {
         return id;
     }
 

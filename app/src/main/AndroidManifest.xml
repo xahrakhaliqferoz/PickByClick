@@ -16,19 +16,25 @@
         android:theme="@style/Theme.PickByClick"
         tools:targetApi="31">
         <activity
-            android:name=".activites.UserListActivity"
+            android:name=".activites.SendNotificationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".device.DeviceRegistrationForm"
+            android:name=".activites.DeviceRegistrationFormActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
+        </activity> <!-- <activity -->
+        <!-- android:name=".activites.UserListActivity" -->
+        <!-- android:exported="false"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.app.lib_name" -->
+        <!-- android:value="" /> -->
+        <!-- </activity> -->
         <activity
             android:name=".activites.RegisterDeviceActivity"
             android:exported="false">

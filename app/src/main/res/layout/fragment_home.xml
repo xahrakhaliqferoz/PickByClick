@@ -45,32 +45,32 @@
 
 
         <LinearLayout
+            android:id="@+id/row1"
             android:layout_width="0dp"
             android:layout_height="160dp"
-            android:id="@+id/row1"
+            android:layout_marginTop="28dp"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
             android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Image">
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/UserCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#121212"
-                android:background="@color/white"
-                android:id="@+id/UserCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="15dp"
-                app:cardCornerRadius="20dp" >
+                android:background="@color/white"
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/UserIcon"
@@ -85,12 +85,12 @@
                         android:textSize="15sp" />
 
                     <ImageView
+                        android:id="@+id/UserImage"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:id="@+id/UserImage"
-                        android:src="@drawable/ic_baseline_person_24"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:src="@drawable/ic_baseline_person_24" />
 
 
                 </RelativeLayout>
@@ -98,39 +98,38 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/childCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#121212"
-                android:id="@+id/childCard"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardElevation="15dp"
-                app:cardCornerRadius="20dp" >
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
+
                     <TextView
+                        android:id="@+id/childIcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/childIcon"
-                        android:text="No.of child "
-                        android:textSize="15sp"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
                         android:layout_below="@+id/childImage"
-                        />
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="No.of child "
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
 
                     <ImageView
+                        android:id="@+id/childImage"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:id="@+id/childImage"
-                        android:src="@drawable/ic_baseline_child_24"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
-
+                        android:src="@drawable/ic_baseline_child_24" />
 
 
                 </RelativeLayout>
@@ -153,6 +152,7 @@
             app:layout_constraintTop_toBottomOf="@+id/row1">
 
 
+
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -162,35 +162,28 @@
                 android:layout_weight="1"
                 app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/NotificationIcon"
-                        android:text="Notifications"
-                        android:textSize="15sp"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/NotificationImage"
-                        />
+                <TextView
+                    android:id="@+id/Notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NotificationCard"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Notification "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:id="@+id/NotificationImage"
-                        android:src="@drawable/ic_baseline_notifications_24"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
+                <ImageView
+                    android:id="@+id/NotificationImage"
+                    android:layout_width="161dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_baseline_notifications_24" />
 
-
-                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -205,18 +198,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
+
                     <TextView
+                        android:id="@+id/SendNotification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/SNotification"
-                        android:text="Send Notification "
-                        android:textSize="15sp"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
                         android:layout_below="@+id/SNotificationIcon"
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Send Notification "
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:layout_width="60dp"
@@ -330,6 +324,26 @@
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-77dp"
+            tools:layout_editor_absoluteY="-46dp">
+
+<!--            <TextView-->
+<!--                android:id="@+id/NotificationIcon"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/NotificationImage"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:fontFamily="@font/poppins_semibold"-->
+<!--                android:text="Notifications"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp" />-->
+
+
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
