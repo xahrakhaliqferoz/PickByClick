@@ -15,16 +15,14 @@ import com.abidingtech.pick_by_click.classes.Device;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceAdapater extends RecyclerView.Adapter<DeviceAdapater.MyViewHolder> {
+public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
     Context context;
     ArrayList<Device> deviceList;
-    public DeviceAdapater(Context context, ArrayList<Device> list) {
+    public DeviceAdapter(Context context, ArrayList<Device> list) {
         this.context = context;
         this.deviceList = list;
     }
-
-    public DeviceAdapater(List<Device> deviceList) {
-
+    public DeviceAdapter(List<Device> deviceList) {
     }
 
     @NonNull
@@ -37,8 +35,7 @@ public class DeviceAdapater extends RecyclerView.Adapter<DeviceAdapater.MyViewHo
     @Override
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       Device user =deviceList.get(position);
-       holder.name.setText(Device.getName());
+        holder.name.setText(Device.getName());
        holder.id.setText(Device.getId());
     }
 

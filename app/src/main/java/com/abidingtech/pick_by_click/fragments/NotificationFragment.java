@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.abidingtech.pick_by_click.adapter.DeviceAdapater;
+import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
 import com.abidingtech.pick_by_click.classes.Item;
 import com.abidingtech.pick_by_click.R;
 
@@ -43,7 +43,7 @@ public class NotificationFragment extends Fragment {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new DeviceAdapater(getActivity(),new ArrayList<>()));
+        recyclerView.setAdapter(new DeviceAdapter(getActivity(),new ArrayList<>()));
         return view;
 
 

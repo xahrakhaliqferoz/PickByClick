@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.abidingtech.pick_by_click.classes.Device;
-import com.abidingtech.pick_by_click.adapter.DeviceAdapater;
+import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
 import com.abidingtech.pick_by_click.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
@@ -19,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class UserListActivity extends AppCompatActivity {
      RecyclerView recyclerView;
      ArrayList<Device>list;
      DatabaseReference databaseReference;
-     DeviceAdapater adapter;
+     DeviceAdapter adapter;
      FloatingActionButton plusButton;
     @Override
     public void onBackPressed() {
