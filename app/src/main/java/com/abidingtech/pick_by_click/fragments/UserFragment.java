@@ -36,7 +36,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-public class UserFragment extends Fragment {
+public class
+
+UserFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_GALLERY = 2;
     private static final int EDIT_PROFILE_REQUEST_CODE = 1001;

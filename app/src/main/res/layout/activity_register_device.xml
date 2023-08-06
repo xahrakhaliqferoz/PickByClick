@@ -10,11 +10,70 @@
     android:layout_gravity="center"
     tools:context=".activites.RegisterDeviceActivity">
 
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/recyclerview"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/edtname"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        android:layout_below="@+id/text"-->
+<!--        android:hint="Enter Name"-->
+<!--android:layout_marginTop="20dp"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textColor="@color/white"/>-->
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/edtid"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        android:layout_below="@+id/edtname"-->
+<!--        android:hint="Enter Your Device ID"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textColor="@color/white"/>-->
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:id="@+id/btninsert"-->
+<!--        android:layout_below="@+id/edtid"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="insert data"/>-->
+====<!--    Recycler view-->
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleview"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        android:scrollbars="vertical">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="257dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#F8D210"
+        android:textStyle="bold"
         />
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:id="@+id/btnview"-->
+<!--        android:layout_below="@+id/btninsert"-->
+<!--        android:text="view daTA"-->
+<!--        android:backgroundTint="#F8D210"-->
+<!--        android:textStyle="bold"-->
+<!--&gt;>>>>>> fb607455d73280259247e1395a4f305a2b5ecb2e-->
+<!--        />-->
 
 <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
 <!--        android:id="@+id/plusButton"-->
