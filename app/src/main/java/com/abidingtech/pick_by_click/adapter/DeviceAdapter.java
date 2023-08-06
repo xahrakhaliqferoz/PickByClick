@@ -15,40 +15,49 @@ import com.abidingtech.pick_by_click.classes.Device;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
+public class DeviceAdapter<User> extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
     Context context;
-    ArrayList<Device> deviceList;
+//    private List<User> userList;
+    List<User> userList = new ArrayList<>();
+// Add user objects to the list...
+
+
+
+   DeviceAdapter<User> adapter = new DeviceAdapter<>(userList);
+
     public DeviceAdapter(Context context, ArrayList<Device> list) {
         this.context = context;
-        this.deviceList = list;
+        this.userList = (List<User>) list;
     }
-    public DeviceAdapter(List<Device> deviceList) {
+    public DeviceAdapter(List<User> userList) {
+        this.userList = userList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v=LayoutInflater.from(context).inflate(R.layout.activity_user_list,parent,false);
+        View v=LayoutInflater.from(context).inflate(R.layout.device_view,parent,false);
         return new MyViewHolder(v);
     }
 
     @Override
 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        User user = userList.get(position);
         holder.name.setText(Device.getName());
        holder.id.setText(Device.getId());
     }
 
     public int getItemCount() {
         // Make sure deviceList is not null before accessing its size
-        return deviceList != null ? deviceList.size() : 0;
+        return userList != null ? userList.size() : 0;
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView name,id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.DName);
-            id=itemView.findViewById(R.id.DID);
+            name=itemView.findViewById(R.id.name);
+            id=itemView.findViewById(R.id.id);
 
         }
     }

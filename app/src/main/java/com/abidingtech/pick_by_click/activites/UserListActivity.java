@@ -31,7 +31,7 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(UserListActivity.this, RegisterDeviceActivity.class));
+        startActivity(new Intent(UserListActivity.this, DeviceRegistrationFormActivity.class));
         finish();
     }
 
