@@ -15,50 +15,42 @@ import com.abidingtech.pick_by_click.classes.Device;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceAdapter<User> extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
-    Context context;
-//    private List<User> userList;
-    List<User> userList = new ArrayList<>();
-// Add user objects to the list...
+public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
+    private Context context;
+    private List<Device> deviceList = new ArrayList<>();
 
-
-
-   DeviceAdapter<User> adapter = new DeviceAdapter<>(userList);
-
-    public DeviceAdapter(Context context, ArrayList<Device> list) {
+    public DeviceAdapter(Context context, List<Device> list) {
         this.context = context;
-        this.userList = (List<User>) list;
-    }
-    public DeviceAdapter(List<User> userList) {
-        this.userList = userList;
+        this.deviceList = list;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v=LayoutInflater.from(context).inflate(R.layout.device_view,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.device_view, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
-
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        User user = userList.get(position);
-        holder.name.setText(Device.getName());
-       holder.id.setText(Device.getId());
+        Device device = deviceList.get(position);
+        holder.name.setText(device.getName());
+        holder.id.setText(device.getId());
     }
 
+    @Override
     public int getItemCount() {
         // Make sure deviceList is not null before accessing its size
-        return userList != null ? userList.size() : 0;
+        return deviceList != null ? deviceList.size() : 0;
     }
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,id;
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView name, id;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.name);
-            id=itemView.findViewById(R.id.id);
-
+            name = itemView.findViewById(R.id.DName);
+            id = itemView.findViewById(R.id.DID);
         }
     }
 }

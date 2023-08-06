@@ -40,6 +40,8 @@ ImageView cardIM;
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(DeviceRegistrationFormActivity.this, RegisterDeviceActivity.class));
+                finish();
                 String deviceName = name.getText().toString().trim();
                 String deviceId = id.getText().toString().trim();
 

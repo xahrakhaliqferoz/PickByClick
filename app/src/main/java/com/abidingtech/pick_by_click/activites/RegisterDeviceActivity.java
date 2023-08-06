@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
@@ -37,14 +39,14 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
         recyclerView =findViewById(R.id.recycleview);
-//        plusButton=findViewById(R.id.plusButton);
-//        plusButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(RegisterDeviceActivity.this, DeviceRegistrationFormActivity.class));
-//                finish();
-//            }
-//        });
+        plusButton=findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterDeviceActivity.this, DeviceRegistrationFormActivity.class));
+                finish();
+            }
+        });
         databaseReference=FirebaseDatabase.getInstance().getReference("Devices");
         list=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
