@@ -30,7 +30,16 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         id = findViewById(R.id.edtid);
         databaseUsers = FirebaseDatabase.getInstance().getReference();
 
+ Updated upstream;
         btnInsert.setOnClickListener(new View.OnClickListener() {
+=======
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        Object dataList=new Object();
+        RecyclerView.Adapter adapter = new YourRecyclerViewAdapter(dataList); // Replace YourRecyclerViewAdapter with your actual adapter class
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InsertData();
