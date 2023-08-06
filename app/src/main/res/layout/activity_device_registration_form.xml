@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.DeviceRegistrationFormActivity"
+    tools:context=".activities.DeviceRegistrationFormActivity"
     android:background="@color/black"
     android:orientation="vertical">
  <RelativeLayout
@@ -76,9 +76,5 @@
         android:padding="10dp"
         android:src="@drawable/logo"/>
 </androidx.cardview.widget.CardView>
-
  </RelativeLayout>
-
-
-
 </RelativeLayout>

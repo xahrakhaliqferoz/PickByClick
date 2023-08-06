@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.R;
+import com.abidingtech.pick_by_click.SettingActivity;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
 import com.abidingtech.pick_by_click.activites.UserManualActivity;

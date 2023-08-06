@@ -47,7 +47,7 @@ public class RegisterDeviceActivity extends AppCompatActivity {
                 finish();
             }
         });
-        databaseReference=FirebaseDatabase.getInstance().getReference("Devices");
+        databaseReference=FirebaseDatabase.getInstance().getReference("Device");
         list=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

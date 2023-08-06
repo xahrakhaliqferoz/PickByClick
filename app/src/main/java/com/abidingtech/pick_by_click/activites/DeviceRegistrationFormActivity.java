@@ -48,16 +48,16 @@ ImageView cardIM;
                 // Check if the fields are not empty
                 if (!deviceName.isEmpty() && !deviceId.isEmpty()) {
                     // Get a reference to the Firebase Realtime Database and the "Devices" node
-                    DatabaseReference devicesRef = FirebaseDatabase.getInstance().getReference("Devices");
+                    DatabaseReference deviceRef = FirebaseDatabase.getInstance().getReference("Device");
 
                     // Create a new unique key for the device entry
-                    String deviceKey = devicesRef.push().getKey();
+                    String deviceKey = deviceRef.push().getKey();
 
                     // Create a new Device object with the entered data
                     Device device = new Device(deviceName, deviceId);
 
                     // Store the device data under the unique key in the "Devices" node
-                    devicesRef.child(deviceKey).setValue(device);
+                    deviceRef.child(deviceKey).setValue(device);
 
                     // Show a success message or perform any other actions you'd like after saving
                     Toast.makeText(DeviceRegistrationFormActivity.this, "Device saved successfully!", Toast.LENGTH_SHORT).show();

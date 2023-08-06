@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.abidingtech.pick_by_click.activites.UserManualActivity;
+
 public class SettingActivity extends AppCompatActivity {
 TextView UserManual;
 Button btnuserManual;
