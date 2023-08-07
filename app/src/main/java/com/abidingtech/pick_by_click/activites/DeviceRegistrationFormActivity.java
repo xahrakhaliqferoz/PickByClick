@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.classes.Device;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,37 +42,33 @@ ImageView cardIM;
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DeviceRegistrationFormActivity.this, RegisterDeviceActivity.class));
-                finish();
+
                 String deviceName = name.getText().toString().trim();
                 String deviceId = id.getText().toString().trim();
 
                 // Check if the fields are not empty
                 if (!deviceName.isEmpty() && !deviceId.isEmpty()) {
                     // Get a reference to the Firebase Realtime Database and the "Devices" node
-                    DatabaseReference deviceRef = FirebaseDatabase.getInstance().getReference("Device");
-
-                    // Create a new unique key for the device entry
-                    String deviceKey = deviceRef.push().getKey();
+                    DatabaseReference devicesRef = FirebaseDatabase.getInstance()
+                            .getReference("Devices")
+                            .child(FirebaseAuth.getInstance().getUid())
+                            .child(deviceId);
 
                     // Create a new Device object with the entered data
                     Device device = new Device(deviceName, deviceId);
+                    devicesRef.setValue(device).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(DeviceRegistrationFormActivity.this, "Device saved successfully!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    });
 
-                    // Store the device data under the unique key in the "Devices" node
-                    deviceRef.child(deviceKey).setValue(device);
-
-                    // Show a success message or perform any other actions you'd like after saving
-                    Toast.makeText(DeviceRegistrationFormActivity.this, "Device saved successfully!", Toast.LENGTH_SHORT).show();
-
-                    // Pass the data to RegisterDeviceActivity
-                    Intent intent = new Intent(DeviceRegistrationFormActivity.this, RegisterDeviceActivity.class);
-                    intent.putExtra("deviceName", deviceName);
-                    intent.putExtra("deviceId", deviceId);
-                    startActivity(intent);
                 } else {
-                    // Show an error message if any of the fields are empty
                     Toast.makeText(DeviceRegistrationFormActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }
+                startActivity(new Intent(DeviceRegistrationFormActivity.this, RegisterDeviceActivity.class));
+                finish();
             }
         });
 

@@ -13,6 +13,7 @@ import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
 import com.abidingtech.pick_by_click.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +24,7 @@ import java.util.ArrayList;
 
 public class RegisterDeviceActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<Device>list;
     DatabaseReference databaseReference;
-    DeviceAdapter adapter;
     FloatingActionButton plusButton;
 //    @Override
 //    public void onBackPressed() {
@@ -38,8 +37,8 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
-        recyclerView =findViewById(R.id.recycleview);
-        plusButton=findViewById(R.id.plusButton);
+        recyclerView = findViewById(R.id.recycleview);
+        plusButton = findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,27 +46,10 @@ public class RegisterDeviceActivity extends AppCompatActivity {
                 finish();
             }
         });
-        databaseReference=FirebaseDatabase.getInstance().getReference("Device");
-        list=new ArrayList<>();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
+                .child(FirebaseAuth.getInstance().getUid());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot:snapshot.getChildren())
-                {
-                    Device user=dataSnapshot.child("Device").getValue(Device.class);
-                    list.add(user);
-                }
-                adapter=new DeviceAdapter(RegisterDeviceActivity.this, list);
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 //
 //        databaseReference = FirebaseDatabase.getInstance().getReference("users");
@@ -95,6 +77,29 @@ public class RegisterDeviceActivity extends AppCompatActivity {
 //
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Device> list = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Device user = dataSnapshot.getValue(Device.class);
+                    list.add(user);
+                }
+                DeviceAdapter adapter = new DeviceAdapter(RegisterDeviceActivity.this, list);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
 //package com.abidingtech.pick_by_click.activites;

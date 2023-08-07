@@ -1,71 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".activites.RegisterDeviceActivity">
-
-
- <androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="15dp"
-    app:cardCornerRadius="10dp"
     android:layout_margin="15dp"
-     android:layout_marginTop="50dp"
-    android:backgroundTint="#F8D210">
+    android:layout_marginTop="50dp"
+    android:backgroundTint="#F8D210"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:background="#121212"
         android:orientation="vertical"
-        android:background="#121212">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_vertical"
-            android:background="@color/black">
-            >
+            android:background="@color/black"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/DName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name:"
+                android:textColor="@color/white"
                 android:textSize="22dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/DID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ID:"
+                android:textColor="@color/white"
                 android:textSize="22dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textStyle="bold" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>
-
-</ScrollView>
