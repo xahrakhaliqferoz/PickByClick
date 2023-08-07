@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="35dp"
         android:background="@color/black"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Empowering Parents \n Ensuring Safety \n Your Child Pick-Up \n  App Guide"
         android:textSize="20sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:textColor="@color/white"
         android:padding="10dp"
         android:gravity="center"
