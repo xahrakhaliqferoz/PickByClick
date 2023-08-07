@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,11 +172,17 @@ UserFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EDIT_PROFILE_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                // Refresh the user data after editing profile
-                refreshUserData();
-            }
+        if (resultCode == Activity.RESULT_OK) {
+            // Refresh the user data after editing profile
+            Uri imageUri = data.getData();
+            imageView.setImageURI(imageUri);
+            Log.e("onActivityResult: ", imageUri+"");
+
+            uploadImage(imageUri);
+
+        }
+        else{
+            Log.e("onActivityResult: ", "Result not ok");
         }
     }
 
@@ -213,6 +220,8 @@ UserFragment extends Fragment {
     private void uploadImage(Uri uri) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
+        Log.e("uploadImage: ", uri+"");
+
         if (user != null) {
             String userId = user.getUid();
             StorageReference imageRef = storageReference.child("Users/" + userId + "/" + uri.getLastPathSegment());
