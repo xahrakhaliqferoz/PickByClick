@@ -22,7 +22,7 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="35dp"
             android:fontFamily="@font/poppins_semibold"
@@ -48,10 +48,9 @@
         <LinearLayout
             android:id="@+id/row1"
             android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="28dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
-            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,9 +64,9 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@color/white"
-                app:cardBackgroundColor="#121212"
+                app:cardBackgroundColor="#212020"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="20dp">
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -96,11 +95,9 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:id="@+id/row2"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:padding="10dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +108,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/SNotificationCard"
-                app:cardBackgroundColor="#121212"
-                android:layout_margin="10dp"
+                app:cardBackgroundColor="#212020"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
@@ -127,20 +124,20 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SNotificationIcon"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Send  Notification "
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:id="@+id/SNotificationIcon"
                         android:src="@drawable/ic_baseline_send_24"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"/>
 
 
@@ -154,9 +151,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#121212"
+                app:cardBackgroundColor="#212020"
                 android:id="@+id/RegisterationCard"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 app:cardElevation="15dp"
                 app:cardCornerRadius="20dp" >
@@ -178,11 +175,11 @@
                         />
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:id="@+id/RegisterationImage"
                         android:src="@drawable/registerdevice"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="20dp"
                         android:layout_centerHorizontal="true"/>
 
                 </RelativeLayout>
@@ -193,11 +190,9 @@
 
         <LinearLayout
             android:id="@+id/row3"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
             android:orientation="horizontal"
-            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -208,9 +203,9 @@
                 android:id="@+id/settingCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#121212"
+                app:cardBackgroundColor="#212020"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="15dp">
 
@@ -232,10 +227,10 @@
 
                     <ImageView
                         android:id="@+id/SettingImage"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="20dp"
                         android:src="@drawable/ic_baseline_settings_24" />
 
                 </RelativeLayout>
