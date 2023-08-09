@@ -180,6 +180,7 @@ UserFragment extends Fragment {
 
             uploadImage(imageUri);
 
+
         }
         else{
             Log.e("onActivityResult: ", "Result not ok");

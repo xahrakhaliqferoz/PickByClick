@@ -28,25 +28,25 @@ public class UserListActivity extends AppCompatActivity {
      DatabaseReference databaseReference;
      DeviceAdapter adapter;
      FloatingActionButton plusButton;
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(UserListActivity.this, DeviceRegistrationFormActivity.class));
-        finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        startActivity(new Intent(UserListActivity.this, DeviceRegistrationFormActivity.class));
+//        finish();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
-        plusButton=findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserListActivity.this, DeviceRegistrationFormActivity.class));
-                finish();
-            }
-        });
+//        plusButton=findViewById(R.id.plusButton);
+//        plusButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(UserListActivity.this, DeviceRegistrationFormActivity.class));
+//                finish();
+//            }
+//        });
         recyclerView =findViewById(R.id.recycleview);
         databaseReference=FirebaseDatabase.getInstance().getReference("Devices");
         list=new ArrayList<>();
