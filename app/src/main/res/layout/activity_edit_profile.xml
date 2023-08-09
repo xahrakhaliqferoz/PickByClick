@@ -35,20 +35,7 @@
         android:textColor="@color/white"
         android:layout_marginTop="20dp" />
 
-    <EditText
-        android:id="@+id/etNewEmail"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textColorHint="#D8D6D6"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="10dp"
-        android:padding="10dp"
-        android:layout_marginStart="10sp"
-        android:textStyle="normal"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="15dp" />
+
 
 
 

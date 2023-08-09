@@ -46,6 +46,7 @@ ImageView cardIM;
                 String deviceName = name.getText().toString().trim();
                 String deviceId = id.getText().toString().trim();
 
+
                 // Check if the fields are not empty
                 if (!deviceName.isEmpty() && !deviceId.isEmpty()) {
                     // Get a reference to the Firebase Realtime Database and the "Devices" node

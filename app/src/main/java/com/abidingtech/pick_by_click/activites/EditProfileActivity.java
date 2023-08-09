@@ -11,13 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.abidingtech.pick_by_click.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     private EditText etNewName;
-    private EditText etNewEmail;
     private Button btnSave;
 
     @Override
@@ -26,23 +28,43 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         etNewName = findViewById(R.id.etNewName);
-        etNewEmail = findViewById(R.id.etNewEmail);
         btnSave = findViewById(R.id.btnSave);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newName = etNewName.getText().toString();
-                String newEmail = etNewEmail.getText().toString();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
-                if (!newName.isEmpty() && !newEmail.isEmpty()) {
-                    updateUserProfile(newName, newEmail);
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String currentName = dataSnapshot.child("name").getValue(String.class);
+                        etNewName.setText(currentName); // Pre-fill the current user's name
+                    }
                 }
-            }
-        });
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle error if needed
+                }
+            });
+
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String newName = etNewName.getText().toString();
+
+                    if (!newName.isEmpty()) {
+                        updateUserProfile(newName);
+                    }
+                }
+            });
+        }
     }
 
-    private void updateUserProfile(String newName, String newEmail) {
+    private void updateUserProfile(String newName) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -50,7 +72,6 @@ public class EditProfileActivity extends AppCompatActivity {
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
             userRef.child("name").setValue(newName);
-            userRef.child("email").setValue(newEmail);
 
             setResult(RESULT_OK);
             finish();
