@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.SettingActivity;
+import com.abidingtech.pick_by_click.activites.HomeActivity;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
+import com.abidingtech.pick_by_click.activites.SigninActivity;
 import com.abidingtech.pick_by_click.activites.UserManualActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,6 +56,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SendNotificationActivity.class);
                 startActivity(intent);
+
             }
         });
 

@@ -73,6 +73,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".activites.SendNotificationActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activites.EditProfileActivity"
             android:exported="false">
             <meta-data
