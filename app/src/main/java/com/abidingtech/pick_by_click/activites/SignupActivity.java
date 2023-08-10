@@ -1,15 +1,15 @@
 package com.abidingtech.pick_by_click.activites;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.abidingtech.pick_by_click.classes.UserNotifi;
+import com.abidingtech.pick_by_click.classes.User;
 import com.abidingtech.pick_by_click.databinding.ActivitySignupBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,9 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignupActivity extends AppCompatActivity {
     ActivitySignupBinding binding;
     String userName,email,password;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-                                UserNotifi userDetail=new UserNotifi(userName,email);
+                                User userDetail=new User(userName,email);
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference reference = database.getReference();
                                 reference.child("Users").child(firebaseUser.getUid()).setValue(userDetail);
@@ -76,10 +73,6 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 }
 

@@ -17,16 +17,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SigninActivity extends AppCompatActivity {
+
     ActivitySigninBinding binding;
     String email,password;
     FirebaseAuth auth;
     FirebaseUser user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signin);
         binding = ActivitySigninBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         auth=FirebaseAuth.getInstance();
@@ -47,7 +47,7 @@ public class SigninActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SigninActivity.this, "Fail to login", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SigninActivity.this, "Fail to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -57,13 +57,12 @@ public class SigninActivity extends AppCompatActivity {
         binding.btnSignUpnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SigninActivity.this, SignupActivity.class));
+                startActivity(new Intent(SigninActivity.this,HomeActivity.class));
             }
         });
 
 
+
     }
 }
-
-
 
