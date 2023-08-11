@@ -61,8 +61,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (!newName.isEmpty()) {
                         updateUserProfile(newName);
                     }
-                    startActivity(new Intent(EditProfileActivity.this, UserFragment.class));
-                    finish();
+
                 }
 
             });

@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.abidingtech.pick_by_click.activites.UserManualActivity;
+import com.abidingtech.pick_by_click.R;
 
 public class SettingActivity extends AppCompatActivity {
 TextView UserManual;

@@ -1,13 +1,13 @@
 package com.abidingtech.pick_by_click.activites;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.abidingtech.pick_by_click.classes.User;
 import com.abidingtech.pick_by_click.databinding.ActivitySignupBinding;

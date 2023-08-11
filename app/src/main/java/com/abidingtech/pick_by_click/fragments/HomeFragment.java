@@ -12,12 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.R;
-import com.abidingtech.pick_by_click.SettingActivity;
-import com.abidingtech.pick_by_click.activites.HomeActivity;
+import com.abidingtech.pick_by_click.activites.SettingActivity;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
-import com.abidingtech.pick_by_click.activites.SigninActivity;
-import com.abidingtech.pick_by_click.activites.UserManualActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

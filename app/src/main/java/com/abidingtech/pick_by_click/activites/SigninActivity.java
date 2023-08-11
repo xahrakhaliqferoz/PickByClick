@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,25 +18,37 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SigninActivity extends AppCompatActivity {
-
     ActivitySigninBinding binding;
-    String email,password;
+    String email, password;
     FirebaseAuth auth;
     FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
         binding = ActivitySigninBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        auth=FirebaseAuth.getInstance();
+
+        auth = FirebaseAuth.getInstance();
+
         binding.btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = binding.etEmail.getText().toString();
-                password = binding.etPassword.getText().toString();
-                auth.signInWithEmailAndPassword(email,password)
+                email = binding.etEmail.getText().toString().trim();
+                password = binding.etPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    binding.etEmail.setError("Email is required");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    binding.etPassword.setError("Password is required");
+                    return;
+                }
+
+                // Now proceed with authentication
+                auth.signInWithEmailAndPassword(email, password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -47,22 +60,17 @@ public class SigninActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SigninActivity.this, "Fail to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SigninActivity.this, "Fail to login", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
-
         });
 
         binding.btnSignUpnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SigninActivity.this,HomeActivity.class));
+                startActivity(new Intent(SigninActivity.this, SignupActivity.class));
             }
         });
-
-
-
     }
 }
-
