@@ -22,18 +22,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class UserListActivity extends AppCompatActivity {
-     RecyclerView recyclerView;
-     ArrayList<Device>list;
-     DatabaseReference databaseReference;
-     DeviceAdapter adapter;
-     FloatingActionButton plusButton;
+public class SelectDeviceActivity extends AppCompatActivity {
+    RecyclerView recyclerView;
+    ArrayList<Device>list;
+    DatabaseReference databaseReference;
+    DeviceAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(R.layout.activity_select_devices);
 
         recyclerView =findViewById(R.id.recycleview);
         databaseReference=FirebaseDatabase.getInstance().getReference("Devices");

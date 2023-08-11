@@ -19,6 +19,18 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     private Context context;
     private List<Device> deviceList = new ArrayList<>();
 
+    // Define the interface for item click events
+    public interface OnItemClickListener {
+        void onItemClick(Device device);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public DeviceAdapter(ArrayList<Device> deviceList, OnItemClickListener listener) {
+        this.deviceList = deviceList;
+        this.onItemClickListener = listener;
+    }
+
     public DeviceAdapter(Context context, List<Device> list) {
         this.context = context;
         this.deviceList = list;
@@ -33,9 +45,17 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Device device = deviceList.get(position);
+        final Device device = deviceList.get(position);
         holder.name.setText(device.getName());
         holder.id.setText(device.getId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(device);
+                }
+            }
+        });
     }
 
     @Override

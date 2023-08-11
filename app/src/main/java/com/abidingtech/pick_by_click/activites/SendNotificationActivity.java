@@ -1,15 +1,18 @@
 package com.abidingtech.pick_by_click.activites;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.text.Layout;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.abidingtech.pick_by_click.R;
+import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
+import com.abidingtech.pick_by_click.classes.Device;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,62 +21,72 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SendNotificationActivity extends AppCompatActivity {
-
-    TextView sendnoti;
-    ListView deviceListView;
-    List<String> deviceNames;
-    List<String> deviceIds;
-    ArrayAdapter<String> adapter;
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_notification);
+        setContentView(R.layout.activity_select_devices);
+        recyclerView = findViewById(R.id.recycleview);
 
-        sendnoti = findViewById(R.id.sendnoti);
-        deviceListView = findViewById(R.id.deviceListView);
-        deviceNames = new ArrayList<>();
-        deviceIds = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, deviceNames);
-        deviceListView.setAdapter(adapter);
 
-        loadRegisteredDevices();
 
-        deviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
+                .child(FirebaseAuth.getInstance().getUid());
+
+        DeviceAdapter adapter = new DeviceAdapter(new ArrayList<>(), new DeviceAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected device ID and proceed to send notification
-                String selectedDeviceId = deviceIds.get(position);
-                // TODO: Implement sending notification to selectedDeviceId
+            public void onItemClick(Device device) {
+                sendNotificationToDevice(device);
             }
         });
+
+        recyclerView.setAdapter(adapter);
     }
 
-    private void loadRegisteredDevices() {
-        String userId = FirebaseAuth.getInstance().getUid();
-        DatabaseReference devicesRef = FirebaseDatabase.getInstance().getReference("Devices").child(userId);
+    private void sendNotificationToDevice(Device device) {
+        // Here, you can update the notification information for the selected device
+        // For example, you can create a "notifications" node under each device's data and add notifications there.
+        String notificationKey = databaseReference.child(device.getId()).child("notifications").push().getKey();
+        databaseReference.child(device.getId()).child("notifications").child(notificationKey).setValue("Your notification message");
 
-        devicesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        // Notify the user that the notification was sent
+        Toast.makeText(this, "Notification sent to " + device.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        // Start the HomeActivity when the back button is pressed
+        startActivity(new Intent(SendNotificationActivity.this, HomeActivity.class));
+        finish(); // Optional: Finish this activity if you don't want to keep it in the back stack
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot deviceSnapshot : dataSnapshot.getChildren()) {
-                    String deviceId = deviceSnapshot.getKey();
-                    String deviceName = deviceSnapshot.child("deviceName").getValue(String.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Device> list = new ArrayList<>();
 
-                    deviceIds.add(deviceId);
-                    deviceNames.add(deviceName);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Device user = dataSnapshot.getValue(Device.class);
+                    list.add(user);
                 }
-
-                adapter.notifyDataSetChanged();
+                DeviceAdapter adapter = new DeviceAdapter(SendNotificationActivity.this, list);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle database error
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
