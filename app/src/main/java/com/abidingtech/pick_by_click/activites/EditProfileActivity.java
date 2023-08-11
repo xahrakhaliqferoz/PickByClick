@@ -1,5 +1,6 @@
 package com.abidingtech.pick_by_click.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abidingtech.pick_by_click.R;
+import com.abidingtech.pick_by_click.fragments.UserFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +61,10 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (!newName.isEmpty()) {
                         updateUserProfile(newName);
                     }
+                    startActivity(new Intent(EditProfileActivity.this, UserFragment.class));
+                    finish();
                 }
+
             });
         }
     }
