@@ -18,9 +18,19 @@
         android:clipToPadding="false"
         android:padding="8dp"
         android:scrollbars="vertical">
-
-
     </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButtonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="257dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#F8D210"
+        android:textStyle="bold"
+        />
+
 
 
 </RelativeLayout>
