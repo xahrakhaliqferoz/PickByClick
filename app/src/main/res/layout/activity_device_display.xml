@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".DeviceDisplayActivity">
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:background="@color/black"
+        android:src="@drawable/logo" />
+    <TextView
+        android:id="@+id/SelectDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:text="Select a Device"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="normal" />
+
+    <Button
+        android:id="@+id/DeviceSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#F8D210"
+        android:padding="10dp"
+        android:text="Select Device"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
+import com.abidingtech.pick_by_click.DeviceDisplayActivity;
 import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
 import com.abidingtech.pick_by_click.R;
@@ -27,6 +29,7 @@ public class SelectDeviceActivity extends AppCompatActivity {
     ArrayList<Device>list;
     DatabaseReference databaseReference;
     DeviceAdapter adapter;
+    Button selectDevice;
 
 
     @Override
@@ -38,6 +41,13 @@ public class SelectDeviceActivity extends AppCompatActivity {
         databaseReference=FirebaseDatabase.getInstance().getReference("Devices");
         list=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        selectDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SelectDeviceActivity.this, DeviceDisplayActivity.class);
+                startActivity(intent);
+            }
+        });
 
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
