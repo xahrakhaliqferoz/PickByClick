@@ -2,7 +2,6 @@ package com.abidingtech.pick_by_click.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 public class SendNotificationActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +31,6 @@ public class SendNotificationActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleview);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
                 .child(FirebaseAuth.getInstance().getUid());
 

@@ -15,22 +15,27 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="4dp"
         android:clipToPadding="false"
         android:padding="8dp"
-        android:scrollbars="vertical">
-    </androidx.recyclerview.widget.RecyclerView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingButtonSend"
-        android:layout_width="wrap_content"
-        android:layout_height="257dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="#F8D210"
-        android:textStyle="bold"
-        />
+        android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/ButtonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="45dp"
+        android:drawableRight="@drawable/ic_baseline_add_to_photos_24" />
 
 
 </RelativeLayout>

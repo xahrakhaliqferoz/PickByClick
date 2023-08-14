@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,16 @@ import java.util.List;
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
     private Context context;
     private List<Device> deviceList = new ArrayList<>();
+
+
+    class myViewHolder extends RecyclerView.ViewHolder{
+        Button ButtonAdd;
+        myViewHolder(View itemView){
+            super(itemView);
+            ButtonAdd=itemView.findViewById(R.id.ButtonAdd);
+        }
+    }
+
 
     // Define the interface for item click events
     public interface OnItemClickListener {
@@ -55,6 +66,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                     onItemClickListener.onItemClick(device);
                 }
             }
+
         });
     }
 
@@ -65,6 +77,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public View ButtonAdd;
         TextView name, id;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -73,4 +86,5 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             id = itemView.findViewById(R.id.DID);
         }
     }
+
 }
