@@ -39,7 +39,7 @@
         tools:ignore="DuplicateIds" />
 
     <Button
-        android:id="@+id/DeviceSelection"
+        android:id="@+id/btnSendNoti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

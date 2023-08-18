@@ -50,16 +50,15 @@ public class SendNotificationActivity extends AppCompatActivity {
         String notificationKey = databaseReference.child(device.getId()).child("notifications").push().getKey();
         databaseReference.child(device.getId()).child("notifications").child(notificationKey).setValue("Your notification message");
 
-        // Notify the user that the notification was sent
+
         Toast.makeText(this, "Notification sent to " + device.getName(), Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
     public void onBackPressed() {
-        // Start the HomeActivity when the back button is pressed
         startActivity(new Intent(SendNotificationActivity.this, HomeActivity.class));
-        finish(); // Optional: Finish this activity if you don't want to keep it in the back stack
+        finish();
     }
 
 

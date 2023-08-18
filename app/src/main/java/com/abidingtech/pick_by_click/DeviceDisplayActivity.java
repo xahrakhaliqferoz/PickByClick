@@ -2,7 +2,9 @@ package com.abidingtech.pick_by_click;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DeviceDisplayActivity extends AppCompatActivity {
-  Button deviceName;
+  Button btnSendNoti;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,26 +43,18 @@ public class DeviceDisplayActivity extends AppCompatActivity {
         TextView idTextView=findViewById(R.id.displayId);
         idTextView.setText(id);
 
-        deviceName=findViewById(R.id.DeviceSelection);
-        deviceName.setOnClickListener(new View.OnClickListener() {
+       databaseReference = FirebaseDatabase.getInstance().getReference("Devices");
+        btnSendNoti=findViewById(R.id.btnSendNoti);
+        btnSendNoti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Button_Click","True");
+                //es knandar device id k under alrt value tru save karwani haz
+                String deviceId=id.toString();
+                DatabaseReference deviceRef=databaseReference
+                         .child(FirebaseAuth.getInstance().getUid())
+                         .child(deviceId);
 
-
-                FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                String msg = "True";
-                                if (!task.isSuccessful()) {
-                                    msg = "Subscribe failed";
-                                }
-                                Log.d(TAG, msg);
-                                Toast.makeText(DeviceDisplayActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+                 deviceRef.setValue("true");
             }
         });
 

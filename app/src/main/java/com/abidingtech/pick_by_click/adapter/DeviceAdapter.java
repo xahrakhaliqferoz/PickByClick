@@ -1,5 +1,6 @@
 package com.abidingtech.pick_by_click.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -25,7 +26,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
 
 
     public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-//        Button ButtonAdd;
         public TextView name;
         public TextView id;
         public myViewHolder(@NonNull View itemView){
@@ -33,7 +33,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             itemView.setOnClickListener(this);
             name=itemView.findViewById(R.id.displayName);
             id=itemView.findViewById(R.id.displayId);
-//            ButtonAdd=itemView.findViewById(R.id.btnSelectDevice);
         }
 
         @Override
@@ -65,7 +64,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         final Device device = deviceList.get(position);
         holder.name.setText(device.getName());
         holder.id.setText(device.getId());
@@ -83,13 +82,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                 intent.putExtra("Rname",name);
                 intent.putExtra("Rid",id);
                 context.startActivity(intent);
-//                Toast.makeText(context, "The position is"+String.valueOf(position)+"Name:"+name+"Id:"+id,
-//                        Toast.LENGTH_SHORT).show();
             }
-
-//            private int getAdapterposition() {
-//                return 0;
-//            }
 
         });
     }
@@ -108,26 +101,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             super(itemView);
             name = itemView.findViewById(R.id.DName);
             id = itemView.findViewById(R.id.DID);
-//            ButtonAdd=itemView.findViewById(R.id.btnSelectDevice);
         }
     }
 
-//    private int getAdapterposition() {
-//        return 1;
-//    }
-//    public void onClick(View v)
-//    {
-//        int position=this.getAdapterposition();
-//        Device device = deviceList.get(position);
-//        String name=device.getName();
-//        String id=device.getId();
-//        Intent intent=new Intent(context, DeviceDisplayActivity.class);
-//        intent.putExtra("Rname",name);
-//        intent.putExtra("Rid",id);
-//        context.startActivity(intent);
-//        Toast.makeText(context, "The position is"+String.valueOf(position)+"Name:"+name+"Id:"+id,
-//                Toast.LENGTH_SHORT).show();
-//
-//    }
+
 
 }
