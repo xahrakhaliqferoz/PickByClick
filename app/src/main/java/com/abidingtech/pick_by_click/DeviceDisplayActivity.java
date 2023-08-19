@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class DeviceDisplayActivity extends AppCompatActivity {
   Button btnSendNoti;
     DatabaseReference databaseReference;
@@ -40,14 +42,14 @@ public class DeviceDisplayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //es knandar device id k under alrt value tru save karwani haz
+
+                int alertNumber = ThreadLocalRandom.current().nextInt(100, 1000);
                 String deviceId=id.toString();
                 DatabaseReference deviceRef=databaseReference
-                         .child(FirebaseAuth.getInstance().getUid())
-                         .child(deviceId)
+//                         .child(FirebaseAuth.getInstance().getUid())
+                        .child(deviceId)
                         .child("alert");
-
-
-                 deviceRef.setValue("true");
+                deviceRef.setValue(alertNumber);
                 Toast.makeText(DeviceDisplayActivity.this, "Notification sent", Toast.LENGTH_SHORT).show();
 
             }
