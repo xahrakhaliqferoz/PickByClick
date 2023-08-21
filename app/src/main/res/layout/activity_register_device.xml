@@ -10,17 +10,22 @@
     android:layout_gravity="center"
     tools:context=".activites.RegisterDeviceActivity">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:padding="8dp"
-        android:scrollbars="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
 
 
-    </androidx.recyclerview.widget.RecyclerView>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:padding="8dp"-->
+<!--        android:scrollbars="vertical">-->
+
+
+<!--    </androidx.recyclerview.widget.RecyclerView>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton"

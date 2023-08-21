@@ -2,12 +2,15 @@ package com.abidingtech.pick_by_click.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
@@ -32,8 +35,12 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
         recyclerView = findViewById(R.id.recycleview);
         plusButton = findViewById(R.id.plusButton);
+
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,5 +83,6 @@ public class RegisterDeviceActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }

@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.fragments.UserFragment;
@@ -28,6 +29,8 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+
 
         etNewName = findViewById(R.id.etNewName);
         btnSave = findViewById(R.id.btnSave);
