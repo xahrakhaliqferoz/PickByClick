@@ -86,7 +86,7 @@ UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-                startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE);
+                startActivity(intent);
             }
         });;
 
@@ -117,32 +117,6 @@ UserFragment extends Fragment {
              userRef = FirebaseDatabase.getInstance()
                     .getReference(DATABASE_PATH).child(userId);
 
-            // Listen for changes in the user's data
-            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // Retrieve the user's name and email
-                    String userName = dataSnapshot.child("name").getValue(String.class);
-                    String userEmail = dataSnapshot.child("email").getValue(String.class);
-                    String imageUrl =  dataSnapshot.child("imageUrl").getValue(String.class);
-
-                    Glide.with(getActivity()).load(imageUrl).into(imageView);
-
-
-                    if (userName != null) {
-                        tvName.setText(userName);
-                    }
-
-                    if (userEmail != null) {
-                        tvEmail.setText(userEmail);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Handle database error
-                }
-            });
         }
 
 
@@ -187,9 +161,13 @@ UserFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshUserData();
+    }
+
     private void refreshUserData() {
-        String userId = FirebaseAuth.getInstance().getUid();
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

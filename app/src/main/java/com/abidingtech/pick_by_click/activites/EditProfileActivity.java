@@ -79,8 +79,6 @@ public class EditProfileActivity extends AppCompatActivity {
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
             userRef.child("name").setValue(newName);
-
-            setResult(RESULT_OK);
             finish();
         }
     }
