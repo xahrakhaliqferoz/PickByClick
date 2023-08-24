@@ -11,11 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.abidingtech.pick_by_click.DeviceDisplayActivity;
 import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
 import com.abidingtech.pick_by_click.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

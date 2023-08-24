@@ -43,7 +43,7 @@ public class NotificationFragment extends Fragment {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new DeviceAdapter(getActivity(),new ArrayList<>()));
+//        recyclerView.setAdapter(new DeviceAdapter(getActivity(),new ArrayList<>()));
         return view;
 
 

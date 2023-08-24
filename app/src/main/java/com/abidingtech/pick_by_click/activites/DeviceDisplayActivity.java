@@ -1,4 +1,4 @@
-package com.abidingtech.pick_by_click;
+package com.abidingtech.pick_by_click.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.abidingtech.pick_by_click.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,7 +41,7 @@ public class DeviceDisplayActivity extends AppCompatActivity {
         btnSendNoti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //es knandar device id k under alrt value tru save karwani haz
+                //es kn andar device id k under alert value tru save karwani haz
 
                 int alertNumber = ThreadLocalRandom.current().nextInt(100, 1000);
                 String deviceId=id.toString();

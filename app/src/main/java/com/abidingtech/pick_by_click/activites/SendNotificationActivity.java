@@ -2,6 +2,7 @@ package com.abidingtech.pick_by_click.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class SendNotificationActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+    ArrayList<Device> deviceList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,20 +35,67 @@ public class SendNotificationActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
                 .child(FirebaseAuth.getInstance().getUid());
+        ArrayList<Device> deviceList = new ArrayList<>();
 
-        DeviceAdapter adapter = new DeviceAdapter(new ArrayList<>(), new DeviceAdapter.OnItemClickListener() {
+//        DeviceAdapter adapter = new DeviceAdapter(deviceList, true, new DeviceAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Device device) {
+//                // Handle the item click if needed
+//                sendNotificationToDevice(device);
+//            }
+//        });
+//
+//        DeviceAdapter adapter = new DeviceAdapter(new ArrayList<>(), new DeviceAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Device device) {
+//                sendNotificationToDevice(device);
+//            }
+//        });
+
+//        recyclerView.setAdapter(adapter);
+        loadDeviceData();
+    }
+    private void loadDeviceData() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onItemClick(Device device) {
-                sendNotificationToDevice(device);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                deviceList.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Device device = dataSnapshot.getValue(Device.class);
+                    if (device != null) {
+                        deviceList.add(device);
+                    } else {
+                        Log.e("SendNotificationActivity", "Device is null");
+                    }
+                }
+
+                Log.d("SendNotificationActivity", "Retrieved " + deviceList.size() + " devices");
+
+                DeviceAdapter adapter = new DeviceAdapter(deviceList, true, new DeviceAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Device device) {
+                        // Handle the item click if needed
+                        sendNotificationToDevice(device);
+                    }
+                });
+
+                recyclerView.setAdapter(adapter);
+
+                Log.d("SendNotificationActivity", "Adapter set with " + deviceList.size() + " devices");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("SendNotificationActivity", "Database Error: " + error.getMessage());
             }
         });
-
-        recyclerView.setAdapter(adapter);
     }
 
+
+
     private void sendNotificationToDevice(Device device) {
-        // Here, you can update the notification information for the selected device
-        // For example, you can create a "notifications" node under each device's data and add notifications there.
+
         String notificationKey = databaseReference.child(device.getId()).child("notifications").push().getKey();
         databaseReference.child(device.getId()).child("notifications").child(notificationKey).setValue("Your notification message");
 
@@ -61,27 +110,27 @@ public class SendNotificationActivity extends AppCompatActivity {
         finish();
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<Device> list = new ArrayList<>();
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Device user = dataSnapshot.getValue(Device.class);
-                    list.add(user);
-                }
-                DeviceAdapter adapter = new DeviceAdapter(SendNotificationActivity.this, list);
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                ArrayList<Device> list = new ArrayList<>();
+//
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Device user = dataSnapshot.getValue(Device.class);
+//                    list.add(user);
+//                }
+//                DeviceAdapter adapter = new DeviceAdapter(SendNotificationActivity.this, list);
+//                recyclerView.setAdapter(adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }

@@ -74,7 +74,9 @@ public class RegisterDeviceActivity extends AppCompatActivity {
                     Device user = dataSnapshot.getValue(Device.class);
                     list.add(user);
                 }
-                DeviceAdapter adapter = new DeviceAdapter(RegisterDeviceActivity.this, list);
+                DeviceAdapter adapter = new DeviceAdapter(list, false, null);
+
+//                DeviceAdapter adapter = new DeviceAdapter(RegisterDeviceActivity.this, list);
                 recyclerView.setAdapter(adapter);
             }
 
