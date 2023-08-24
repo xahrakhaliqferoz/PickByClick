@@ -67,7 +67,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                     }
 
                     if (context != null) {
-                        // Debug log to check the context
                         Log.d("DeviceAdapter", "Context is not null");
 
                         String name = device.getName();
@@ -77,7 +76,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                         intent.putExtra("Rid", id);
                         context.startActivity(intent);
                     } else {
-                        // Debug log to check the context when null
                         Log.d("DeviceAdapter", "Context is null");
                     }
                 }
