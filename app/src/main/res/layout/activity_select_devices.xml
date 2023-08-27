@@ -8,6 +8,11 @@
     tools:context=".activites.SelectDeviceActivity"
     android:background="@color/black">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"
         android:layout_width="match_parent"
@@ -21,7 +26,7 @@
         android:layout_marginEnd="0dp"
         android:clipToPadding="false"
         android:padding="8dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"/>
 <!--    <Button-->
 <!--        android:id="@+id/btnSelectDevice"-->
 <!--        android:layout_width="250dp"-->

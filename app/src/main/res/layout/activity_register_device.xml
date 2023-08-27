@@ -10,22 +10,44 @@
     android:layout_gravity="center"
     tools:context=".activites.RegisterDeviceActivity">
 
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         />
 
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView"-->
+<!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:clipToPadding="false"-->
-<!--        android:padding="8dp"-->
-<!--        android:scrollbars="vertical">-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="#F8D210"-->
+<!--        -->
+<!--        >-->
+<!--        -->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Registered Device"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            >-->
+<!--            -->
+<!--        </TextView>-->
+<!--    </LinearLayout>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="665dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:listitem="@layout/device_view">
 
 
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton"
@@ -36,6 +58,7 @@
         android:layout_marginTop="200dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="#F8D210"
+        app:srcCompat="@drawable/ic_baseline_add_24"
         android:textStyle="bold"
         />
 </RelativeLayout>

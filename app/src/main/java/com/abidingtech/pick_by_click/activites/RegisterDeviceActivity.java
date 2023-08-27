@@ -28,20 +28,19 @@ import java.util.ArrayList;
 public class RegisterDeviceActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    FloatingActionButton plusButton;
-
+    FloatingActionButton floatingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(R.layout.activity_register_device);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-        recyclerView = findViewById(R.id.recycleview);
-        plusButton = findViewById(R.id.plusButton);
+        recyclerView = findViewById(R.id.recyclerView);
+        floatingButton = findViewById(R.id.floatingButton);
 
-        plusButton.setOnClickListener(new View.OnClickListener() {
+        floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterDeviceActivity.this, DeviceRegistrationFormActivity.class));

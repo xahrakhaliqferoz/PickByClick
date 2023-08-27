@@ -1,12 +1,15 @@
 package com.abidingtech.pick_by_click.activites;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,13 +28,15 @@ import java.util.ArrayList;
 public class SendNotificationActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+
     ArrayList<Device> deviceList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_devices);
-        recyclerView = findViewById(R.id.recycleview);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
+        recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
                 .child(FirebaseAuth.getInstance().getUid());
@@ -57,6 +62,7 @@ public class SendNotificationActivity extends AppCompatActivity {
     }
     private void loadDeviceData() {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 deviceList.clear();
@@ -85,6 +91,7 @@ public class SendNotificationActivity extends AppCompatActivity {
                 Log.d("SendNotificationActivity", "Adapter set with " + deviceList.size() + " devices");
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("SendNotificationActivity", "Database Error: " + error.getMessage());
