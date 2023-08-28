@@ -8,10 +8,23 @@
     tools:context=".activites.SelectDeviceActivity"
     android:background="@color/black">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
 
+    <include
+        android:id="@+id/stoolbar"
+        layout="@layout/sendnotificationtoolbar"
+        />
+
+    <TextView
+        android:id="@+id/ttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:paddingLeft="10dp"
+        android:text="Select your device"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@+id/stoolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"
@@ -26,7 +39,9 @@
         android:layout_marginEnd="0dp"
         android:clipToPadding="false"
         android:padding="8dp"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/ttext"
+        tools:listitem="@layout/device_view"/>
 <!--    <Button-->
 <!--        android:id="@+id/btnSelectDevice"-->
 <!--        android:layout_width="250dp"-->

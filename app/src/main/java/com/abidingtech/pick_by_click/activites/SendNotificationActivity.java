@@ -28,13 +28,17 @@ import java.util.ArrayList;
 public class SendNotificationActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+    TextView ttext;
+
 
     ArrayList<Device> deviceList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_devices);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Toolbar stoolbar = findViewById(R.id.stoolbar);
+        TextView ttext = findViewById(R.id.ttext);
 
         recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -29,6 +29,7 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     FloatingActionButton floatingButton;
+    TextView rttext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_device);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView rttext = findViewById(R.id.rttext);
 
         recyclerView = findViewById(R.id.recyclerView);
         floatingButton = findViewById(R.id.floatingButton);

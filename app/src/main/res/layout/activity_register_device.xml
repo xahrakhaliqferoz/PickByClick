@@ -16,6 +16,18 @@
         layout="@layout/toolbar"
         />
 
+    <TextView
+        android:id="@+id/rttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:paddingLeft="10dp"
+        android:text="Register your Device"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="?attr/actionBarSize"-->
@@ -40,10 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="665dp"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="10dp"
-        android:padding="8dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/rttext"
         tools:listitem="@layout/device_view">
 
 
