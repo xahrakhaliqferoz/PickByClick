@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.abidingtech.pick_by_click.R;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +28,8 @@ public class DeviceDisplayActivity extends AppCompatActivity {
 
         String name=intent.getStringExtra("Rname");
         String id=intent.getStringExtra("Rid");
+        Toolbar toolbar = findViewById(R.id.Notitoolbar);
+
 
 
         TextView nameTextView=findViewById(R.id.displayName);

@@ -32,10 +32,12 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     }
     private OnItemClickListener onItemClickListener;
 
-    public DeviceAdapter(List<Device> deviceList, boolean isClickable, OnItemClickListener listener) {
+    public DeviceAdapter(Context context, List<Device> deviceList, boolean isClickable, OnItemClickListener listener) {
         this.deviceList = deviceList;
         this.isClickable = isClickable;
         this.onItemClickListener = listener;
+        this.context = context;
+
     }
 
     @NonNull
@@ -65,20 +67,16 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(device);
                     }
-
-                    if (context != null) {
-                        Log.d("DeviceAdapter", "Context is not null");
-
-                        String name = device.getName();
-                        String id = device.getId();
-                        Intent intent = new Intent(context, DeviceDisplayActivity.class);
-                        intent.putExtra("Rname", name);
-                        intent.putExtra("Rid", id);
-                        context.startActivity(intent);
-                    } else {
-                        Log.d("DeviceAdapter", "Context is null");
-                    }
+//                    int position=this.getAdapterposition();
+                Device device = deviceList.get(position);
+                String name=device.getName();
+                String id=device.getId();
+                Intent intent=new Intent(context, DeviceDisplayActivity.class);
+                intent.putExtra("Rname",name);
+                intent.putExtra("Rid",id);
+                context.startActivity(intent);
                 }
+
             });
         }
     }
