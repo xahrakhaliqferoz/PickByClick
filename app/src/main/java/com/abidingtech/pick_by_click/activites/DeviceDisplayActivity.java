@@ -28,9 +28,7 @@ public class DeviceDisplayActivity extends AppCompatActivity {
 
         String name=intent.getStringExtra("Rname");
         String id=intent.getStringExtra("Rid");
-        Toolbar toolbar = findViewById(R.id.Notitoolbar);
-
-
+        Toolbar stoolbar = findViewById(R.id.stoolbar);
 
         TextView nameTextView=findViewById(R.id.displayName);
         nameTextView.setText(name);
