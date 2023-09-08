@@ -20,39 +20,21 @@
         android:id="@+id/rttext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="65dp"
         android:paddingLeft="10dp"
-        android:text="Register your Device"
+        android:text="Your registered devices are: "
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="normal"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="#F8D210"-->
-<!--        -->
-<!--        >-->
-<!--        -->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Registered Device"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="20dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            >-->
-<!--            -->
-<!--        </TextView>-->
-<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="665dp"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:padding="10dp"
         android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@+id/rttext"

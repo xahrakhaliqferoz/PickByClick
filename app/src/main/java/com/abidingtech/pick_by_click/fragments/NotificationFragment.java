@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 public class NotificationFragment extends Fragment {
-    RecyclerView recyclerView;
+    RecyclerView recyclerview;
     ArrayList<Item> items;
     public NotificationFragment() {
         // Required empty public constructor
@@ -36,13 +36,13 @@ public class NotificationFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_notification, container, false);
-        recyclerView=view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerview=view.findViewById(R.id.recyclerview);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 //        List<Item> items=new ArrayList<Item>();
         items=new ArrayList<>();
 
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 //        recyclerView.setAdapter(new DeviceAdapter(getActivity(),new ArrayList<>()));
         return view;
 

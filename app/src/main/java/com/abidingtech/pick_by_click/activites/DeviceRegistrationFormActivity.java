@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class DeviceRegistrationFormActivity extends AppCompatActivity {
     CardView cardView;
@@ -62,6 +63,7 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(DeviceRegistrationFormActivity.this, "Device saved successfully!", Toast.LENGTH_SHORT).show();
+                            FirebaseMessaging.getInstance().subscribeToTopic(deviceId);
                             // Finish the current activity
                             finish();
                             // Start the RegisterDeviceActivity
