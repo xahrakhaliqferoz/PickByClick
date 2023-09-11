@@ -8,12 +8,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.abidingtech.pick_by_click.NotifyUtil;
 import com.abidingtech.pick_by_click.R;
 
 public class SettingActivity extends AppCompatActivity {
 TextView UserManual;
 Button btnuserManual, btnsettingNotification;
-;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +28,13 @@ Button btnuserManual, btnsettingNotification;
             public void onClick(View v) {
                 Intent intent = new Intent(SettingActivity.this, UserManualActivity.class);
                 startActivity(intent);
-
             }
         });
         btnsettingNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NotifyUtil notifyUtil = new NotifyUtil();
+                notifyUtil.send("NotificationTopic", "Notification Title","body");
 
             }
         });
