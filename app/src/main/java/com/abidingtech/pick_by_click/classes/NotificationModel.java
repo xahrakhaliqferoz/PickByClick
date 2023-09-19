@@ -1,9 +1,9 @@
 package com.abidingtech.pick_by_click.classes;
 
 public class NotificationModel {
-    String title;
-    String body;
-    long time;
+    public static String title;
+   public static String body;
+  public static long time;
 
     public NotificationModel() {
     }
