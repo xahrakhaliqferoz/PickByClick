@@ -10,7 +10,10 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
+import com.abidingtech.pick_by_click.classes.NotificationModel;
 import com.abidingtech.pick_by_click.fragments.NotificationFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -21,6 +24,7 @@ public class NotificationUtil {
         return Arrays.copyOf(data.toArray(), data.size(), String[].class);
     }
     public static void showNotification(Context context, String title, String body){
+
         NotificationManager notificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         String NOTIFICATION_CHANNEL_ID="com.abidingtech.app";
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
@@ -49,5 +53,15 @@ public class NotificationUtil {
         bigTextStyle.bigText(body);
         notificationBuilder.setStyle(bigTextStyle);
         notificationManager.notify(id,notificationBuilder.build());
+
+        String uid = FirebaseAuth.getInstance().getUid();
+        if(uid != null){
+            FirebaseDatabase.getInstance().getReference("Notifications")
+                    .child(uid)
+                    .push()
+                    .setValue(new NotificationModel(title, body, new Date().getTime()));
+        }
+
+
 }
 }
