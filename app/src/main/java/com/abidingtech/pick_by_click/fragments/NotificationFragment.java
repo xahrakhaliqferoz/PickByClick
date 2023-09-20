@@ -1,6 +1,5 @@
 package com.abidingtech.pick_by_click.fragments;
 
-import static androidx.collection.ArraySet.TAG;
 
 import android.os.Bundle;
 
