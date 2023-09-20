@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,6 +65,7 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
                         public void onSuccess(Void unused) {
                             Toast.makeText(DeviceRegistrationFormActivity.this, "Device saved successfully!", Toast.LENGTH_SHORT).show();
                             FirebaseMessaging.getInstance().subscribeToTopic(deviceId);
+                            Log.e( "onSub: ", deviceId+"");
                             // Finish the current activity
                             finish();
                             // Start the RegisterDeviceActivity
