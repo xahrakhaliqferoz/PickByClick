@@ -37,21 +37,20 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homectivity);
 
 
-      //  FirebaseMessaging.getInstance().subscribeToTopic(Uid );
-        FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed";
-                        if (!task.isSuccessful()) {
-                            msg = "Subscribe failed";
-                        }
-                        Log.d(TAG, msg);
-                        Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
-
-                        NotificationUtil.showNotification(HomeActivity.this,"this is title","this is body");
-                    }
-                });
+//        FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        String msg = "Subscribed";
+//                        if (!task.isSuccessful()) {
+//                            msg = "Subscribe failed";
+//                        }
+//                        Log.d(TAG, msg);
+//                        Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+//
+//                        NotificationUtil.showNotification(HomeActivity.this,"this is title","this is body");
+//                    }
+//                });
 
         binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
 

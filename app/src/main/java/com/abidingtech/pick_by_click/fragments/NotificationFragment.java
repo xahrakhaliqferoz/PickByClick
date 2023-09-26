@@ -71,7 +71,6 @@ public class NotificationFragment extends Fragment {
 
                     }
 
-//                    Log.d("NotificationFragment", "Data retrieved from Firebase: " + notificationModelArrayList.size() + " items");
                     NotificationAdapter notificationAdapter = new NotificationAdapter(list);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     recyclerView.setAdapter(notificationAdapter);

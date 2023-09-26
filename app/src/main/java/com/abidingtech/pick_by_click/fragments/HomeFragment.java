@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     TextView tvUserName;
     CardView registerationCard;
     CardView SNotificationCard;
+    CardView NotificationCard;
 
 
     private FirebaseUser User;
@@ -48,6 +49,8 @@ public class HomeFragment extends Fragment {
         registerationCard=view.findViewById(R.id.RegisterationCard);
         tvUserName = view.findViewById(R.id.tvUserName);
         SNotificationCard=view.findViewById(R.id.SNotificationCard);
+        NotificationCard=view.findViewById(R.id.NotificationCard);
+
         SNotificationCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

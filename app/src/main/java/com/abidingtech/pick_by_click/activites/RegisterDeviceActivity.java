@@ -59,7 +59,7 @@ public class RegisterDeviceActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Start the HomeActivity when the back button is pressed
         startActivity(new Intent(RegisterDeviceActivity.this, HomeActivity.class));
-        finish(); // Optional: Finish this activity if you don't want to keep it in the back stack
+        finish();
     }
 
 
