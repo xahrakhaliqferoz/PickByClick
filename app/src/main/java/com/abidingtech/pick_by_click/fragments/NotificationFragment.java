@@ -1,6 +1,5 @@
 package com.abidingtech.pick_by_click.fragments;
 
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,26 +12,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.abidingtech.pick_by_click.NotificationAdapter;
 import com.abidingtech.pick_by_click.R;
+import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.classes.NotificationModel;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class NotificationFragment extends Fragment {
-    RecyclerView recyclerView;
-    ArrayList<NotificationModel> notificationModelArrayList;
-    DatabaseReference databaseReference;
-    NotificationAdapter notificationAdapter;
+    private RecyclerView recyclerView;
+    private DatabaseReference databaseReference;
+    TextView tvTitle, tvBody,tvTime;
 
     public NotificationFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -40,36 +40,55 @@ public class NotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        notificationModelArrayList = new ArrayList<>();
+        tvTitle=view.findViewById(R.id.tvTitle);
+        tvBody=view.findViewById(R.id.tvBody);
+        tvTime=view.findViewById(R.id.tvTime);
 
-        // Initialize Firebase Database Reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("notifications");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Notifications")
+                .child(FirebaseAuth.getInstance().getUid());
 
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onResume() {
+        super.onResume();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        // Clear the existing data in the ArrayList
+//        notificationModelArrayList.clear();
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                notificationModelArrayList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    NotificationModel notification = snapshot.getValue(NotificationModel.class);
-                    notificationModelArrayList.add(notification);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    ArrayList<NotificationModel> list = new ArrayList<>();
+
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        NotificationModel notificationModel = dataSnapshot.getValue(NotificationModel.class);
+                        list.add(notificationModel);
+                        Log.e("NotificationFragment", "Notification Data Retrieved: " + notificationModel.body);
+
+                    }
+
+//                    Log.d("NotificationFragment", "Data retrieved from Firebase: " + notificationModelArrayList.size() + " items");
+                    NotificationAdapter notificationAdapter = new NotificationAdapter(list);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    recyclerView.setAdapter(notificationAdapter);
+                } else {
+                    Log.d("NotificationFragment", "No data found in Firebase");
                 }
 
-                NotificationAdapter adapter = new NotificationAdapter(notificationModelArrayList);
-                recyclerView.setAdapter(adapter);
             }
+
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("NotificationFragment", "Firebase Database Error: " + error.getMessage());
             }
-
         });
     }
+
 }
+
+
