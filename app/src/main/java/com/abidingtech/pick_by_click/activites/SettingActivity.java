@@ -19,7 +19,7 @@ Button btnuserManual, btnsettingNotification;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        btnsettingNotification=findViewById(R.id.btnsettingNotification);
+       // btnsettingNotification=findViewById(R.id.btnsettingNotification);
 
         UserManual=findViewById(R.id.UserManual);
         btnuserManual=findViewById(R.id.btnuserManual);
@@ -30,13 +30,13 @@ Button btnuserManual, btnsettingNotification;
                 startActivity(intent);
             }
         });
-        btnsettingNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NotifyUtil notifyUtil = new NotifyUtil();
-                notifyUtil.send("NotificationTopic", "Notification Title","body");
-
-            }
-        });
+//        btnsettingNotification.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                NotifyUtil notifyUtil = new NotifyUtil();
+//                notifyUtil.send("NotificationTopic", "Notification Title","body");
+//
+//            }
+//        });
     }
 }

@@ -8,10 +8,25 @@
     tools:context=".activites.SelectDeviceActivity"
     android:background="@color/black">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F8D210"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registered Devices"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            >
+
+        </TextView>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/ttext"
@@ -22,8 +37,7 @@
         android:text="Select your device to send notification"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+        android:textStyle="normal" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"

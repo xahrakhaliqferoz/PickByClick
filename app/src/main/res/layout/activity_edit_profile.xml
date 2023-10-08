@@ -5,22 +5,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="1dp"
     android:background="@color/black">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F8D210"
+        >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textStyle="normal"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            >
+
+        </TextView>
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/etNewName"
@@ -30,15 +38,13 @@
         android:textColorHint="#D8D6D6"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
-        android:padding="10dp"
+        android:padding="15dp"
+        android:layout_margin="15dp"
         android:layout_marginStart="10sp"
         android:textStyle="normal"
         android:textSize="20sp"
         android:textColor="@color/white"
-        android:layout_marginTop="20dp" />
-
-
-
+        android:layout_marginTop="30dp" />
 
 
     <Button
