@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#212020">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="Title" />
 
-    <TextView
-        android:id="@+id/tvBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="Body" />
+            <ImageView
+                android:id="@+id/NPicture"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/logo"
+                android:layout_centerVertical="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTime"
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="60dp"
+                android:text="Title"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/NPicture"
+                 />
+
+            <TextView
+                android:id="@+id/tvBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:text="Body"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="60dp"
+                android:layout_toEndOf="@+id/NPicture"/>
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="10dp"
+                android:textSize="18dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="textEnd"
+                android:text="Time"
+                android:layout_toEndOf="@+id/NPicture" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="Time" />
-</LinearLayout>
+        android:layout_height="2dp"
+        android:layout_below="@id/NPicture"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"/>
+
+    
+
+</RelativeLayout>

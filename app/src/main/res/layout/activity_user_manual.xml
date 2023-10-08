@@ -6,169 +6,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="horizontal">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10sp"
         android:layout_marginStart="10sp"
-        android:layout_marginEnd="10sp">
+        android:layout_marginEnd="10sp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
             android:orientation="vertical">
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:layout_marginBottom="0dp"-->
+
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:paddingLeft="100dp"-->
+<!--                android:text="Pick By Click"-->
+<!--                android:textColor="#F8D210"-->
+<!--                android:textSize="30dp"-->
+<!--                android:textStyle="bold" />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#F8D210"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User Manual"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    >
+
+                </TextView>
+            </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
-                android:paddingLeft="100dp"
-                android:text="Pick By Click"
-                android:textColor="#F8D210"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:paddingLeft="50dp"
-                android:paddingRight="50dp"
+                android:paddingRight="30dp"
                 android:text="The Child Pick-Up App is designed to facilitate the safe and efficient pick-up of children from various locations, such as schools, daycare centers, or extracurricular activities.This manual will guide you through the app's features and help you make the most of its functionalities."
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="180dp"
-                android:src="@drawable/ic_baseline_start_24" />
+                android:layout_marginTop="15dp"
+                android:paddingLeft="160dp"
+                android:src="@drawable/ic_baseline_start_24"
+                android:layout_centerHorizontal="true"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingLeft="100dp"
+                android:layout_marginRight="10dp"
+                android:textAlignment="center"
+                android:layout_marginStart="95dp"
                 android:text="1.Getting Started"
                 android:textColor="#F8D210"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="50dp"
+                android:paddingLeft="60dp"
                 android:paddingRight="50dp"
                 android:text=" a.Download and Install \n b.Creat an account\n c.Login/signup\n d.Register"
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="180dp"
+                android:paddingLeft="160dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_baseline_person_add_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingLeft="100dp"
+                android:textAlignment="center"
+                android:layout_marginStart="90dp"
+                android:layout_marginRight="10dp"
                 android:text="2.Adding Children"
                 android:textColor="#F8D210"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="60dp"
                 android:paddingRight="50dp"
                 android:text="a.Profile SetUp\nb.Register Device"
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="180dp"
+                android:paddingLeft="160dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_baseline_schedule_24" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingLeft="100dp"
+                android:textAlignment="center"
+                android:layout_marginStart="85dp"
                 android:text="3.Schedule Pick ups"
                 android:textColor="#F8D210"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="60dp"
                 android:paddingRight="50dp"
                 android:text="a.Pick Up Request\nb.Notification sent "
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
+
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="180dp"
+                android:paddingLeft="170dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_baseline_hardwarenotifications_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="100dp"
+                android:paddingLeft="60dp"
+                android:layout_marginTop="2dp"
+                android:textAlignment="center"
+                android:layout_marginStart="40dp"
                 android:text="4.Hardware Notification"
                 android:textColor="#F8D210"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="60dp"
                 android:paddingRight="50dp"
-                android:text="a.Child Arrival\nb.Delay Notification "
+                android:text="a.Child Arrival\nb.Delay Notification\n"
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
         </LinearLayout>
     </RelativeLayout>
     </ScrollView>
