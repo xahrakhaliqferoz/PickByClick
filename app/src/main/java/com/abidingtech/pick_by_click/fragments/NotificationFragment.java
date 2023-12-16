@@ -3,7 +3,6 @@ package com.abidingtech.pick_by_click.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,9 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.abidingtech.pick_by_click.NotificationAdapter;
+import com.abidingtech.pick_by_click.adapter.NotificationAdapter;
 import com.abidingtech.pick_by_click.R;
-import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.classes.NotificationModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

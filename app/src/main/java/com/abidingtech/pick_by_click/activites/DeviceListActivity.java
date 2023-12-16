@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.abidingtech.pick_by_click.classes.Device;
 import com.abidingtech.pick_by_click.adapter.DeviceAdapter;
@@ -22,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class UserListActivity extends AppCompatActivity {
+public class DeviceListActivity extends AppCompatActivity {
      RecyclerView recyclerView;
      ArrayList<Device>list;
      DatabaseReference databaseReference;

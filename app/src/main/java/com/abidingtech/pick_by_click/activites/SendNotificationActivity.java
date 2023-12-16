@@ -120,11 +120,11 @@ public class SendNotificationActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(SendNotificationActivity.this, HomeActivity.class));
-        finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(new Intent(SendNotificationActivity.this, HomeActivity.class));
+//        finish();
+//    }
 
 }
 
