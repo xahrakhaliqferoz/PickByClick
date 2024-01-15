@@ -12,6 +12,11 @@ import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.classes.NotificationModel;
 
 import java.util.ArrayList;
+<<<<<<< Updated upstream:app/src/main/java/com/abidingtech/pick_by_click/adapter/NotificationAdapter.java
+=======
+import java.util.Date;
+import java.util.List;
+>>>>>>> Stashed changes:app/src/main/java/com/abidingtech/pick_by_click/NotificationAdapter.java
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
 
@@ -38,7 +43,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 //        NotificationModel notificationModel = notificationModelArrayList.get(position);
         holder.title.setText(notificationModel.getTitle());
         holder.body.setText(notificationModel.getBody());
-        holder.time.setText(String.valueOf(notificationModel.getTime()));
+        holder.time.setText(String.valueOf(new Date(notificationModel.getTime())));
 
 
     }
