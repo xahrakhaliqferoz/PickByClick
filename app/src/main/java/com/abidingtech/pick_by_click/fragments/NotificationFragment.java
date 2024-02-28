@@ -22,8 +22,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NotificationFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -43,11 +47,15 @@ public class NotificationFragment extends Fragment {
         tvTime=view.findViewById(R.id.tvTime);
 
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Notifications")
                 .child(FirebaseAuth.getInstance().getUid());
 
+
         return view;
     }
+
+
 
     @Override
     public void onResume() {

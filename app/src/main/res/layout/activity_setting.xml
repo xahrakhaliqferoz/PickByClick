@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Manual"
+            android:text="User Help"
             android:textStyle="bold"
             android:textSize="25dp"
             android:textColor="@color/white"
@@ -59,7 +59,7 @@
         <!-- Name TextView -->
         <TextView
             android:id="@+id/UserManual"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
@@ -77,6 +77,45 @@
         <!-- Button parallel to the Name TextView -->
         <Button
             android:id="@+id/btnuserManual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/lcontactus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Name TextView -->
+        <TextView
+            android:id="@+id/ContactUs"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#F8D210"
+            android:backgroundTintMode="add"
+            android:drawableLeft="@drawable/ic_baseline_read_more_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:paddingLeft="30dp"
+            android:text="Contact Info"
+            android:textColor="#F8D210"
+            android:textSize="20sp" />
+
+        <!-- Button parallel to the Name TextView -->
+        <Button
+            android:id="@+id/btncontactus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
