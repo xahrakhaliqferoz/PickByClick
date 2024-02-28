@@ -1,6 +1,8 @@
 package com.abidingtech.pick_by_click.classes;
 
 
+import android.widget.Button;
+
 public class Device {
     private String name;
     private String id;

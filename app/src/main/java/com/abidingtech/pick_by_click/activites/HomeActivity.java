@@ -29,6 +29,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class HomeActivity extends AppCompatActivity {
     ActivityHomectivityBinding binding;
 
+    Fragment selectedFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +95,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Get the currently displayed fragment
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-        if (currentFragment instanceof HomeFragment) {
+        if (selectedFragment instanceof HomeFragment) {
             // If the current fragment is UserFragment, show an AlertDialog to confirm exit
             new AlertDialog.Builder(this)
                     .setTitle("Exit App")
@@ -117,8 +116,7 @@ public class HomeActivity extends AppCompatActivity {
                     })
                     .show();
         } else {
-            // If the current fragment is not UserFragment, handle the back press normally
-            super.onBackPressed();
+            replaceFragment(new HomeFragment());
         }
     }
 
@@ -131,6 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.navContainer, fragment);
         fragmentTransaction.commit();
+        selectedFragment = fragment;
     }
 
 

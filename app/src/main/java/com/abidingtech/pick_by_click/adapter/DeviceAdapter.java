@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,11 +17,16 @@ import com.abidingtech.pick_by_click.activites.DeviceDisplayActivity;
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
 import com.abidingtech.pick_by_click.classes.Device;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
-//    private Context context;
+    //    private Context context;
     private List<Device> deviceList = new ArrayList<>();
     private boolean isClickable; // Flag
 
@@ -30,6 +37,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     public interface OnItemClickListener {
         void onItemClick(Device device);
     }
+
     private OnItemClickListener onItemClickListener;
 
     public DeviceAdapter(Context context, List<Device> deviceList, boolean isClickable, OnItemClickListener listener) {
@@ -46,6 +54,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_view, parent, false);
         return new MyViewHolder(v);
     }
+
     private Context context;
 
     public DeviceAdapter(Context context, List<Device> list) {
@@ -60,6 +69,26 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         holder.name.setText(device.getName());
         holder.id.setText(device.getId());
 
+        holder.btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase.getInstance()
+                        .getReference("Devices")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child(device.getId())
+                        .removeValue()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    notifyDataSetChanged();
+                                } else {
+                                    Toast.makeText(context, task.getException().getMessage() + "", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
         if (isClickable) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,13 +97,12 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                         onItemClickListener.onItemClick(device);
                     }
 //                    int position=this.getAdapterposition();
-                Device device = deviceList.get(position);
-                String name=device.getName();
-                String id=device.getId();
-                Intent intent=new Intent(context, DeviceDisplayActivity.class);
-                intent.putExtra("Rname",name);
-                intent.putExtra("Rid",id);
-                context.startActivity(intent);
+                    String name = device.getName();
+                    String id = device.getId();
+                    Intent intent = new Intent(context, DeviceDisplayActivity.class);
+                    intent.putExtra("Rname", name);
+                    intent.putExtra("Rid", id);
+                    context.startActivity(intent);
                 }
 
             });
@@ -88,11 +116,13 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, id;
+        Button btnDel;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.DName);
             id = itemView.findViewById(R.id.DID);
+            btnDel = itemView.findViewById(R.id.btdeletebutton);
         }
     }
 }
