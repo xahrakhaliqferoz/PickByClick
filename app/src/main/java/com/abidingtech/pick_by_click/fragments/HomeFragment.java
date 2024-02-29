@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
-import com.abidingtech.pick_by_click.activites.SettingActivity;
+import com.abidingtech.pick_by_click.activites.HelpActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeFragment extends Fragment {
 
     TextView tvUserName;
-    CardView cardSettings;
+    CardView cardHelp;
     CardView registerationCard;
     CardView SNotificationCard;
     CardView NotificationCard;
@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        cardSettings = view.findViewById(R.id.settingCard);
+        cardHelp = view.findViewById(R.id.HelpCard);
         registerationCard=view.findViewById(R.id.RegisterationCard);
         tvUserName = view.findViewById(R.id.tvUserName);
         SNotificationCard=view.findViewById(R.id.SNotificationCard);
@@ -61,10 +61,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        cardSettings.setOnClickListener(new View.OnClickListener() {
+        cardHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
                 startActivity(intent);
             }
         });

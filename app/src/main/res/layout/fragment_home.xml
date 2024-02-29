@@ -22,13 +22,13 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="30dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Hi UserName"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,8 +37,8 @@
 
         <ImageView
             android:id="@+id/Image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +96,7 @@
             android:layout_height="120dp"
             android:id="@+id/row2"
             android:orientation="horizontal"
+            android:layout_marginTop="20dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -190,7 +191,7 @@
             android:id="@+id/row3"
             android:layout_width="160dp"
             android:layout_height="120dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.458"
@@ -199,7 +200,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/settingCard"
+                android:id="@+id/HelpCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
@@ -213,24 +214,24 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/settingIcon"
+                        android:id="@+id/helpIcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/SettingImage"
+                        android:layout_below="@+id/helpImage"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Setting"
+                        android:text="Help"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:id="@+id/SettingImage"
+                        android:id="@+id/helpImage"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:src="@drawable/ic_baseline_settings_24" />
+                        android:src="@drawable/ic_baseline_help_24" />
 
                 </RelativeLayout>
 
