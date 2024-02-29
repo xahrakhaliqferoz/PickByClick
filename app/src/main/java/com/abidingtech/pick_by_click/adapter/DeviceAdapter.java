@@ -1,6 +1,7 @@
 package com.abidingtech.pick_by_click.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abidingtech.pick_by_click.activites.DeviceDisplayActivity;
@@ -68,31 +70,78 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         final Device device = deviceList.get(position);
         holder.name.setText(device.getName());
         holder.id.setText(device.getId());
-
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //dialog yes no
+                // Create an AlertDialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Confirmation");
+                builder.setMessage("Are you sure you want to delete the device?");
 
-                FirebaseDatabase.getInstance()
-                        .getReference("Devices")
-                        .child(FirebaseAuth.getInstance().getUid())
-                        .child(device.getId())
-                        .removeValue()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    deviceList.remove(device);
-                                    notifyDataSetChanged();
-                                } else {
-                                    Toast.makeText(context, task.getException().getMessage() + "", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                // Set up the buttons
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User clicked Yes, proceed with deletion
+                        FirebaseDatabase.getInstance()
+                                .getReference("Devices")
+                                .child(FirebaseAuth.getInstance().getUid())
+                                .child(device.getId())
+                                .removeValue()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            deviceList.remove(device);
+                                            notifyDataSetChanged();
+                                        } else {
+                                            // Handle the deletion failure if needed
+                                            Toast.makeText(context, "Failed to delete device", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User clicked No, do nothing
+                        dialog.dismiss();
+                    }
+                });
+
+                // Show the AlertDialog
+                builder.show();
             }
         });
+
+//
+//        holder.btnDel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //dialog yes no
+//
+//                FirebaseDatabase.getInstance()
+//                        .getReference("Devices")
+//                        .child(FirebaseAuth.getInstance().getUid())
+//                        .child(device.getId())
+//                        .removeValue()
+//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if (task.isSuccessful()) {
+//                                    deviceList.remove(device);
+//                                    notifyDataSetChanged();
+//                                } else {
+//                                    Toast.makeText(context, task.getException().getMessage() + "", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
         if (isClickable) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
