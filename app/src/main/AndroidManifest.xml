@@ -52,7 +52,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activites.SettingActivity"
+            android:name=".activites.HelpActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

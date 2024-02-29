@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.abidingtech.pick_by_click.R;
 
-public class SettingActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity {
 TextView UserManual,ContactUs;
 Button btnuserManual , btncontactus;
 
@@ -29,7 +29,7 @@ Button btnuserManual , btncontactus;
         btnuserManual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SettingActivity.this, UserManualActivity.class);
+                Intent intent = new Intent(HelpActivity.this, UserManualActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ Button btnuserManual , btncontactus;
         btncontactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SettingActivity.this, ContactUsActivity.class);
+                Intent intent = new Intent(HelpActivity.this, ContactUsActivity.class);
                 startActivity(intent);
             }
         });
