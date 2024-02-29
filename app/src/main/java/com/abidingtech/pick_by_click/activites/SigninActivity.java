@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SigninActivity extends AppCompatActivity {
+
     ActivitySigninBinding binding;
     String email, password;
     FirebaseAuth auth;

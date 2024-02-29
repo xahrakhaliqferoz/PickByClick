@@ -25,8 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class HomeFragment extends Fragment {
-    CardView cardSettings;
+
     TextView tvUserName;
+    CardView cardSettings;
     CardView registerationCard;
     CardView SNotificationCard;
     CardView NotificationCard;

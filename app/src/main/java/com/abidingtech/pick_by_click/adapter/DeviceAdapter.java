@@ -72,6 +72,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //dialog yes no
+
                 FirebaseDatabase.getInstance()
                         .getReference("Devices")
                         .child(FirebaseAuth.getInstance().getUid())
@@ -81,6 +84,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    deviceList.remove(device);
                                     notifyDataSetChanged();
                                 } else {
                                     Toast.makeText(context, task.getException().getMessage() + "", Toast.LENGTH_SHORT).show();

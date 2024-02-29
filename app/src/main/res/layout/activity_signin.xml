@@ -18,8 +18,6 @@
         android:src="@drawable/logo" />
 
 
-
-
     <TextView
         android:id="@+id/tvsignin"
         android:layout_width="match_parent"
@@ -128,12 +126,6 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="normal" />
-
-
-
-
-
-
 
 
 

@@ -48,8 +48,8 @@
 
 
     <EditText
-        android:layout_width="380dp"
         android:id="@+id/edtname"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:hint="Name"
         android:textColorHint="#D8D6D6"

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".activites.ContactUsActivity">
+    tools:context=".activites.ContactUsActivity"
+    android:layout_gravity="center">
 
 
     <LinearLayout
@@ -36,11 +37,11 @@
         android:textColor="#F8D210"
         android:textSize="25sp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:textStyle="bold"
         />
 
-<EditText
+    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="pickbyclick4@gmail.com"
@@ -48,12 +49,12 @@
     android:textColor="#F8D210"
     android:drawableLeft="@drawable/ic_baseline_email_24"
     android:drawablePadding="20dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="30dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="40dp"
     />
 
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="pickbyclick4"
@@ -61,11 +62,11 @@
         android:textColor="#F8D210"
         android:drawableLeft="@drawable/instalogo"
         android:drawablePadding="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
         />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="pickbyclick4"
@@ -73,11 +74,11 @@
         android:textColor="#F8D210"
         android:drawableLeft="@drawable/facebooklogo"
         android:drawablePadding="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
         />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="03212823500"
@@ -85,8 +86,8 @@
         android:textColor="#F8D210"
         android:drawableLeft="@drawable/ic_baseline_call_24"
         android:drawablePadding="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
         />
 
 
