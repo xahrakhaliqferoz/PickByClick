@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -31,6 +32,7 @@ public class HomeFragment extends Fragment {
     CardView registerationCard;
     CardView SNotificationCard;
     CardView NotificationCard;
+    TextView NotificationMsg;
 
 
     private FirebaseUser User;
@@ -51,6 +53,35 @@ public class HomeFragment extends Fragment {
         tvUserName = view.findViewById(R.id.tvUserName);
         SNotificationCard=view.findViewById(R.id.SNotificationCard);
         NotificationCard=view.findViewById(R.id.NotificationCard);
+        NotificationMsg=view.findViewById(R.id.NotificationMsg);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference notificationRef = database.getReference("Notifications");
+
+        // Listen for changes in the "notification" node
+        notificationRef.orderByChild("timestamp").limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Check if there is any data
+                if (dataSnapshot.exists()) {
+                    // Get the latest notification
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String latestNotification = snapshot.child("message").getValue(String.class);
+
+                        // Update the UI with the latest notification
+                        if (latestNotification != null) {
+                            NotificationMsg.setText(String.valueOf(latestNotification));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors here
+            }
+        });
+
 
         SNotificationCard.setOnClickListener(new View.OnClickListener() {
             @Override
