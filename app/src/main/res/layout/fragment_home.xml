@@ -60,7 +60,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/NotificationCard"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@color/white"
@@ -74,14 +74,14 @@
 
                     <TextView
                         android:id="@+id/NotificationMsg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Notification"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="18sp" />
 
 
                 </RelativeLayout>
