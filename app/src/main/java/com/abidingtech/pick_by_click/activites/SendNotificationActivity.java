@@ -44,6 +44,8 @@ public class SendNotificationActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Devices")
                 .child(FirebaseAuth.getInstance().getUid());
         ArrayList<Device> deviceList = new ArrayList<>();
@@ -109,22 +111,10 @@ public class SendNotificationActivity extends AppCompatActivity {
         String notificationKey = databaseReference.child(device.getId()).child("notifications").push().getKey();
 //        databaseReference.child(device.getId()).child("notifications").child(notificationKey).setValue("Your notification message");
 
-
-
-
-
         Toast.makeText(this, "Notification sent to " + device.getName(), Toast.LENGTH_SHORT).show();
     }
 
 
-
-
-
-//    @Override
-//    public void onBackPressed() {
-//        startActivity(new Intent(SendNotificationActivity.this, HomeActivity.class));
-//        finish();
-//    }
 
 }
 

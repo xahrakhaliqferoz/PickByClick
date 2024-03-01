@@ -42,6 +42,8 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         floatingButton = findViewById(R.id.floatingButton);
 
+
+
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

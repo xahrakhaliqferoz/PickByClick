@@ -3,6 +3,7 @@ package com.abidingtech.pick_by_click.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.abidingtech.pick_by_click.R;
 import com.abidingtech.pick_by_click.activites.RegisterDeviceActivity;
 import com.abidingtech.pick_by_click.activites.SendNotificationActivity;
 import com.abidingtech.pick_by_click.activites.HelpActivity;
+import com.abidingtech.pick_by_click.classes.NotificationModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class HomeFragment extends Fragment {
@@ -56,32 +61,24 @@ public class HomeFragment extends Fragment {
         NotificationMsg=view.findViewById(R.id.NotificationMsg);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference notificationRef = database.getReference("Notifications");
+        DatabaseReference notificationRef = database.getReference("Notifications").child(FirebaseAuth.getInstance().getUid());
 
         // Listen for changes in the "notification" node
-        notificationRef.orderByChild("timestamp").limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+        notificationRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Check if there is any data
-                if (dataSnapshot.exists()) {
-                    // Get the latest notification
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String latestNotification = snapshot.child("message").getValue(String.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds:snapshot.getChildren()) {
+                    NotificationMsg.setText(ds.child("body").getValue(String.class)+"");
 
-                        // Update the UI with the latest notification
-                        if (latestNotification != null) {
-                            NotificationMsg.setText(String.valueOf(latestNotification));
-                        }
-                    }
                 }
-            }
+
+                        }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors here
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-
 
         SNotificationCard.setOnClickListener(new View.OnClickListener() {
             @Override

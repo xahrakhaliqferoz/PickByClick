@@ -70,6 +70,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
         final Device device = deviceList.get(position);
         holder.name.setText(device.getName());
         holder.id.setText(device.getId());
+
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
