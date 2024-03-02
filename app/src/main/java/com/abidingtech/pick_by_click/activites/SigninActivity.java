@@ -47,8 +47,8 @@ public class SigninActivity extends AppCompatActivity {
                     binding.etPassword.setError("Password is required");
                     return;
                 }
+                // ...
 
-                // Now proceed with authentication
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
@@ -61,9 +61,62 @@ public class SigninActivity extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SigninActivity.this, "Fail to login", Toast.LENGTH_SHORT).show();
+                                if (e.getMessage() != null) {
+                                    if (e.getMessage().contains("The password is invalid")) {
+                                        // Handle invalid password error
+                                        binding.etPassword.setError("Invalid password");
+                                        Toast.makeText(SigninActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                    } else if (e.getMessage().contains("There is no user record corresponding to this identifier")) {
+                                        // Handle email not found error
+                                        binding.etEmail.setError("Email not registered");
+                                        Toast.makeText(SigninActivity.this, "Email not registered", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // Handle other login errors
+                                        Toast.makeText(SigninActivity.this, "Failed to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    // Handle unexpected errors
+                                    Toast.makeText(SigninActivity.this, "Failed to login: An unexpected error occurred", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
+
+// ...
+
+
+
+
+
+
+
+
+
+
+                // Now proceed with authentication
+//                auth.signInWithEmailAndPassword(email, password)
+//                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                            @Override
+//                            public void onSuccess(AuthResult authResult) {
+//                                Toast.makeText(SigninActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+//                                finish();
+//                            }
+//                        })
+                        // ...
+
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                if (e.getMessage() != null && e.getMessage().contains("The password is invalid")) {
+//                                    binding.etPassword.setError("Invalid password");
+//                                } else {
+//                                    Toast.makeText(SigninActivity.this, "Failed to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+
+// ...
+
             }
         });
 

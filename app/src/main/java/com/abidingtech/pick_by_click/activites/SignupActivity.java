@@ -63,13 +63,22 @@ public class SignupActivity extends AppCompatActivity {
                                 startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                                 finish();
                             }
-                            else
-                            {
-                                Toast.makeText(SignupActivity.this, "Please try again,something went wrong", Toast.LENGTH_SHORT).show();
+                            else {
+                                if (task.getException() != null && task.getException().getMessage() != null) {
+                                    String errorMessage = task.getException().getMessage();
+                                    if (errorMessage.contains("email address is already in use")) {
+                                        // Handle the case where the email is already in use
+                                        Toast.makeText(SignupActivity.this, "Email is already in use", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // Handle other registration errors
+                                        Toast.makeText(SignupActivity.this, "Registration failed: " + errorMessage, Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(SignupActivity.this, "Please try again, something went wrong", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });
-
                 }
             }
         });
