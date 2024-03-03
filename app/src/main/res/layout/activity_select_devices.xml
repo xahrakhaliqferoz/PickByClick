@@ -55,18 +55,7 @@
         android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@+id/ttext"
         tools:listitem="@layout/device_view"/>
-<!--    <Button-->
-<!--        android:id="@+id/btnSelectDevice"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Select Device"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:backgroundTint="#F8D210"-->
-<!--        android:padding="10dp"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textStyle="bold" />-->
+
 
 
 </RelativeLayout>

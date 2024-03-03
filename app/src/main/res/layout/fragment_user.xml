@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-                <!-- Profile Image -->
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profile_image_view"
                     android:layout_width="150dp"
@@ -47,7 +47,7 @@
                     android:padding="5dp"
                     app:srcCompat="@drawable/ic_baseline_person_24" />
 
-                <!-- Select Image Button -->
+
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/select_image_button"
                     android:layout_width="wrap_content"
@@ -67,7 +67,6 @@
 
         </RelativeLayout>
 
-        <!-- Horizontal LinearLayout for the first TextView and Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +74,6 @@
             android:gravity="center"
             android:layout_margin="20dp">
 
-                <!-- Name TextView -->
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="250dp"
@@ -89,7 +87,6 @@
                     android:onClick="onNameTextViewClick"
                   />
 
-                <!-- Button parallel to the Name TextView -->
                 <Button
                     android:id="@+id/EditProfileButton"
                     android:layout_width="wrap_content"
@@ -103,9 +100,7 @@
 
         </LinearLayout>
 
-        <!-- Email TextView -->
 
-        <!-- Logout Button -->
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="300dp"

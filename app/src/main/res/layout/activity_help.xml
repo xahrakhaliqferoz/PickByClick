@@ -10,23 +10,6 @@
 
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/Setting"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Empowering Parents \n Ensuring Safety \n Your Child Pick-Up \n  App Guide"-->
-<!--        android:textSize="20sp"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:padding="10dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_gravity="center"-->
-<!--        />-->
-
-
-    <!-- Horizontal LinearLayout for the first TextView and Button -->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -56,7 +39,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <!-- Name TextView -->
         <TextView
             android:id="@+id/UserManual"
             android:layout_width="200dp"
@@ -74,7 +56,7 @@
             android:textColor="#F8D210"
             android:textSize="20sp" />
 
-        <!-- Button parallel to the Name TextView -->
+
         <Button
             android:id="@+id/btnuserManual"
             android:layout_width="wrap_content"
@@ -95,7 +77,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <!-- Name TextView -->
+
         <TextView
             android:id="@+id/ContactUs"
             android:layout_width="200dp"
@@ -113,7 +95,7 @@
             android:textColor="#F8D210"
             android:textSize="20sp" />
 
-        <!-- Button parallel to the Name TextView -->
+
         <Button
             android:id="@+id/btncontactus"
             android:layout_width="wrap_content"
