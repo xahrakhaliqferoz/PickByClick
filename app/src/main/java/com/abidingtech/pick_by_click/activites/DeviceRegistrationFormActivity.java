@@ -37,13 +37,13 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
         id = findViewById(R.id.id);
         cardIM = findViewById(R.id.cardIM);
         savebtn = findViewById(R.id.savebtn);
+
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String deviceName = name.getText().toString().trim();
                 String deviceId = id.getText().toString().trim();
 
-                // Check if the fields are not empty
                 if (deviceName.isEmpty() || deviceId.isEmpty()) {
                     if (deviceName.isEmpty()) {
                         name.setError("Device name is required");
@@ -52,13 +52,11 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
                         id.setError("Device ID is required");
                     }
                 } else {
-                    // Fields are filled, proceed with saving
                     DatabaseReference devicesRef = FirebaseDatabase.getInstance()
                             .getReference("Devices")
                             .child(FirebaseAuth.getInstance().getUid())
                             .child(deviceId);
 
-                    // Create a new Device object with the entered data
                     Device device = new Device(deviceName, deviceId);
                     devicesRef.setValue(device).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -68,7 +66,6 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
                             Log.e( "onSub: ", deviceId+"");
                             // Finish the current activity
                             finish();
-                            // Start the RegisterDeviceActivity
                             startActivity(new Intent(DeviceRegistrationFormActivity.this, RegisterDeviceActivity.class));
                         }
                     });

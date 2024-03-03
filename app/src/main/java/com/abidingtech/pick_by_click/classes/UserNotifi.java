@@ -8,7 +8,6 @@ public class UserNotifi {
     private String ImageUrl;
 
     public UserNotifi() {
-        // Required empty constructor for Firebase
     }
 
     public UserNotifi(String name, String email) {

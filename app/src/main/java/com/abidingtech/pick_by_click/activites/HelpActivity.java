@@ -20,7 +20,6 @@ Button btnuserManual , btncontactus;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-       // btnsettingNotification=findViewById(R.id.btnsettingNotification);
 
         UserManual=findViewById(R.id.UserManual);
         ContactUs = findViewById(R.id.ContactUs);
@@ -42,13 +41,6 @@ Button btnuserManual , btncontactus;
                 startActivity(intent);
             }
         });
-//        btnsettingNotification.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                NotifyUtil notifyUtil = new NotifyUtil();
-//                notifyUtil.send("NotificationTopic", "Notification Title","body");
-//
-//            }
-//        });
+
     }
 }

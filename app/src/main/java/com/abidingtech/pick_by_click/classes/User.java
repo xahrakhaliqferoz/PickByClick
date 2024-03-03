@@ -7,7 +7,6 @@ public class User {
     private String imageview;
 
     public User() {
-        // Required empty constructor for Firebase
     }
 
     public User(String name, String email) {

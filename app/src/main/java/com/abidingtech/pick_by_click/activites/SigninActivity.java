@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abidingtech.pick_by_click.R;
@@ -31,6 +34,16 @@ public class SigninActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
+        binding.etEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    binding.etPassword.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         binding.btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +76,6 @@ public class SigninActivity extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
                                 if (e.getMessage() != null) {
                                     if (e.getMessage().contains("The password is invalid")) {
-                                        // Handle invalid password error
                                         binding.etPassword.setError("Invalid password");
                                         Toast.makeText(SigninActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
                                     } else if (e.getMessage().contains("There is no user record corresponding to this identifier")) {
@@ -71,7 +83,6 @@ public class SigninActivity extends AppCompatActivity {
                                         binding.etEmail.setError("Email not registered");
                                         Toast.makeText(SigninActivity.this, "Email not registered", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        // Handle other login errors
                                         Toast.makeText(SigninActivity.this, "Failed to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
@@ -81,7 +92,6 @@ public class SigninActivity extends AppCompatActivity {
                             }
                         });
 
-// ...
 
 
 
@@ -91,31 +101,6 @@ public class SigninActivity extends AppCompatActivity {
 
 
 
-
-                // Now proceed with authentication
-//                auth.signInWithEmailAndPassword(email, password)
-//                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//                            @Override
-//                            public void onSuccess(AuthResult authResult) {
-//                                Toast.makeText(SigninActivity.this, "Login successfully", Toast.LENGTH_SHORT).show();
-//                                startActivity(new Intent(SigninActivity.this, HomeActivity.class));
-//                                finish();
-//                            }
-//                        })
-                        // ...
-
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                if (e.getMessage() != null && e.getMessage().contains("The password is invalid")) {
-//                                    binding.etPassword.setError("Invalid password");
-//                                } else {
-//                                    Toast.makeText(SigninActivity.this, "Failed to login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-
-// ...
 
             }
         });

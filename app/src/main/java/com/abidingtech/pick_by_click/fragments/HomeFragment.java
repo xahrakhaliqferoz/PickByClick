@@ -46,7 +46,6 @@ public class HomeFragment extends Fragment {
     private String userID;
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -63,7 +62,6 @@ public class HomeFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference notificationRef = database.getReference("Notifications").child(FirebaseAuth.getInstance().getUid());
 
-        // Listen for changes in the "notification" node
         notificationRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -106,27 +104,21 @@ public class HomeFragment extends Fragment {
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            // Get the currently logged-in user's UID
             String userId = currentUser.getUid();
 
-            // Get a reference to the Firebase Realtime Database
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
-            // Listen for changes in the user's data
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    // Retrieve the user's name from the database
                     String name = dataSnapshot.child("name").getValue(String.class);
 
-                    // Update the TextView with the user's name
                     tvUserName.setText("Hello, " + name + "!");
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    // Handle database read error
                 }
             });
         }

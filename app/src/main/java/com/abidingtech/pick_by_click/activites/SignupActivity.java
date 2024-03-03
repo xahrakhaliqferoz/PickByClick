@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
+import android.view.KeyEvent;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class SignupActivity extends AppCompatActivity {
     ActivitySignupBinding binding;
     String userName,email,password;
@@ -27,7 +31,36 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        // for new account
+        binding.edtname.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        binding.edtemail.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        binding.edtpassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
         binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,18 +68,18 @@ public class SignupActivity extends AppCompatActivity {
                 email = binding.edtemail.getText().toString();
                 password = binding.edtpassword.getText().toString();
 
-                if (userName.length() < 1 || email.length() < 1 || !Patterns.EMAIL_ADDRESS.matcher(email).matches() || password.length() < 8) {
-                    if (userName.length() < 1) {
-                        Toast.makeText(SignupActivity.this, "Name required", Toast.LENGTH_SHORT).show();
-                    } else if (email.length() < 1) {
-                        Toast.makeText(SignupActivity.this, "email required", Toast.LENGTH_SHORT).show();
+
+                if (!isValidUserName(userName) || email.trim().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() || password.length() < 8) {
+                    if (!isValidUserName(userName)) {
+                        Toast.makeText(SignupActivity.this, "Invalid name. Only alphabetic characters are allowed.", Toast.LENGTH_SHORT).show();
+                    } else if (email.trim().isEmpty()) {
+                        Toast.makeText(SignupActivity.this, "Email required", Toast.LENGTH_SHORT).show();
                     } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                         Toast.makeText(SignupActivity.this, "Enter valid email address", Toast.LENGTH_SHORT).show();
                     } else if (password.length() < 8) {
-                        Toast.makeText(SignupActivity.this, "password should be grater than 8", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this, "Password should be greater than 8 characters", Toast.LENGTH_SHORT).show();
                     }
                 }
-                // for register a user after validation user
                 else {
                     FirebaseAuth auth=FirebaseAuth.getInstance();
                     auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -70,7 +103,6 @@ public class SignupActivity extends AppCompatActivity {
                                         // Handle the case where the email is already in use
                                         Toast.makeText(SignupActivity.this, "Email is already in use", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        // Handle other registration errors
                                         Toast.makeText(SignupActivity.this, "Registration failed: " + errorMessage, Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
@@ -82,6 +114,10 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private boolean isValidUserName(String userName) {
+        String regex = "^[a-zA-Z]+$";
+        return Pattern.matches(regex, userName);
     }
 }
 

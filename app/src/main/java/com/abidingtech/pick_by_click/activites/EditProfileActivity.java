@@ -2,9 +2,13 @@ package com.abidingtech.pick_by_click.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +38,18 @@ public class EditProfileActivity extends AppCompatActivity {
 
         etNewName = findViewById(R.id.etNewName);
         btnSave = findViewById(R.id.btnSave);
+        etNewName.setInputType(InputType.TYPE_CLASS_TEXT);
+        etNewName.setSingleLine(true);
+        etNewName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    btnSave.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -52,7 +68,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Handle error if needed
                 }
             });
 

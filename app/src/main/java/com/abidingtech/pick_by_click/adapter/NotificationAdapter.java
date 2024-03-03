@@ -17,7 +17,6 @@ import java.util.Date;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
 
-    //   Context context;
     ArrayList<NotificationModel> notificationModelArrayList;
 
     public NotificationAdapter(ArrayList<NotificationModel> notificationModelArrayList) {
@@ -37,7 +36,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final NotificationModel notificationModel = notificationModelArrayList.get(position);
 
-//        NotificationModel notificationModel = notificationModelArrayList.get(position);
         holder.title.setText(notificationModel.getTitle());
         holder.body.setText(notificationModel.getBody());
 

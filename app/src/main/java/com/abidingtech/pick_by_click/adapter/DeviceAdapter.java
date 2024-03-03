@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
-    //    private Context context;
     private List<Device> deviceList = new ArrayList<>();
     private boolean isClickable; // Flag
 
@@ -75,16 +74,13 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
             @Override
             public void onClick(View v) {
 
-                // Create an AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Confirmation");
                 builder.setMessage("Are you sure you want to delete the device?");
 
-                // Set up the buttons
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // User clicked Yes, proceed with deletion
                         FirebaseDatabase.getInstance()
                                 .getReference("Devices")
                                 .child(FirebaseAuth.getInstance().getUid())
@@ -97,7 +93,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                                             deviceList.remove(device);
                                             notifyDataSetChanged();
                                         } else {
-                                            // Handle the deletion failure if needed
                                             Toast.makeText(context, "Failed to delete device", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -113,36 +108,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                     }
                 });
 
-                // Show the AlertDialog
                 builder.show();
             }
         });
-
-//
-//        holder.btnDel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //dialog yes no
-//
-//                FirebaseDatabase.getInstance()
-//                        .getReference("Devices")
-//                        .child(FirebaseAuth.getInstance().getUid())
-//                        .child(device.getId())
-//                        .removeValue()
-//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if (task.isSuccessful()) {
-//                                    deviceList.remove(device);
-//                                    notifyDataSetChanged();
-//                                } else {
-//                                    Toast.makeText(context, task.getException().getMessage() + "", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//            }
-//        });
         if (isClickable) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -150,7 +118,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
                     if (onItemClickListener != null) {
                         onItemClickListener.onItemClick(device);
                     }
-//                    int position=this.getAdapterposition();
                     String name = device.getName();
                     String id = device.getId();
                     Intent intent = new Intent(context, DeviceDisplayActivity.class);
@@ -181,91 +148,4 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHold
     }
 }
 
-//
-//public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.MyViewHolder> {
-//    private Context context;
-//    private List<Device> deviceList = new ArrayList<>();
-//
-//
-//    public class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-//        public TextView name;
-//        public TextView id;
-//        public myViewHolder(@NonNull View itemView){
-//            super(itemView);
-//            itemView.setOnClickListener(this);
-//            name=itemView.findViewById(R.id.displayName);
-//            id=itemView.findViewById(R.id.displayId);
-//        }
-//
-//        @Override
-//        public void onClick(View v) {
-//
-//        }
-//    }
-//    // Define the interface for item click events
-//    public interface OnItemClickListener {
-//        void onItemClick(Device device);
-//    }
-//    private OnItemClickListener onItemClickListener;
-//
-//    public DeviceAdapter(ArrayList<Device> deviceList, boolean b, OnItemClickListener listener) {
-//        this.deviceList = deviceList;
-//        this.onItemClickListener = listener;
-//    }
-//
-//    public DeviceAdapter(Context context, List<Device> list) {
-//        this.context = context;
-//        this.deviceList = list;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View v = LayoutInflater.from(context).inflate(R.layout.device_view, parent, false);
-//        return new MyViewHolder(v);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-//        final Device device = deviceList.get(position);
-//        holder.name.setText(device.getName());
-//        holder.id.setText(device.getId());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onItemClickListener != null) {
-//                    onItemClickListener.onItemClick(device);
-//                }
-////                int position=this.getAdapterposition();
-//                Device device = deviceList.get(position);
-//                String name=device.getName();
-//                String id=device.getId();
-//                Intent intent=new Intent(context, DeviceDisplayActivity.class);
-//                intent.putExtra("Rname",name);
-//                intent.putExtra("Rid",id);
-//                context.startActivity(intent);
-//            }
-//
-//        });
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        // Make sure deviceList is not null before accessing its size
-//        return deviceList != null ? deviceList.size() : 0;
-//    }
-//
-//    public static class MyViewHolder extends RecyclerView.ViewHolder {
-//        public View ButtonAdd;
-//        TextView name, id;
-//
-//        public MyViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            name = itemView.findViewById(R.id.DName);
-//            id = itemView.findViewById(R.id.DID);
-//        }
-//    }
-//
-//
-//
-//}
+

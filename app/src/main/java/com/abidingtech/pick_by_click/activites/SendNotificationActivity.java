@@ -50,22 +50,7 @@ public class SendNotificationActivity extends AppCompatActivity {
                 .child(FirebaseAuth.getInstance().getUid());
         ArrayList<Device> deviceList = new ArrayList<>();
 
-//        DeviceAdapter adapter = new DeviceAdapter(deviceList, true, new DeviceAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(Device device) {
-//                // Handle the item click if needed
-//                sendNotificationToDevice(device);
-//            }
-//        });
-//
-//        DeviceAdapter adapter = new DeviceAdapter(new ArrayList<>(), new DeviceAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(Device device) {
-//                sendNotificationToDevice(device);
-//            }
-//        });
 
-//        recyclerView.setAdapter(adapter);
         loadDeviceData();
     }
     private void loadDeviceData() {
@@ -89,8 +74,6 @@ public class SendNotificationActivity extends AppCompatActivity {
                 DeviceAdapter adapter = new DeviceAdapter(SendNotificationActivity.this, deviceList, true, new DeviceAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Device device) {
-                        // Handle the item click if needed
-//                        sendNotificationToDevice(device);
                     }
                 });
 
@@ -109,7 +92,6 @@ public class SendNotificationActivity extends AppCompatActivity {
 
     private void sendNotificationToDevice(Device device) {
         String notificationKey = databaseReference.child(device.getId()).child("notifications").push().getKey();
-//        databaseReference.child(device.getId()).child("notifications").child(notificationKey).setValue("Your notification message");
 
         Toast.makeText(this, "Notification sent to " + device.getName(), Toast.LENGTH_SHORT).show();
     }

@@ -60,28 +60,24 @@ public class SelectDeviceActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // This method will be called when an existing device's data is changed in the database
-                // You can handle this if needed
+
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                // This method will be called when a device is removed from the database
                 Device device = snapshot.getValue(Device.class);
                 if (device != null) {
                     list.remove(device);
-                    adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+                    adapter.notifyDataSetChanged();
                 }
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // This method will be called when a device changes position in the database (unlikely in your case)
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle any error that occurs while listening to the database changes
             }
         });
     }

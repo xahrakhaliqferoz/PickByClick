@@ -79,7 +79,6 @@ public class RegisterDeviceActivity extends AppCompatActivity {
                 }
                 DeviceAdapter adapter = new DeviceAdapter(RegisterDeviceActivity.this, list, false, null);
 
-//                DeviceAdapter adapter = new DeviceAdapter(RegisterDeviceActivity.this, list);
                 recyclerView.setAdapter(adapter);
             }
 

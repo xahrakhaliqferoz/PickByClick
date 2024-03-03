@@ -57,7 +57,6 @@ UserFragment extends Fragment {
     Button EditProfileButton;
 
     public UserFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -70,7 +69,6 @@ UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -109,11 +107,9 @@ UserFragment extends Fragment {
             }
         });
 
-        // Get the currently logged-in user's name and email
         {
             String userId = FirebaseAuth.getInstance().getUid();
 
-            // Get a reference to the Firebase Realtime Database
              userRef = FirebaseDatabase.getInstance()
                     .getReference(DATABASE_PATH).child(userId);
 
@@ -127,7 +123,6 @@ UserFragment extends Fragment {
             }
         });
 
-//        loadProfileImage();
 
 
         return view;
@@ -137,9 +132,9 @@ UserFragment extends Fragment {
 
     private void openImagePicker() {
         ImagePicker.with(this)
-                .crop()                    //Crop image(Optional), Check Customization for more option
-                .compress(512)            //Final image size will be less than 1 MB(Optional)
-                .maxResultSize(512, 512)    //Final image resolution will be less than 1080 x 1080(Optional)
+                .crop()
+                .compress(512)
+                .maxResultSize(512, 512)
                 .start();
     }
 
@@ -207,17 +202,13 @@ UserFragment extends Fragment {
             UploadTask uploadTask = imageRef.putFile(uri);
 
             uploadTask.addOnSuccessListener(taskSnapshot -> {
-                // Image uploaded successfully
-                // Get the download URL of the uploaded image
+
                 imageRef.getDownloadUrl().addOnSuccessListener(downloadUri -> {
-                    // Save the download URL to the database or use it as needed
                     Glide.with(this).load(downloadUri.toString()).into(imageView);
                     userRef.child("imageUrl").setValue(downloadUri.toString());
                 }).addOnFailureListener(exception -> {
-                    // Handle failure to get the download URL
                 });
             }).addOnFailureListener(exception -> {
-                // Handle unsuccessful image upload
             });
         }
 

@@ -47,7 +47,6 @@ public class DeviceDisplayActivity extends AppCompatActivity {
                 int alertNumber = ThreadLocalRandom.current().nextInt(100, 1000);
                 String deviceId=id.toString();
                 DatabaseReference deviceRef=databaseReference
-//                         .child(FirebaseAuth.getInstance().getUid())
                         .child(deviceId)
                         .child("alert");
                 deviceRef.setValue(alertNumber);

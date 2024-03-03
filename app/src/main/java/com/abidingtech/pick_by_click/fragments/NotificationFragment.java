@@ -61,8 +61,7 @@ public class NotificationFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        // Clear the existing data in the ArrayList
-//        notificationModelArrayList.clear();
+
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

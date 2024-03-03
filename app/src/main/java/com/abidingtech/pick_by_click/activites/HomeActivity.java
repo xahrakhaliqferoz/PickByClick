@@ -38,20 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homectivity);
 
 
-//        FirebaseMessaging.getInstance().subscribeToTopic("broadcast")
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        String msg = "Subscribed";
-//                        if (!task.isSuccessful()) {
-//                            msg = "Subscribe failed";
-//                        }
-//                        Log.d(TAG, msg);
-//                        Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
-//
-//                        NotificationUtil.showNotification(HomeActivity.this,"this is title","this is body");
-//                    }
-//                });
 
         binding = ActivityHomectivityBinding.inflate(getLayoutInflater());
 
@@ -78,7 +64,6 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-        // Example: Load your UserFragment
         Fragment homeFragment = new HomeFragment();
 
         getSupportFragmentManager().
@@ -97,21 +82,19 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if (selectedFragment instanceof HomeFragment) {
-            // If the current fragment is UserFragment, show an AlertDialog to confirm exit
             new AlertDialog.Builder(this)
                     .setTitle("Exit App")
                     .setMessage("Are you sure you want to exit?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            // Close the app
                             finish();
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            // Do nothing and resume the app
+
                         }
                     })
                     .show();
