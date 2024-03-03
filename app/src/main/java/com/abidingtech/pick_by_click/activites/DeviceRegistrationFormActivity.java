@@ -52,6 +52,19 @@ public class DeviceRegistrationFormActivity extends AppCompatActivity {
                         id.setError("Device ID is required");
                     }
                 } else {
+                    if (!deviceName.matches("[a-zA-Z]+")) {
+                        name.setError("Device name should contain only alphabets");
+                        return;
+                    }
+
+                    try {
+                        Integer.parseInt(deviceId);
+                    } catch (NumberFormatException e) {
+                        id.setError("Device ID must be an integer");
+                        return;
+                    }
+
+
                     DatabaseReference devicesRef = FirebaseDatabase.getInstance()
                             .getReference("Devices")
                             .child(FirebaseAuth.getInstance().getUid())

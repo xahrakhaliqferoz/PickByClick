@@ -34,11 +34,10 @@ public class SigninActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         auth = FirebaseAuth.getInstance();
-        binding.etEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        binding.etEmail.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    binding.etPassword.requestFocus();
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     return true;
                 }
                 return false;
