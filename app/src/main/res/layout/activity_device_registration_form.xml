@@ -38,7 +38,8 @@
                  android:textColor="@color/black"
                  android:textColorHint="@color/black"
                  android:hint="Name"
-                 android:drawableLeft="@drawable/ic_baseline_person_24"/>
+                 android:drawableLeft="@drawable/ic_baseline_person_24"
+                 android:singleLine="true"/>
 
              <EditText
                  android:layout_width="match_parent"
@@ -46,6 +47,7 @@
                  android:textColor="@color/black"
                  android:id="@+id/id"
                  android:hint="Id"
+                 android:singleLine="true"
                  android:textColorHint="@color/black"
                  android:drawableLeft="@drawable/ic_baseline_app_registration_24"/>
              <Button

@@ -71,7 +71,7 @@ public class NotificationFragment extends Fragment {
 
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         NotificationModel notificationModel = dataSnapshot.getValue(NotificationModel.class);
-                        list.add(notificationModel);
+                        list.add(0, notificationModel);
                         Log.e("NotificationFragment", "Notification Data Retrieved: " + notificationModel.body);
 
                     }
